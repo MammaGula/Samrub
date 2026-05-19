@@ -1,0 +1,294 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Por Pia Thod",
+      "nameThai": "ปอเปี๊ยะทอด",
+      "description": "Crispy Thai spring rolls filled with glass noodles, vegetables and pork. Served with sweet chili sauce.",
+      "price": 89,
+      "category": "Starter",
+      "image": "Starter_PorpeaThod.jpg",
+      "popular": false
+    },
+    {
+      "id": 2,
+      "name": "Tod Mun Kung",
+      "nameThai": "ทอดมันกุ้ง",
+      "description": "Golden fried shrimp cakes seasoned with Thai herbs and spices. Served with cucumber relish.",
+      "price": 129,
+      "category": "Starter",
+      "image": "Starter_TodMunKong.jpg",
+      "popular": true
+    },
+    {
+      "id": 3,
+      "name": "Tom Yum",
+      "nameThai": "ต้มยำ",
+      "description": "Thailand's famous hot and sour soup with lemongrass, galangal, kaffir lime leaves, and your choice of protein.",
+      "price": 159,
+      "category": "MainCourse",
+      "image": "MainCourse_Tomyum.jpg",
+      "popular": true
+    },
+    {
+      "id": 4,
+      "name": "Tom Kha Kai",
+      "nameThai": "ต้มข่าไก่",
+      "description": "Creamy coconut milk soup with chicken, galangal, lemongrass, and mushrooms. Mildly spiced.",
+      "price": 149,
+      "category": "MainCourse",
+      "image": "MainCourse_TomKhaKai.jpg",
+      "popular": false
+    },
+    {
+      "id": 5,
+      "name": "Gaeng Kiew Wan Gai",
+      "nameThai": "แกงเขียวหวานไก่",
+      "description": "Classic Thai green curry with chicken, Thai eggplant, and fresh basil in rich coconut milk.",
+      "price": 169,
+      "category": "MainCourse",
+      "image": "MainCourse_GaengKiewWanGai.jpg",
+      "popular": true
+    },
+    {
+      "id": 6,
+      "name": "Massaman Kai",
+      "nameThai": "มัสมั่นไก่",
+      "description": "Rich, mild Thai curry with chicken, potatoes, and peanuts. Influenced by Persian and Indian spices.",
+      "price": 179,
+      "category": "MainCourse",
+      "image": "MainCourse_MassamanKai.jpg",
+      "popular": true
+    },
+    {
+      "id": 7,
+      "name": "Panang",
+      "nameThai": "พะแนง",
+      "description": "Thick, rich red curry with beef and kaffir lime leaves. Creamier and milder than regular red curry.",
+      "price": 189,
+      "category": "MainCourse",
+      "image": "MainCourse_Panang.jpg",
+      "popular": false
+    },
+    {
+      "id": 8,
+      "name": "Kaeng Som",
+      "nameThai": "แกงส้ม",
+      "description": "Traditional sour orange curry with vegetables and fish. A southern Thai classic with bold flavors.",
+      "price": 159,
+      "category": "MainCourse",
+      "image": "MainCourse_KaengSom.jpg",
+      "popular": false
+    },
+    {
+      "id": 9,
+      "name": "Kai Yang",
+      "nameThai": "ไก่ย่าง",
+      "description": "Grilled marinated chicken with garlic, lemongrass, and coriander. Served with sticky rice and som tum.",
+      "price": 169,
+      "category": "MainCourse",
+      "image": "MainCourse_KaiYang.jpg",
+      "popular": false
+    },
+    {
+      "id": 10,
+      "name": "Som Tum",
+      "nameThai": "ส้มตำ",
+      "description": "Refreshing green papaya salad with tomatoes, green beans, peanuts, dried shrimp, and lime dressing.",
+      "price": 109,
+      "category": "MainCourse",
+      "image": "MainCourse_Somtum.jpg",
+      "popular": true
+    },
+    {
+      "id": 11,
+      "name": "Yum Talay",
+      "nameThai": "ยำทะเล",
+      "description": "Spicy Thai seafood salad with mixed seafood, lemongrass, shallots, lime juice, and chili.",
+      "price": 199,
+      "category": "MainCourse",
+      "image": "MainCourse_YumTalay.jpg",
+      "popular": false
+    },
+    {
+      "id": 12,
+      "name": "Pad Nam Man Hoy",
+      "nameThai": "ผัดน้ำมันหอย",
+      "description": "Stir-fried mixed vegetables and meat with oyster sauce. Quick, savory, and satisfying.",
+      "price": 139,
+      "category": "MainCourse",
+      "image": "MainCourse_PadNamManHoy.jpg",
+      "popular": false
+    },
+    {
+      "id": 13,
+      "name": "Pad Pong Karee",
+      "nameThai": "ผัดผงกะหรี่",
+      "description": "Stir-fried crab or seafood with yellow curry powder, eggs, onions, and celery. A restaurant favorite.",
+      "price": 229,
+      "category": "MainCourse",
+      "image": "MainCourse_PadPongKraRee.jpg",
+      "popular": false
+    },
+    {
+      "id": 14,
+      "name": "Pla Nueng",
+      "nameThai": "ปลานึ่ง",
+      "description": "Steamed whole fish with ginger, lemongrass, and lime sauce. Light and healthy.",
+      "price": 249,
+      "category": "MainCourse",
+      "image": "MainCourse_Planueng.jpg",
+      "popular": false
+    },
+    {
+      "id": 15,
+      "name": "Pla Thod",
+      "nameThai": "ปลาทอด",
+      "description": "Crispy deep-fried fish seasoned with garlic and herbs. Served with spicy dipping sauce.",
+      "price": 199,
+      "category": "MainCourse",
+      "image": "MainCourse_Platod.jpg",
+      "popular": false
+    },
+    {
+      "id": 16,
+      "name": "Pad Thai",
+      "nameThai": "ผัดไทย",
+      "description": "Thailand's iconic stir-fried rice noodles with egg, bean sprouts, green onions, and peanuts.",
+      "price": 129,
+      "category": "SingleDish",
+      "image": "SingleDish_PadThai.jpg",
+      "popular": true
+    },
+    {
+      "id": 17,
+      "name": "Pad Ka Prao",
+      "nameThai": "ผัดกะเพรา",
+      "description": "Stir-fried minced meat with holy basil, chili, and garlic. Served with steamed rice and fried egg.",
+      "price": 119,
+      "category": "SingleDish",
+      "image": "SingleDish_PadKaProa.jpg",
+      "popular": true
+    },
+    {
+      "id": 18,
+      "name": "Pad See Ew",
+      "nameThai": "ผัดซีอิ๊ว",
+      "description": "Wide rice noodles stir-fried with dark soy sauce, egg, Chinese broccoli, and your choice of protein.",
+      "price": 119,
+      "category": "SingleDish",
+      "image": "SingleDish_PadSeeEw.jpg",
+      "popular": false
+    },
+    {
+      "id": 19,
+      "name": "Khao Pad",
+      "nameThai": "ข้าวผัด",
+      "description": "Classic Thai fried rice with egg, onion, tomato, and your choice of protein. Simple and delicious.",
+      "price": 109,
+      "category": "SingleDish",
+      "image": "SingleDish_KhaoPad.jpg",
+      "popular": false
+    },
+    {
+      "id": 20,
+      "name": "Khao Ob Subparod",
+      "nameThai": "ข้าวอบสับปะรด",
+      "description": "Fragrant Thai baked rice served inside a fresh pineapple with shrimp, cashews, and raisins.",
+      "price": 179,
+      "category": "SingleDish",
+      "image": "SingleDish_KhaoObSubparod.jpg",
+      "popular": false
+    },
+    {
+      "id": 21,
+      "name": "Khao Neow Mamuang",
+      "nameThai": "ข้าวเหนียวมะม่วง",
+      "description": "Sweet sticky rice with ripe Thai mango and creamy coconut milk. A beloved Thai dessert.",
+      "price": 99,
+      "category": "Dessert",
+      "image": "Dessert_KhaoNeowMamuang.jpg",
+      "popular": true
+    },
+    {
+      "id": 22,
+      "name": "Lod Chong",
+      "nameThai": "ลอดช่อง",
+      "description": "Green pandan jelly noodles in sweet coconut milk with crushed ice. A refreshing Thai dessert.",
+      "price": 79,
+      "category": "Dessert",
+      "image": "Dessert_LodChong.jpg",
+      "popular": false
+    },
+    {
+      "id": 23,
+      "name": "Khanom Peak Poon",
+      "nameThai": "ขนมพักพวน",
+      "description": "Traditional Thai layered coconut jelly dessert with pandan and coconut cream layers.",
+      "price": 69,
+      "category": "Dessert",
+      "image": "Dessert_KanomPeakPoon.jpg",
+      "popular": false
+    },
+    {
+      "id": 24,
+      "name": "Set 1 - Classic Thai",
+      "nameThai": "เซ็ต 1 - ไทยคลาสสิก",
+      "description": "Tom Yum soup + Pad Thai + Steamed rice + Mango sticky rice. Perfect for one person.",
+      "price": 299,
+      "category": "Set",
+      "image": "Set1.jpg",
+      "popular": true
+    },
+    {
+      "id": 25,
+      "name": "Set 2 - Spicy Lover",
+      "nameThai": "เซ็ต 2 - สายเผ็ด",
+      "description": "Green curry + Som Tum + Sticky rice + Lod Chong. For those who love bold Thai flavors.",
+      "price": 319,
+      "category": "Set",
+      "image": "Set2.jpg",
+      "popular": false
+    },
+    {
+      "id": 26,
+      "name": "Set 3 - Seafood Delight",
+      "nameThai": "เซ็ต 3 - ซีฟู้ด",
+      "description": "Steamed fish + Yum Talay + Steamed rice + Khanom Peak Poon. Fresh seafood combination.",
+      "price": 399,
+      "category": "Set",
+      "image": "Set3.jpg",
+      "popular": false
+    },
+    {
+      "id": 27,
+      "name": "Set 4 - Family Feast",
+      "nameThai": "เซ็ต 4 - ครอบครัว",
+      "description": "Massaman curry + Kai Yang + Som Tum + Sticky rice + 2 desserts. Great for sharing.",
+      "price": 549,
+      "category": "Set",
+      "image": "Set4.jpg",
+      "popular": false
+    },
+    {
+      "id": 28,
+      "name": "Hor Mok",
+      "nameThai": "ห่อหมก",
+      "description": "Thai steamed fish curry mousse with coconut cream and kaffir lime leaves. Served in banana leaf.",
+      "price": 159,
+      "category": "MainCourse",
+      "image": "MainCourse_HorMok.jpg",
+      "popular": false
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "user",
+      "password": "$2b$10$placeholder",
+      "email": "user@samrub.com",
+      "name": "Default User"
+    }
+  ],
+  "orders": []
+}
