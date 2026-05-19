@@ -1,0 +1,152 @@
+/* ===== 1. Footer: Main container ===== */
+.footer {
+  background-color: rgba(25, 25, 25, 0.7); /* opacity 0.7 */
+  height: 201px;
+  width: 100%; /* Expand to full width */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== 2. Inner container: horizontal layout, gap 180px(OpenHours + FollowUs) ===== */
+.footer-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 180px;
+  width: 789px;
+  height: 178px;
+}
+
+/* ===== Section A: Open Hours ===== */
+.footer-hours {
+  width: 358px;
+  height: 178px;
+  padding: 14px 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-hours p {
+  font-family: var(--font-body);
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--orange);
+  text-align: center;
+  line-height: 25px;
+  width: 340px;
+}
+
+/* ===== Section B: Follow us ===== */
+.footer-social {
+  width: 214px;
+  height: 122px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Space between "Follow us" label and icons */
+}
+
+.footer-follow-label {
+  font-family: var(--font-body);
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--orange);
+  line-height: 30px;
+  width: 120px;
+  text-align: center;
+}
+
+/* ===== Social icons row ===== */
+.social-icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 19px;
+  width: 214px;
+  height: 98px;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  transition: opacity 0.2s; /* Smooth transition for hover effect */
+}
+
+.social-icons a:hover {
+  opacity: 0.75; /* Slightly dim icon on hover for feedback */
+}
+
+/* Instagram + Facebook + TikTok: orange icon, transparent background */
+.social-icon {
+  color: var(--orange);
+  width: 37.5px;
+  height: 37.5px;
+}
+
+/* ===== Responsive: Mobile ===== */
+@media (max-width: 768px) {
+  .footer {
+    height: 158px;
+  }
+
+  /* Mobile: vertical layout, gap 3px */
+  .footer-inner {
+    flex-direction: column;
+    width: 100%; /* Expand to full width */
+    height: 158px;
+    gap: 3px;
+    padding: 10px 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Open Hours mobile */
+  .footer-hours {
+    width: 100%; /* Expand to full width */
+    height: 70px;
+    padding: 10px 25px;
+  }
+
+  .footer-hours p {
+    font-size: 10px;
+    line-height: 10px;
+    width: 100%;
+  }
+
+  /* Follow us mobile */
+  .footer-social {
+    width: 100%; /* Expand to full width */
+    height: 62px;
+    gap: 4px;
+  }
+
+  .footer-follow-label {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 24px;
+    width: 69px;
+  }
+
+  /* All icons mobile: 25×25px */
+  .social-icons a {
+    width: 25px;
+    height: 25px;
+  }
+
+  .social-icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  .tiktok-icon {
+    width: 26.7px !important;
+    height: 36.4px !important;
+  }
+}

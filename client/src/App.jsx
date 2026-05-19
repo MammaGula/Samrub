@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
-// import Navbar from './components/Navbar/Navbar'
-// import Footer from './components/Footer/Footer'
+import Navbar from './components/Navbar/Navbar'
+import Footer from './components/Footer/Footer'
 import Home from './pages/Home/Home'
 import Menu from './pages/Menu/Menu'
 import Basket from './pages/Basket/Basket'
@@ -14,7 +14,7 @@ import './App.css'
 function App() {
   return (
     <div className="app">
-      {/* <Navbar /> */}
+      <Navbar />
       <main className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -27,7 +27,7 @@ function App() {
           <Route path="/register" element={<Register />} />
         </Routes>
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   )
 }

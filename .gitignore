@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+
+# Environment variables (secret keys, passwords)
+.env
+.env.local
+.env.*.local
+
+# MCP config (contains API keys)
+.mcp.json
+
+# VSCode settings (personal, not for sharing)
+.vscode/*
+!.vscode/extensions.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# json-server lock file
+db-lock.json

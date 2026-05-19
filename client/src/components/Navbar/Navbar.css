@@ -1,0 +1,201 @@
+/* ===== 1. Navbar ===== 
+- Fix navbar to top of page 
+- Expand navbar to full width and height
+- z-index: 100; >> Ensure navbar is floating above all other content (including dropdown)
+*/
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 134px;
+  padding: 0 24px 0 25px; /* according to Figma desktop */
+
+  background-color: rgba(25, 25, 25, 0.7);
+  backdrop-filter: blur(6px); /* Add blur for better readability */
+}
+
+/* ===== 2. Hamburger button ===== 
+- Reset default button styles >> Set color to orange
+*/
+.hamburger {
+  color: var(--orange);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  flex-shrink: 0; /* Prevent shrinking on mobile when space is tight */
+}
+
+.hamburger:hover {
+  opacity: 0.8;
+}
+
+/* ===== 3. Navbar Logo (center, absolute) ===== */
+.navbar-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
+
+  font-family: var(--font-logo);
+  font-size: var(--text-logo-desktop);
+  font-weight: 400;
+  color: var(--weak-yellow);
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap; /* Prevent logo from wrapping to multiple lines on smaller screens */
+}
+
+/* ===== 4. Right icons ===== */
+.navbar-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0; /* Prevent shrinking on mobile when space is tight */
+}
+
+.navbar-icons a,
+.navbar-icons button {
+  color: var(--orange);
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* Override for Sign In button only — must stay dark text on orange bg */
+.navbar-icons .btn-signin {
+  color: var(--dark-grey);
+}
+
+.navbar-icons a:hover,
+.navbar-icons button:hover {
+  opacity: 0.8; /* Slightly dim icons on hover for feedback */
+}
+
+/* ===== 5. Basket icon + cart-badge ===== */
+.basket-icon {
+  position: relative; /* To position badge absolutely within this container */
+}
+
+.cart-badge {
+  position: absolute; /* Position badge relative to basket icon */
+  top: -8px; /* Position badge above icon */
+  right: -8px; /* Position badge to the right of icon */
+
+  background-color: var(--orange);
+  color: var(--black);
+  font-size: 11px;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%; /* Make badge circular */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== 6. Sign In button ===== */
+.btn-signin {
+  background-color: var(--orange);
+  color: var(--dark-grey);
+  font-family: var(--font-body);
+  font-size: var(--text-button);
+  font-weight: 500;
+  letter-spacing: 0.15px;
+  width: 118px;
+  height: 53px;
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s; /* Smooth transition for hover effect */
+}
+
+.btn-signin:hover {
+  opacity: 0.85; /* Slightly dim button on hover for feedback */
+}
+
+/* ===== 7. Dropdown menu (Hamburger)===== */
+.dropdown-menu {
+  position: absolute;
+  top: 134px;
+  left: 0;
+
+  background-color: rgba(25, 25, 25, 0.95);
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0;
+  z-index: 99; /* Floated above main content but below navbar */
+  border-radius: 0 0 var(--radius) 0; /* Rounded bottom-left corner */
+}
+
+.dropdown-menu a,
+.dropdown-menu button {
+  color: var(--orange);
+  font-family: var(--font-body);
+  font-size: 18px;
+  text-decoration: none;
+  padding: 12px 24px;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s; /* Smooth transition for hover effect */
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu button:hover {
+  background-color: rgba(255, 182, 57, 0.1);
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 768px) {
+  .navbar {
+    height: 51px;
+    padding: 0 16px;
+  }
+
+  .navbar-logo {
+    font-size: var(--text-logo-mobile); /* 32px */
+  }
+
+  .navbar-icons {
+    gap: 6px; /* ตาม Figma mobile */
+  }
+
+  /* Sign in button mobile: 50×20px, font 10px */
+  .btn-signin {
+    width: 50px;
+    height: 20px;
+    font-size: 10px;
+    letter-spacing: 0.15px;
+  }
+
+  .dropdown-menu {
+    top: 51px;
+  }
+
+  /* Icons mobile: 20×20px (as Figma) */
+  .navbar-icons a svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Hamburger mobile: 30×25px (as Figma) */
+  .hamburger svg {
+    width: 30px;
+    height: 25px;
+  }
+}
