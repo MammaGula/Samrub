@@ -1,0 +1,295 @@
+/* =============================================
+   Home Page Styles — follows Figma Desktop spec
+   ============================================= */
+
+/* ── Wrapper ── */
+.home {
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scroll from wide elements*/
+  margin-top: -134px; /* pull entire page up behind the fixed navbar (134px) */
+}
+
+/* ═══════════════════════════════════════════════
+   1. HERO  (826px total incl. navbar 134px)
+   Content area = 826 - 134 = 692px
+   ═══════════════════════════════════════════════ */
+.home__hero {
+  position: relative;
+  height: 826px;        /* full Figma height including navbar area */
+  background-image: url("/images/hero-homePage.jpg");
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Frosted glass card — Figma: 501×216, rgba(86,87,86,0.15), radius 10 */
+.home__hero-card {
+  position: relative;
+  z-index: 1; /* Ensure card is above background image */
+  width: 501px;
+  min-height: 216px;
+  background: rgba(86, 87, 86, 0.15); /* semi-transparent dark grey */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  border: 1px solid rgba(255, 255, 255, 0.15); /* subtle white border for definition */
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 41px; /* Figma spacing between slogan and button */
+  padding: 2rem 1.5rem;
+}
+
+.home__hero-slogan {
+  text-align: center;
+}
+
+.home__hero-sub {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 3px;
+  /* text-transform: uppercase;  */
+  color: rgba(255, 243, 214, 0.7); /* --weak-yellow with opacity */
+  margin-bottom: 0.5rem;
+}
+
+/* Figma: slogan text area 469×50px */
+.home__hero-title {
+  font-family: var(--font-body);
+  font-size: var(--text-slogan-desktop); /* 32px */
+  font-weight: 700;
+  color: var(--weak-yellow);
+  line-height: 1.3;
+  text-align: center;
+  white-space: nowrap; /* Prevent text from wrapping to multiple lines */
+}
+
+.home__hero-accent {
+  color: var(--orange); /* #FFB639 */
+}
+
+/* Figma: ViewMenu button 217×105, #FFB639, radius 20 */
+.home__hero-btn {
+  width: 217px;
+  height: 105px;
+  background: var(--orange); /* #FFB639 */
+  border: none;
+  border-radius: 20px;
+  font-family: var(--font-body); /* Roboto Serif */
+  font-size: var(--text-slogan-desktop); /* 32px */
+  font-weight: 700;
+  color: var(--dark-grey); /* #303030 */
+  cursor: pointer;
+
+  /*define which properties should have smooth transitions on hover*/
+  transition:
+  /* Smooth hover effects for brightness and scale */
+    filter 0.15s ease,
+    /* Slight scale-up on hover for a subtle pop effect */ transform 0.15s ease;
+}
+
+.home__hero-btn:hover {
+  filter: brightness(1.08); /* Slightly brighten the button on hover */
+  transform: scale(
+    1.03
+  ); /* Slightly scale up the button on hover for a subtle pop effect */
+}
+
+/* ═══════════════════════════════════════════════
+   2 & 3. SCROLLING STRIPS
+   Figma: 1540×416px, 5 images × 308px
+   ═══════════════════════════════════════════════ */
+.home__strip-wrapper {
+  width: 100%;
+  height: 416px;
+  overflow: hidden; /* Hide overflow images from the page (clipping in Figma) */
+  line-height: 0; /* remove gap under inline images */
+}
+
+.home__strip {
+  display: flex; /* Arrange images in a row */
+  width: max-content; /* Allow strip to expand based on number of images */
+  height: 416px;
+}
+
+/* Create animations for continuous scrolling effect */
+
+/* Row 1 — scrolls LEFT */
+@keyframes home-scrollLeft {
+  from {
+    transform: translateX(0); /* Start at the initial position */
+  }
+  to {
+    transform: translateX(
+      -50%
+    ); /* Move left by 50% of the strip's width to create a seamless loop */
+  }
+}
+
+/* Row 2 — scrolls RIGHT */
+@keyframes home-scrollRight {
+  from {
+    transform: translateX(-50%); /* Start at the initial position */
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Apply animations to the respective strips */
+.home__strip--left {
+  animation: home-scrollLeft 22s linear infinite;
+}
+
+/* Apply animation to the second strip that scrolls in the opposite direction */
+.home__strip--right {
+  animation: home-scrollRight 35s linear infinite;
+}
+
+/* Each image: Figma 308×416px */
+.home__strip-img {
+  width: 308px;
+  height: 416px;
+  flex-shrink: 0; /* Prevent images from shrinking to fit the container */
+  object-fit: cover; /* Ensure images cover the entire area without distortion */
+  display: block; /* Remove any default inline spacing around images */
+}
+
+/* ═══════════════════════════════════════════════
+   4. ABOUT / CONTENT
+   Figma: 1441×412px, padding L/R 293px, T/B 49px
+   ═══════════════════════════════════════════════ */
+.home__about {
+  width: 100%;
+  min-height: 412px;
+  background: var(--bg-page); /* #303030 */
+  padding: 49px 293px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.home__about-content {
+  max-width: 855px; /* 1441 - 293 - 293 */
+  width: 100%;
+  text-align: center;
+}
+
+.home__about-label {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 0.75rem;
+}
+
+.home__about-title {
+  font-family: var(--font-body);
+  font-size: var(--text-topic-desktop); /* 40px */
+  font-weight: 700;
+  color: var(--weak-yellow);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.home__about-body {
+  font-family: var(--font-body);
+  font-size: var(--text-body-desktop); /* 24px */
+  color: var(--weak-yellow); /* #fff3d6 */
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+.home__about-btn {
+  margin-top: 1.5rem;
+  background: var(--orange);
+  color: var(--dark-grey);
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: var(--text-button); /* 20px */
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    filter 0.15s ease,
+    transform 0.15s ease;
+}
+
+.home__about-btn:hover {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE — Mobile
+   ═══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Hero */
+  .home {
+    margin-top: -51px;  /* mobile navbar height = 51px */
+  }
+
+  .home__hero {
+    height: 420px;
+  }
+
+  .home__hero-card {
+    width: 90%;
+    max-width: 340px;
+    min-height: auto;
+    gap: 24px;
+    padding: 1.5rem 1rem;
+  }
+
+  .home__hero-title {
+    font-size: var(--text-slogan-mobile); /* 14px */
+  }
+
+  .home__hero-btn {
+    width: 160px;
+    height: 70px;
+    font-size: var(--text-slogan-mobile);
+    border-radius: 12px;
+  }
+
+  /* Scrolling strips */
+  .home__strip-wrapper {
+    height: 200px;
+  }
+
+  .home__strip {
+    height: 200px;
+  }
+
+  .home__strip-img {
+    width: 150px;
+    height: 200px;
+  }
+
+  /* About */
+  .home__about {
+    padding: 2.5rem 1.5rem;
+    min-height: auto;
+  }
+
+  .home__about-title {
+    font-size: var(--text-topic-mobile); /* 16px */
+  }
+
+  .home__about-body {
+    font-size: var(--text-body-mobile); /* 10px */
+  }
+
+  .home__about-btn {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.5rem;
+  }
+}
