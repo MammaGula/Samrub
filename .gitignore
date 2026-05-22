@@ -1,3 +1,9 @@
+# Claude AI / Cowork (local AI session files)
+.claude/
+
+# Personal project notes (not for sharing)
+PROJECT_NOTES.md
+
 # Dependencies
 node_modules/
 

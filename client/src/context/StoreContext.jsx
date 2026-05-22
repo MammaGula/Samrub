@@ -12,6 +12,7 @@ const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({}); // cart: { itemId: quantity }
   const [favorites, setFavorites] = useState([]); // list of favorite food item ids
   const [token, setToken] = useState(""); // JWT token of the logged-in user
+  const [user, setUser] = useState(null); // { id, username, email } from login response
 
   // 3. Add item to cart:
   // - If not in cartItems → set quantity = 1
@@ -152,6 +153,8 @@ const StoreContextProvider = (props) => {
     favorites,
     token,
     setToken,
+    user,
+    setUser,
     addToCart,
     removeFromCart,
     deleteFromCart,
@@ -162,8 +165,12 @@ const StoreContextProvider = (props) => {
     clearCart,
   };
 
+  {
+    /* Returns : Values/ Methods shared across the app */
+  }
   return (
-    <StoreContext.Provider value={contextValue}>
+    
+    <StoreContext.Provider value={contextValue}> 
       {props.children}
     </StoreContext.Provider>
   );
