@@ -17,6 +17,7 @@
   --bg-navbar: rgba(25, 25, 25, 0.7); /* Navbar + Footer background */
   --bg-light: var(--weak-yellow);     /* Light background sections */
   --accent: var(--orange);            /* Primary color for buttons, highlights */
+  --accent-hover: #e69e20;            /* Darker accent for hover states */
   --text-main: var(--weak-yellow);    /* Text on dark background */
   --text-dark: var(--grey);           /* Secondary text */
 

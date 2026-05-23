@@ -1,0 +1,367 @@
+/* =============================================
+   Basket Page
+   Desktop : two-column (items 1fr | summary 360px)
+   Mobile  : two-column stacked inside border (items | summary)
+   ============================================= */
+
+/* ── Page wrapper ── */
+.basket {
+  min-height: calc(100vh - 134px - 201px); /* full height minus navbar + footer */
+  padding: 40px 24px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── Page title "Your Basket" ── */
+.basket__title {
+  font-family: var(--font-body);
+  font-size: var(--text-topic-desktop); /* 40px */
+  font-weight: 700;
+  color: var(--weak-yellow);
+  margin-bottom: 24px;
+}
+
+/* ── Main container — orange border, two columns ── */
+.basket__container {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  border: 1px solid var(--orange);
+  border-radius: var(--radius);
+  overflow: hidden;
+  min-height: 340px;
+}
+
+/* ── Left column: Items (dark warm brown — matches Figma) ── */
+.basket__items {
+  background-color: #2e2810;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Single item row ── */
+.basket__item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ── Trash/delete button — orange square with icon ── */
+.basket__delete-btn {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  background: var(--orange);
+  border: none;
+  border-radius: var(--radius);
+  color: var(--dark-grey);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+}
+
+.basket__delete-btn:hover {
+  background: var(--accent-hover);
+}
+
+/* ── Image wrapper — relative so counter can be absolute ── */
+.basket__item-img-wrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 90px;
+  height: 90px;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.basket__item-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── [−] qty [+] counter — absolute bottom-right of image ── */
+/* Same style as .food-item__counter */
+.basket__item-counter {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--dark-grey);
+  border-radius: 4px;
+  padding: 3px 6px;
+}
+
+.basket__item-counter button {
+  background: none;
+  border: none;
+  color: var(--weak-yellow);
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  line-height: 1;
+}
+
+.basket__item-counter button:hover {
+  color: var(--orange);
+}
+
+.basket__item-counter p {
+  font-family: var(--font-body);
+  font-size: var(--text-button); /* 20px */
+  font-weight: 700;
+  color: var(--weak-yellow);
+  min-width: 14px;
+  text-align: center;
+}
+
+/* ── Item info text: "Name : price SEK x qty" ── */
+.basket__item-info {
+  font-family: var(--font-body);
+  font-size: var(--text-body-desktop); /* 24px */
+  color: var(--weak-yellow);
+  flex: 1;
+  line-height: 1.4;
+}
+
+.basket__item-name {
+  font-weight: 600;
+  color: var(--weak-yellow);
+}
+
+.basket__item-sep {
+  color: var(--weak-yellow);
+  opacity: 0.7;
+}
+
+.basket__item-price {
+  color: var(--orange);
+  font-weight: 600;
+}
+
+.basket__item-qty {
+  color: var(--orange);
+  font-weight: 700;
+}
+
+/* ── Right column: Order Summary ── */
+.basket__summary {
+  background: var(--bg-navbar); /* rgba(25,25,25,0.7) */
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+  border-left: 1px solid var(--orange);
+}
+
+/* ── "Order Summary" title — centered ── */
+.basket__summary-title {
+  font-family: var(--font-body);
+  font-size: var(--text-label-desktop); /* 25px */
+  font-weight: 700;
+  color: var(--weak-yellow);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+/* ── Each summary row (Subtotal / Delivery / Total) ── */
+.basket__summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-body);
+  font-size: var(--text-body-desktop); /* 24px */
+  color: var(--weak-yellow);
+}
+
+/* ── Total row — slightly larger / bolder ── */
+.basket__summary-row--total {
+  font-weight: 700;
+  font-size: var(--text-label-desktop); /* 25px */
+  color: var(--weak-yellow);
+}
+
+/* ── Dashed divider line — matches Figma "- - - - -" ── */
+.basket__summary-divider {
+  border: none;
+  border-top: 2px dashed rgba(255, 179, 57, 0.4);
+  margin: 4px 0;
+}
+
+/* ── Check out button ── */
+.basket__checkout-btn {
+  margin-top: 12px;
+  padding: 12px 28px;
+  background: var(--orange);
+  color: var(--dark-grey);
+  font-family: var(--font-body);
+  font-size: var(--text-button); /* 20px */
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  align-self: center;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.basket__checkout-btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+/* ── Empty basket state ── */
+.basket__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 80px 24px;
+  border: 1px solid var(--orange);
+  border-radius: var(--radius);
+  min-height: 340px;
+}
+
+.basket__empty-icon {
+  font-size: 64px;
+  color: var(--orange);
+  opacity: 0.6;
+}
+
+.basket__empty-text {
+  font-family: var(--font-body);
+  font-size: var(--text-label-desktop);
+  color: var(--weak-yellow);
+  opacity: 0.7;
+}
+
+.basket__empty-btn {
+  padding: 12px 32px;
+  background: var(--orange);
+  color: var(--dark-grey);
+  font-family: var(--font-body);
+  font-size: var(--text-button);
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.basket__empty-btn:hover {
+  background: var(--accent-hover);
+}
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE — Mobile (max-width: 768px)
+   ══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  .basket {
+    min-height: calc(100vh - 80px - 158px);
+    padding: 20px 12px 40px;
+  }
+
+  .basket__title {
+    font-size: var(--text-topic-mobile); /* 16px */
+    margin-bottom: 16px;
+  }
+
+  /* Keep two-column layout on mobile — same as Figma mobile frame */
+  .basket__container {
+    grid-template-columns: 1fr 1fr;
+    min-height: 260px;
+  }
+
+  .basket__items {
+    padding: 16px 12px;
+    gap: 16px;
+  }
+
+  /* Mobile: stack delete + img vertically, text below */
+  .basket__item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .basket__delete-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+  }
+
+  .basket__item-img-wrap {
+    width: 80px;
+    height: 80px;
+  }
+
+  .basket__item-counter {
+    gap: 3px;
+    padding: 2px 5px;
+  }
+
+  .basket__item-counter p {
+    font-size: var(--text-button);
+    min-width: 10px;
+  }
+
+  .basket__item-info {
+    font-size: var(--text-body-mobile); /* 10px */
+  }
+
+  /* Summary column */
+  .basket__summary {
+    padding: 16px 12px;
+    gap: 10px;
+    /* border-left inherited from desktop */
+  }
+
+  .basket__summary-title {
+    font-size: var(--text-label-mobile); /* 11px */
+    margin-bottom: 4px;
+  }
+
+  .basket__summary-row {
+    font-size: var(--text-body-mobile); /* 10px */
+  }
+
+  .basket__summary-row--total {
+    font-size: var(--text-label-mobile); /* 11px */
+  }
+
+  .basket__checkout-btn {
+    font-size: var(--text-body-mobile);
+    padding: 8px 14px;
+    margin-top: 8px;
+    border-radius: 6px;
+  }
+
+  /* Empty state on mobile */
+  .basket__empty {
+    padding: 40px 16px;
+  }
+
+  .basket__empty-icon {
+    font-size: 40px;
+  }
+
+  .basket__empty-text {
+    font-size: var(--text-label-mobile);
+  }
+
+  .basket__empty-btn {
+    font-size: var(--text-body-mobile);
+    padding: 8px 20px;
+  }
+}

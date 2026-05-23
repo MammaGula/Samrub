@@ -9,8 +9,20 @@ const StoreContextProvider = (props) => {
 
   // 2. States shared across the app
   const [foodList, setFoodList] = useState([]); // all food items from backend
-  const [cartItems, setCartItems] = useState({}); // cart: { itemId: quantity }
-  const [favorites, setFavorites] = useState([]); // list of favorite food item ids
+
+  // cartItems: lazy initializer — reads from localStorage immediately on first render
+  // This avoids race condition where save effect overwrites {} before load effect runs
+  const [cartItems, setCartItems] = useState(() => {
+    const saved = localStorage.getItem("cartItems");
+    return saved ? JSON.parse(saved) : {};
+  });
+
+  // favorites: lazy initializer — same pattern as cartItems
+  const [favorites, setFavorites] = useState(() => {
+    const saved = localStorage.getItem("favorites");
+    return saved ? JSON.parse(saved) : [];
+  });
+
   const [token, setToken] = useState(""); // JWT token of the logged-in user
   const [user, setUser] = useState(null); // { id, username, email } from login response
 
@@ -128,18 +140,19 @@ const StoreContextProvider = (props) => {
     if (savedToken) {
       setToken(savedToken);
     }
-
-    // Check if favorites exist in localStorage → if yes, set it to state (restore favorites on app startup)
-    const savedFavorites = localStorage.getItem("favorites");
-    if (savedFavorites) {
-      setFavorites(JSON.parse(savedFavorites));
-    }
+    // Note: cartItems and favorites are loaded via lazy useState initializer above
+    // No need to read them here — avoids race condition with save effects
   }, []);
 
   // 13. Persist favorites to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
+
+  // 13b. Persist cartItems to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   // 14. Collect all values and functions to share with every component
   const contextValue = {

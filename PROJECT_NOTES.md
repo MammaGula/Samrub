@@ -64,7 +64,7 @@ Samrub/
 │   │   ├── pages/
 │   │   │   ├── Home/            ⏳ pending
 │   │   │   ├── Menu/            ⏳ pending
-│   │   │   ├── Basket/          ⏳ pending
+│   │   │   ├── Basket/          ✅ done (Basket.jsx + Basket.css)
 │   │   │   ├── Payment/         ⏳ pending
 │   │   │   ├── Confirmation/    ⏳ pending
 │   │   │   ├── Favorites/       ⏳ pending
@@ -80,12 +80,23 @@ Samrub/
 └── README.md                ⏳ pending
 ```
 
+## Session Log — 2026-05-24
+✅ Basket.jsx — layout ครบ: cart items list, order summary panel, empty state
+✅ Basket.css — responsive desktop + mobile ตาม Figma
+✅ แก้ image path → /images/foods/ (ใช้ public folder)
+✅ แก้ cart persistence ด้วย lazy initializer ใน useState (refresh แล้ว cart ยังอยู่)
+
+## Next Steps (ทำต่อ conversation ใหม่)
+1. Payment page (Payment.jsx + Payment.css)
+2. Confirmation page (Confirmation.jsx + Confirmation.css)
+3. Login/Register page (Login.jsx + Register.jsx)
+
 ## StoreContext — Global State
 File: client/src/context/StoreContext.jsx
 URL: http://localhost:3000 (json-server, will change to 4000)
 States: foodList, cartItems {id: qty}, favorites [], token ""
 Functions: addToCart, removeFromCart, deleteFromCart, getTotalCartAmount, getTotalCartCount, toggleFavorite, isFavorite, clearCart
-localStorage: saves token + favorites
+localStorage: saves token + favorites + cartItems (lazy initializer)
 
 ## Navbar Specs (Figma)
 - Height: 134px desktop / 80px mobile
