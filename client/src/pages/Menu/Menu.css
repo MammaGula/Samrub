@@ -1,0 +1,78 @@
+/* =============================================
+   Menu Page — Figma: MenuPage-Desktop
+   ============================================= */
+
+.menu {
+  min-height: 100vh; /* ensure page fills viewport height */
+  background: var(--bg-page);
+  margin-top: -134px; /* pull page up behind fixed navbar (same as Home) */
+}
+
+/* ══════════════════════════════════════════════
+   Hero Section — 1440 × 733px
+   Background: Sanrub12.jpg cover center
+   ══════════════════════════════════════════════ */
+.menu__hero {
+  width: 100%;
+  height: 733px;
+  background: url("/images/hero-menuPage.jpg") lightgray 50% / cover no-repeat;
+  display: flex;
+  align-items: flex-end;    /* slogan bar sticks to bottom */
+  justify-content: flex-end; /* slogan bar sticks to right */
+  padding-bottom: 28px;     /* Figma: 28px from bottom */
+}
+
+/* ── Slogan bar — 587 × 56px, rgba grey 30%, right-aligned ── */
+.menu__hero-slogan {
+  width: 587px;
+  height: 56px;
+  background: rgba(86, 87, 86, 0.30);  /* #565756 at 30% — from Figma */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu__hero-slogan p {
+  font-family: var(--font-body);
+  font-size: var(--text-slogan-desktop);  /* 32px */
+  font-weight: 400;
+  color: var(--weak-yellow);
+  white-space: nowrap;
+}
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE — Mobile (Figma: 390px wide)
+   Hero: flex-direction column, justify-content center,
+         align-items flex-end, gap 150px
+   Slogan: background rgba(25,25,25,0.70) — darker than desktop
+   ══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .menu {
+    margin-top: -51px; /* mobile navbar height = 51px */
+  }
+
+  .menu__hero {
+    width: 100%;
+    height: 480px;
+    background: url("/images/hero-menuPage.jpg") lightgray 50% / cover no-repeat;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 150px;
+    padding-bottom: 0;
+  }
+
+  .menu__hero-slogan {
+    width: 100%;
+    height: 48px;
+    background: rgba(25, 25, 25, 0.70);  /* darker on mobile — from Figma */
+  }
+
+  .menu__hero-slogan p {
+    font-size: var(--text-slogan-mobile);  /* 14px */
+    white-space: normal;
+    text-align: center;
+    padding: 0 1rem;
+  }
+}

@@ -9,7 +9,8 @@
   --weak-yellow: #fff3d6;
   --dark-green: #162516;
   --medium-green: #008e02;
-  /* Note: no white/black — not used in Figma design */
+  --white: #ffffff;
+  --black: #1a1a1a;
 
   /* Shortcuts for common use */
   --bg-page: var(--dark-grey);        /* Global page background (#303030) */
@@ -62,7 +63,7 @@ body {
   font-size: 16px;
   line-height: 1.6; /* Comfortable line spacing for readability */
   color: var(--text-main);
-  background-color: var(--bg-page); /* #303030 — ตรงกับ Figma ทุกหน้า */
+  background-color: var(--bg-page); /* #303030 — matches Figma on every page */
   -webkit-font-smoothing: antialiased; /* Improve font rendering on WebKit browsers Mac/Chrome */
 }
 

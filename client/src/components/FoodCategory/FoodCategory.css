@@ -1,0 +1,109 @@
+/* =============================================
+   FoodCategory — oval image cards + label
+   Figma Desktop: item 340×403px (image 340×316px, gap 37px, label 50px)
+   Figma Mobile : item 120×144px (image 120×120px, gap 2px, label 20px)
+   ============================================= */
+
+/* ── Wrapper ── */
+.food-category {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 37px;
+  padding: 3rem 2rem;
+  background: var(--bg-page);
+}
+
+/* ── Each category button ── */
+.food-category__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 37px;                /* Figma desktop: 37px between image and label */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.2s ease;
+}
+
+.food-category__item:hover {
+  transform: translateY(-4px);
+}
+
+/* ── Oval image — Desktop: 340×316px, border-radius 180px ── */
+.food-category__img {
+  width: 340px;
+  height: 316px;
+  border-radius: 180px;              /* oval / pill shape */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--grey);     /* fallback for "All" (no image) */
+  flex-shrink: 0;
+
+  /* Orange ring on active */
+  outline: 4px solid transparent;
+  outline-offset: 4px;
+  transition: outline-color 0.2s ease;
+}
+
+/* Active — orange ring */
+.food-category__item--active .food-category__img {
+  outline-color: var(--orange);
+}
+
+/* ── Label — Desktop: 32px, weight 500, WeakYellow ── */
+.food-category__label {
+  font-family: var(--font-body);      /* Roboto Serif */
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 50px;
+  letter-spacing: 0.15px;
+  color: var(--weak-yellow);
+  text-align: center;
+  width: 340px;                       /* Fill: matches image width */
+}
+
+/* Active label turns orange */
+.food-category__item--active .food-category__label {
+  color: var(--orange);
+}
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE — Mobile
+   Figma: item 120×144px, image 120×120px circle,
+          gap 2px, padding-bottom 2px,
+          text 11px weight 600 line-height 20px
+   ══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .food-category {
+    gap: 16px;
+    padding: 1.25rem 1rem;
+  }
+
+  .food-category__item {
+    width: 120px;
+    height: 144px;
+    gap: 2px;                         /* Figma mobile: 2px */
+    justify-content: center;
+    padding-bottom: 2px;              /* Figma mobile: padding-bottom 2px */
+  }
+
+  /* Mobile image: 120×120px, border-radius 180px → perfect circle */
+  .food-category__img {
+    width: 120px;
+    height: 120px;
+    border-radius: 180px;             /* same radius → circle at 120×120 */
+    flex-shrink: 0;
+  }
+
+  /* Mobile label: 11px, weight 600, line-height 20px */
+  .food-category__label {
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: normal;
+    width: 120px;
+  }
+}

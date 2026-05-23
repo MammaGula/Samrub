@@ -83,22 +83,23 @@ const Navbar = () => {
   // ================= Render =========================
   return (
     <nav className="navbar">
-      {/* Left: Hamburger button */}
+      {/* 1. Left: Hamburger button */}
       <button className="hamburger" onClick={toggleMenu} aria-label="Open menu">
         <Icon icon="mdi:menu" width="55" height="45" />
       </button>
 
-      {/* Center: Logo (absolute positioned) */}
+      {/* 2. Center: Logo (absolute positioned) */}
       <Link to="/" className="navbar-logo" onClick={closeMenu}>
         Samrub
       </Link>
 
-      {/* Right-Frame: Icon buttons */}
+      {/* 3. Right-Frame: Icon buttons */}
       <div className="navbar-icons">
         <Link to="/favorites" aria-label="Favorites">
           <Icon icon="mdi:heart-outline" width="50" height="50" />
         </Link>
 
+        {/* 3.1. Search toggle button: changes appearance when active (searchOpen) and has aria-label for accessibility */}
         <button
           className={`search-toggle${searchOpen ? " search-toggle--active" : ""}`}
           onClick={toggleSearch}
@@ -107,6 +108,7 @@ const Navbar = () => {
           <Icon icon="mdi:magnify" width="50" height="50" />
         </button>
 
+        {/* 3.2. Basket icon */}
         <Link to="/basket" className="basket-icon" aria-label="Basket">
           <Icon icon="majesticons:basket-2" width="50" height="50" />
 
@@ -116,7 +118,7 @@ const Navbar = () => {
           )}
         </Link>
 
-        {/* Sign In / Sign Out button */}
+        {/* 3.3. Sign In / Sign Out button */}
         {token ? (
           <button className="btn-signin" onClick={handleSignOut}>
             Sign out
@@ -128,7 +130,7 @@ const Navbar = () => {
         )}
       </div>
 
-      {/* Search bar — slides down when searchOpen is true */}
+      {/* 4. Search bar — slides down when searchOpen is true */}
       {searchOpen && (
         <div className="search-bar">
           <div className="search-bar__inner">
@@ -175,7 +177,7 @@ const Navbar = () => {
                       {item.category}
                     </span>
                   </div>
-                  <span className="search-results__price">{item.price} kr</span>
+                  <span className="search-results__price">{item.price} SEK</span>
                 </li>
               ))}
             </ul>

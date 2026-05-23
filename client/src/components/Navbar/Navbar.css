@@ -86,17 +86,16 @@
 }
 
 .cart-badge {
-  position: absolute; /* Position badge relative to basket icon */
-  top: -8px; /* Position badge above icon */
-  right: -8px; /* Position badge to the right of icon */
-
+  position: absolute;
+  top: -8px;
+  right: -8px;
   background-color: var(--orange);
-  color: var(--black);
+  color: var(--black);       /* #1a1a1a — now defined in index.css */
   font-size: 11px;
   font-weight: 700;
   width: 18px;
   height: 18px;
-  border-radius: 50%; /* Make badge circular */
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;

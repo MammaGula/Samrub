@@ -1,0 +1,55 @@
+/* =============================================
+   FoodDisplay — responsive card grid
+   Desktop : 4 columns, gap 32px
+   Tablet  : 3 columns (≤ 1024px)
+   Mobile  : 2 columns (≤ 768px)
+   ============================================= */
+
+.food-display {
+  padding: 2rem 3rem 4rem;
+}
+
+/* ── Card Grid ── */
+.food-display__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+/* ── Loading / Empty message ── */
+.food-display__message {
+  text-align: center;
+  padding: 5rem 2rem;
+  color: var(--grey);
+  font-size: var(--text-label-desktop);
+  font-family: var(--font-body);
+}
+
+/* ── Responsive — Tablet ── */
+@media (max-width: 1024px) {
+  .food-display {
+    padding: 1.5rem 2rem 3rem;
+  }
+
+  .food-display__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+/* ── Responsive — Mobile ── */
+@media (max-width: 768px) {
+  .food-display {
+    padding: 1rem 1rem 2rem;
+  }
+
+  .food-display__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .food-display__empty {
+    font-size: var(--text-label-mobile);
+    padding: 3rem 1rem;
+  }
+}
