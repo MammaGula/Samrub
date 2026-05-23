@@ -19,7 +19,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 37px;                /* Figma desktop: 37px between image and label */
+  gap: 37px; /* Figma desktop: 37px between image and label */
   background: none;
   border: none;
   cursor: pointer;
@@ -35,11 +35,11 @@
 .food-category__img {
   width: 340px;
   height: 316px;
-  border-radius: 180px;              /* oval / pill shape */
+  border-radius: 180px; /* oval / pill shape */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: var(--grey);     /* fallback for "All" (no image) */
+  background-color: var(--grey); /* fallback for "All" (no image) */
   flex-shrink: 0;
 
   /* Orange ring on active */
@@ -55,14 +55,14 @@
 
 /* ── Label — Desktop: 32px, weight 500, WeakYellow ── */
 .food-category__label {
-  font-family: var(--font-body);      /* Roboto Serif */
+  font-family: var(--font-body); /* Roboto Serif */
   font-size: 32px;
   font-weight: 500;
   line-height: 50px;
   letter-spacing: 0.15px;
   color: var(--weak-yellow);
   text-align: center;
-  width: 340px;                       /* Fill: matches image width */
+  width: 340px; /* Fill: matches image width */
 }
 
 /* Active label turns orange */
@@ -85,16 +85,16 @@
   .food-category__item {
     width: 120px;
     height: 144px;
-    gap: 2px;                         /* Figma mobile: 2px */
+    gap: 2px; /* Figma mobile: 2px */
     justify-content: center;
-    padding-bottom: 2px;              /* Figma mobile: padding-bottom 2px */
+    padding-bottom: 2px; /* Figma mobile: padding-bottom 2px */
   }
 
   /* Mobile image: 120×120px, border-radius 180px → perfect circle */
   .food-category__img {
     width: 120px;
     height: 120px;
-    border-radius: 180px;             /* same radius → circle at 120×120 */
+    border-radius: 180px; /* same radius → circle at 120×120 */
     flex-shrink: 0;
   }
 

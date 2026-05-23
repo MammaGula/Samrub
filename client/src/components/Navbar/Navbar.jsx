@@ -63,7 +63,7 @@ const Navbar = () => {
       {/* 3. Right: Icons */}
       <div className="navbar-icons">
         {/* 3.1 Favorites */}
-        <Link to="/favorites" aria-label="Favorites">
+        <Link to="/favorites" className="heart-icon" aria-label="Favorites">
           <Icon icon="mdi:heart-outline" width="50" height="50" />
         </Link>
 

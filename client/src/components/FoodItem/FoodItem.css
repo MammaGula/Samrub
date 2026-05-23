@@ -119,8 +119,12 @@
   transition: color 0.15s ease;
 }
 
+.food-item__fav:hover {
+  color: pink;
+}
+
 .food-item__fav--active {
-  color: var(--orange);
+  color: pink;
 }
 
 /* ── Name ── */

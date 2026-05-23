@@ -32,6 +32,7 @@ const CATEGORIES = [
 // onSelect — Function Callback sending id to parent component to update selectedCategory state in Menu.jsx´
 const FoodCategory = ({ selected, onSelect }) => {
   return (
+    /*nav = part of navigation*/
     <nav className="food-category">
       {CATEGORIES.map((cat) => (
         <button

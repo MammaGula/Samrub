@@ -75,6 +75,11 @@
   opacity: 0.8;
 }
 
+.navbar-icons .heart-icon:hover {
+  color: pink;
+  opacity: 1;
+}
+
 /* 5. Basket icon + cart badge */
 .basket-icon {
   position: relative;
