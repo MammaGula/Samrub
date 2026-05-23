@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import { StoreContext } from "../../context/StoreContext";
+import { useStore } from "../../context/StoreContext";
 import FoodItem from "../FoodItem/FoodItem";
 import "./FoodDisplay.css";
 
@@ -8,7 +7,7 @@ import "./FoodDisplay.css";
 //   selectedCategory — "All" | "Starter" | "MainCourse" | "SingleDish" | "Dessert" | "Set"
 //   searchQuery      — free-text search string (optional, defaults to "")
 const FoodDisplay = ({ selectedCategory = "All", searchQuery = "" }) => {
-  const { foodList } = useContext(StoreContext);
+  const { foodList } = useStore();
 
   // Loading state — foodList not fetched yet
   if (foodList.length === 0) {

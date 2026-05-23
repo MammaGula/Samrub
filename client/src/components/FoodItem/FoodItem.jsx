@@ -1,11 +1,9 @@
-import { useContext } from "react";
 import { Icon } from "@iconify/react";
-import { StoreContext } from "../../context/StoreContext";
+import { useStore } from "../../context/StoreContext";
 import "./FoodItem.css";
 
 const FoodItem = ({ item }) => {
-  const { cartItems, addToCart, removeFromCart, toggleFavorite, isFavorite } =
-    useContext(StoreContext);
+  const { cartItems, addToCart, removeFromCart, toggleFavorite, isFavorite } = useStore();
 
   return (
     <div className="food-item">

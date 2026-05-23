@@ -17,16 +17,16 @@
   height: 733px;
   background: url("/images/hero-menuPage.jpg") lightgray 50% / cover no-repeat;
   display: flex;
-  align-items: flex-end;    /* slogan bar sticks to bottom */
+  align-items: flex-end; /* slogan bar sticks to bottom */
   justify-content: flex-end; /* slogan bar sticks to right */
-  padding-bottom: 28px;     /* Figma: 28px from bottom */
+  padding-bottom: 28px; /* Figma: 28px from bottom */
 }
 
 /* ── Slogan bar — 587 × 56px, rgba grey 30%, right-aligned ── */
 .menu__hero-slogan {
   width: 587px;
   height: 56px;
-  background: rgba(86, 87, 86, 0.30);  /* #565756 at 30% — from Figma */
+  background: rgba(86, 87, 86, 0.3); /* #565756 at 30% — from Figma */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,10 +35,72 @@
 
 .menu__hero-slogan p {
   font-family: var(--font-body);
-  font-size: var(--text-slogan-desktop);  /* 32px */
+  font-size: var(--text-slogan-desktop); /* 32px */
   font-weight: 400;
   color: var(--weak-yellow);
   white-space: nowrap;
+}
+
+/* ══════════════════════════════════════════════
+   Search Bar
+   ══════════════════════════════════════════════ */
+.menu__search-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 2rem 0;
+}
+
+.menu__search-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 560px;
+  height: 52px;
+  background: var(--grey);
+  border-radius: 99px;
+  padding: 0 1.25rem;
+  transition: box-shadow 0.2s ease;
+}
+
+.menu__search-box:focus-within {
+  box-shadow: 0 0 0 2px var(--orange);
+}
+
+.menu__search-icon {
+  font-size: 1.4rem;
+  color: var(--weak-yellow);
+  flex-shrink: 0;
+}
+
+.menu__search-input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: var(--text-button);
+  color: var(--weak-yellow);
+}
+
+.menu__search-input::placeholder {
+  color: rgba(255, 243, 214, 0.45);
+}
+
+.menu__search-clear {
+  background: none;
+  border: none;
+  color: var(--weak-yellow);
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.15s ease;
+}
+
+.menu__search-clear:hover {
+  opacity: 1;
 }
 
 /* ══════════════════════════════════════════════
@@ -66,11 +128,11 @@
   .menu__hero-slogan {
     width: 100%;
     height: 48px;
-    background: rgba(25, 25, 25, 0.70);  /* darker on mobile — from Figma */
+    background: rgba(25, 25, 25, 0.7); /* darker on mobile — from Figma */
   }
 
   .menu__hero-slogan p {
-    font-size: var(--text-slogan-mobile);  /* 14px */
+    font-size: var(--text-slogan-mobile); /* 14px */
     white-space: normal;
     text-align: center;
     padding: 0 1rem;

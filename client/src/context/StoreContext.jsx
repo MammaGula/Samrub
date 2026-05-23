@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 
 export const StoreContext = createContext(null);
@@ -67,7 +67,6 @@ const StoreContextProvider = (props) => {
     return total;
   };
 
-
   // 7. Count total items in cart (used to display badge on Navbar icon)
   const getTotalCartCount = () => {
     let count = 0;
@@ -84,12 +83,11 @@ const StoreContextProvider = (props) => {
     // Check if itemId is already in favorites: prev= array of favorite itemIds
     setFavorites((prev) =>
       prev.includes(itemId)
-      //If already in favorites → remove it by filtering out the itemId(create a new array without that itemId)
-        ? prev.filter((id) => id !== itemId)
+        ? //If already in favorites → remove it by filtering out the itemId(create a new array without that itemId)
+          prev.filter((id) => id !== itemId)
         : [...prev, itemId],
     );
   };
-
 
   // 9. Check if an itemId is in favorites (returns true/false)
   const isFavorite = (itemId) => favorites.includes(itemId);
@@ -138,13 +136,11 @@ const StoreContextProvider = (props) => {
     }
   }, []);
 
-
   // 13. Persist favorites to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
 
-  
   // 14. Collect all values and functions to share with every component
   const contextValue = {
     url,
@@ -169,11 +165,13 @@ const StoreContextProvider = (props) => {
     /* Returns : Values/ Methods shared across the app */
   }
   return (
-    
-    <StoreContext.Provider value={contextValue}> 
+    <StoreContext.Provider value={contextValue}>
       {props.children}
     </StoreContext.Provider>
   );
 };
+
+// Custom hook — components use useStore() instead of useContext(StoreContext)
+export const useStore = () => useContext(StoreContext);
 
 export default StoreContextProvider;

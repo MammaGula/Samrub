@@ -93,9 +93,9 @@
   text-align: center;
 }
 
-/* ── Info section (Desktop: 119px) ── */
+/* ── Info section (Desktop: min 119px, grows if name wraps) ── */
 .food-item__info {
-  height: 119px;
+  min-height: 119px;
   align-self: stretch;
   padding: 12px 16px;
   display: flex;
@@ -179,7 +179,7 @@
 
   .food-item__info {
     width: 131px;
-    height: 74px;
+    min-height: 74px;
     padding: 6px 8px;
   }
 

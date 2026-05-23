@@ -1,29 +1,26 @@
-/* ===== 1. Navbar ===== 
-- Fix navbar to top of page 
-- Expand navbar to full width and height
-- z-index: 100; >> Ensure navbar is floating above all other content (including dropdown)
-*/
+/* =============================================
+   Navbar
+   Desktop: height 134px, fixed top, full width
+   Mobile : height 51px
+   ============================================= */
+
+/* 1. Navbar wrapper — fixed, floats above all pages */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   height: 134px;
-  padding: 0 24px 0 25px; /* according to Figma desktop */
-
+  padding: 0 24px 0 25px;
   background-color: rgba(25, 25, 25, 0.7);
-  backdrop-filter: blur(6px); /* Add blur for better readability */
+  backdrop-filter: blur(6px);
 }
 
-/* ===== 2. Hamburger button ===== 
-- Reset default button styles >> Set color to orange
-*/
+/* 2. Hamburger button */
 .hamburger {
   color: var(--orange);
   background: none;
@@ -32,34 +29,33 @@
   display: flex;
   align-items: center;
   padding: 4px;
-  flex-shrink: 0; /* Prevent shrinking on mobile when space is tight */
+  flex-shrink: 0;
 }
 
 .hamburger:hover {
   opacity: 0.8;
 }
 
-/* ===== 3. Navbar Logo (center, absolute) ===== */
+/* 3. Logo — absolute center */
 .navbar-logo {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%); /* Center horizontally */
-
+  transform: translateX(-50%);
   font-family: var(--font-logo);
   font-size: var(--text-logo-desktop);
   font-weight: 400;
   color: var(--weak-yellow);
   text-decoration: none;
   line-height: 1;
-  white-space: nowrap; /* Prevent logo from wrapping to multiple lines on smaller screens */
+  white-space: nowrap;
 }
 
-/* ===== 4. Right icons ===== */
+/* 4. Right icon group */
 .navbar-icons {
   display: flex;
   align-items: center;
   gap: 12px;
-  flex-shrink: 0; /* Prevent shrinking on mobile when space is tight */
+  flex-shrink: 0;
 }
 
 .navbar-icons a,
@@ -70,19 +66,18 @@
   text-decoration: none;
 }
 
-/* Override for Sign In button only — must stay dark text on orange bg */
 .navbar-icons .btn-signin {
   color: var(--dark-grey);
 }
 
 .navbar-icons a:hover,
 .navbar-icons button:hover {
-  opacity: 0.8; /* Slightly dim icons on hover for feedback */
+  opacity: 0.8;
 }
 
-/* ===== 5. Basket icon + cart-badge ===== */
+/* 5. Basket icon + cart badge */
 .basket-icon {
-  position: relative; /* To position badge absolutely within this container */
+  position: relative;
 }
 
 .cart-badge {
@@ -90,7 +85,7 @@
   top: -8px;
   right: -8px;
   background-color: var(--orange);
-  color: var(--black);       /* #1a1a1a — now defined in index.css */
+  color: var(--black);
   font-size: 11px;
   font-weight: 700;
   width: 18px;
@@ -101,7 +96,7 @@
   justify-content: center;
 }
 
-/* ===== 6. Sign In button ===== */
+/* 6. Sign In button */
 .btn-signin {
   background-color: var(--orange);
   color: var(--dark-grey);
@@ -118,26 +113,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.2s; /* Smooth transition for hover effect */
+  transition: opacity 0.2s;
 }
 
 .btn-signin:hover {
-  opacity: 0.85; /* Slightly dim button on hover for feedback */
+  opacity: 0.85;
 }
 
-/* ===== 7. Dropdown menu (Hamburger)===== */
+/* 7. Hamburger dropdown */
 .dropdown-menu {
   position: absolute;
   top: 134px;
   left: 0;
-
   background-color: rgba(25, 25, 25, 0.95);
   width: 220px;
   display: flex;
   flex-direction: column;
   padding: 12px 0;
-  z-index: 99; /* Floated above main content but below navbar */
-  border-radius: 0 0 var(--radius) 0; /* Rounded bottom-left corner */
+  z-index: 99;
+  border-radius: 0 0 var(--radius) 0;
 }
 
 .dropdown-menu a,
@@ -151,7 +145,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  transition: background 0.15s; /* Smooth transition for hover effect */
+  transition: background 0.15s;
 }
 
 .dropdown-menu a:hover,
@@ -159,151 +153,9 @@
   background-color: rgba(255, 182, 57, 0.1);
 }
 
-/* ===== 8. Search toggle button ===== */
-.search-toggle {
-  color: var(--orange);
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  padding: 4px;
-  transition: opacity 0.2s;
-}
-
-.search-toggle:hover,
-.search-toggle--active {
-  opacity: 0.8;
-}
-
-/* ===== 9. Search bar (drops below navbar) ===== */
-.search-bar {
-  position: absolute;
-  top: 134px;
-  left: 0;
-  right: 0;
-  background-color: rgba(25, 25, 25, 0.97);
-  backdrop-filter: blur(8px);
-  padding: 16px 24px;
-  z-index: 98;
-  border-top: 1px solid rgba(255, 182, 57, 0.2);
-}
-
-.search-bar__inner {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 182, 57, 0.3);
-  border-radius: 8px;
-  padding: 8px 14px;
-}
-
-.search-bar__icon {
-  color: var(--orange);
-  flex-shrink: 0;
-}
-
-.search-bar__input {
-  flex: 1;
-  background: none;
-  border: none;
-  outline: none;
-  font-family: var(--font-body);
-  font-size: 1rem;
-  color: var(--weak-yellow);
-}
-
-.search-bar__input::placeholder {
-  color: rgba(255, 243, 214, 0.4);
-}
-
-.search-bar__close {
-  color: var(--orange);
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  padding: 0;
-  flex-shrink: 0;
-  opacity: 0.7;
-  transition: opacity 0.15s;
-}
-
-.search-bar__close:hover {
-  opacity: 1;
-}
-
-/* ===== 10. Search results ===== */
-.search-results {
-  list-style: none;
-  margin: 10px 0 0 0;
-  padding: 0;
-  max-height: 320px;
-  overflow-y: auto;
-}
-
-.search-results__item {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 10px 8px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.15s;
-}
-
-.search-results__item:hover {
-  background: rgba(255, 182, 57, 0.1);
-}
-
-.search-results__img {
-  width: 48px;
-  height: 48px;
-  object-fit: cover;
-  border-radius: 6px;
-  flex-shrink: 0;
-}
-
-.search-results__info {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  flex: 1;
-}
-
-.search-results__name {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--weak-yellow);
-}
-
-.search-results__category {
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  color: rgba(255, 243, 214, 0.5);
-}
-
-.search-results__price {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--orange);
-  flex-shrink: 0;
-}
-
-.search-no-results {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  color: rgba(255, 243, 214, 0.5);
-  text-align: center;
-  padding: 12px 0 4px;
-  margin: 0;
-}
-
-/* ===== Mobile ===== */
+/* =============================================
+   RESPONSIVE — Mobile (height 51px)
+   ============================================= */
 @media (max-width: 768px) {
   .navbar {
     height: 51px;
@@ -311,41 +163,31 @@
   }
 
   .navbar-logo {
-    font-size: var(--text-logo-mobile); /* 32px */
+    font-size: var(--text-logo-mobile);
   }
 
   .navbar-icons {
-    gap: 6px; /* ตาม Figma mobile */
+    gap: 6px;
   }
 
-  /* Sign in button mobile: 50×20px, font 10px */
   .btn-signin {
     width: 50px;
     height: 20px;
     font-size: 10px;
-    letter-spacing: 0.15px;
   }
 
   .dropdown-menu {
     top: 51px;
   }
 
-  /* Icons mobile: 20×20px (as Figma) */
   .navbar-icons a svg,
-  .search-toggle svg {
+  .navbar-icons button svg {
     width: 20px;
     height: 20px;
   }
 
-  /* Hamburger mobile: 30×25px (as Figma) */
   .hamburger svg {
     width: 30px;
     height: 25px;
-  }
-
-  /* Search bar mobile */
-  .search-bar {
-    top: 51px;
-    padding: 12px 16px;
   }
 }

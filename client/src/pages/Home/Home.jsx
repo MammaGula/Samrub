@@ -1,6 +1,5 @@
-import { useContext } from "react"; // to access foodList from StoreContext
 import { useNavigate } from "react-router-dom";
-import { StoreContext } from "../../context/StoreContext"; // global state context for foodList
+import { useStore } from "../../context/StoreContext";
 import "./Home.css";
 
 // Strip 1 — static ingredient images (hardcoded, no need to fetch)
@@ -16,7 +15,7 @@ const INGREDIENT_IMAGES = [
 
 const Home = () => {
   const navigate = useNavigate();
-  const { foodList } = useContext(StoreContext); // Strip 2 — dynamic food dishes from db.json
+  const { foodList } = useStore(); // Strip 2 — dynamic food dishes from db.json
 
   return (
     <div className="home">

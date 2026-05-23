@@ -27,11 +27,10 @@ const Footer = () => {
             <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">
               <Icon icon="mdi:instagram" className="social-icon" />
             </a>
-            <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook" className="facebook-wrapper">
-              <Icon icon="mdi:facebook" className="social-icon facebook-icon" />
+            <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook">
+              <Icon icon="mdi:facebook" className="social-icon" />
             </a>
-            {/* TikTok: orange background + black icon (ตาม Figma) */}
-            <a href="https://tiktok.com" target="_blank" rel="noreferrer" aria-label="TikTok" className="tiktok-wrapper">
+            <a href="https://tiktok.com" target="_blank" rel="noreferrer" aria-label="TikTok">
               <Icon icon="ic:baseline-tiktok" className="social-icon tiktok-icon" />
             </a>
           </div>
