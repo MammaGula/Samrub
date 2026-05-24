@@ -200,28 +200,7 @@
   margin: 4px 0;
 }
 
-/* ── Check out button ── */
-.basket__checkout-btn {
-  margin-top: 12px;
-  padding: 12px 28px;
-  background: var(--orange);
-  color: var(--dark-grey);
-  font-family: var(--font-body);
-  font-size: var(--text-button); /* 20px */
-  font-weight: 700;
-  border: none;
-  border-radius: var(--radius);
-  cursor: pointer;
-  align-self: center;
-  transition:
-    background 0.15s ease,
-    transform 0.1s ease;
-}
-
-.basket__checkout-btn:hover {
-  background: var(--accent-hover);
-  transform: translateY(-2px);
-}
+/* Check out button — now using reusable <Button> component (Button.jsx/css) */
 
 /* ── Empty basket state ── */
 .basket__empty {
@@ -343,12 +322,7 @@
     font-size: var(--text-label-mobile); /* 11px */
   }
 
-  .basket__checkout-btn {
-    font-size: var(--text-body-mobile);
-    padding: 8px 14px;
-    margin-top: 8px;
-    border-radius: var(--radius); /* consistent with desktop */
-  }
+  /* .basket__checkout-btn removed — using <Button> component */
 
   /* Empty state on mobile */
   .basket__empty {

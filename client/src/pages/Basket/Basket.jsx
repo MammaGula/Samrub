@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { useStore } from "../../context/StoreContext";
+import Button from "../../components/Button/Button";
 import "./Basket.css";
 
 // Get data from StoreContext:
@@ -121,12 +122,7 @@ const Basket = () => {
             <span>{subtotal} SEK</span>
           </div>
 
-          <button
-            className="basket__checkout-btn"
-            onClick={() => navigate("/payment")}
-          >
-            Check out
-          </button>
+          <Button onClick={() => navigate("/payment")}>Check out</Button>
         </div>
       </div>
     </div>

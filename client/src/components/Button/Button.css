@@ -1,0 +1,57 @@
+/* Button.css — Global reusable button styles
+   Matches Figma Button-Desktop + Button-Mobile components */
+
+/* ── Desktop ── */
+.btn {
+  /* Layout — Hug content width */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  height: 60px; /*  Desktop: H 60 */
+  padding: 11px 23px; /*  Desktop: padding 11px top/bottom, 23px left/right */
+
+  /* Appearance */
+  background: var(--orange); /* #FFB639 */
+  color: var(--dark-grey); /* #303030 */
+  border: none; /*  Desktop: no border */
+  border-radius: 10px; /*  Desktop: corner radius 10 */
+  box-shadow: inset 0 -3px 6px rgba(0, 0, 0, 0.2); /*  Desktop: Inner shadow effect */
+
+  /* Typography */
+  font-family: "Roboto Serif", serif; /*  Desktop: Roboto Serif */
+  font-size: 24px; /*  Desktop: 24px */
+  font-weight: 700; /*  Desktop: Bold */
+  line-height: 24px; /*  Desktop: line height 24 */
+  letter-spacing: 0.15px; /*  Desktop: letter spacing 0.15px */
+
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    opacity 0.2s;
+}
+
+/* Hover state: the color changes to a slightly darker orange with a subtle glow when hovered */
+.btn:hover {
+  background: var(--accent-hover); /* #e69e20 — slightly darker orange */
+}
+
+/* Disabled state: the button becomes semi-transparent and the cursor changes to indicate it's not clickable */
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .btn {
+    width: 80px; /* Mobile: W 80 */
+    height: 25px; /* Mobile: H 25 */
+    padding: 0; /* Mobile: padding 0 */
+    border-radius: 5px; /* Mobile: corner radius 5 */
+
+    font-size: 8px; /*  Mobile: 8px */
+    line-height: 10px; /*  Mobile: line height 10 */
+  }
+}

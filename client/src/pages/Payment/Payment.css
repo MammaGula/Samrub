@@ -1,5 +1,207 @@
-/* Payment page — placeholder, to be styled when building the full page */
+/* Payment.css — updated to match Figma specs */
+
+/* ── 1. Page wrapper — background image only, no overlay ── */
 .payment {
-  width: 100%;
   min-height: 100vh;
+  background-image: url("/images/image-paymentPage.jpg");
+  background-size: cover;
+  background-position: center;
+
+  /* Pull page up behind fixed navbar — same pattern as Home.css */
+  margin-top: -134px;
+  padding-top: 134px; /* compensate so content doesn't hide behind navbar */
+
+  /* Center the content panel horizontally */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* ── 2. Content panel — dark semi-transparent, full height ──
+   Figma: background rgba(25,25,25,0.70), centered column, gap 80px between sections */
+.payment__content {
+  width: 100%;
+  max-width: 903px; /* Figma: Overall-frame width */
+  min-height: 100vh;
+
+  background: rgba(25, 25, 25, 0.7); /* Figma: --Black at 70% */
+
+  padding: 71px 0; /* Figma: 71px top and bottom */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center all sections horizontally */
+  gap: 80px; /* Figma: 80px gap between each section */
+}
+
+/* ── 3. Each section — centered column ── */
+.payment__section {
+  width: 538px; /* Figma: Delivery-Frame width */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px; /* Figma: gap between title and fields within section */
+}
+
+/* Section title — centered, weak-yellow */
+.payment__section-title {
+  font-size: var(--text-label-desktop); /* 25px */
+  font-weight: 700;
+  color: var(--weak-yellow);
+  text-align: center; /* Figma: titles are centered */
+  width: 100%;
+}
+
+/* ── 4. Fields container — vertical stack, 30px gap ── */
+.payment__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* Figma: 30px between inputs */
+  width: 100%;
+}
+
+/* ── 5. Card row — Expiry + CVV side by side, column-gap 57px ── */
+.payment__card-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 57px; /* Figma: column-gap 57px */
+}
+
+/* ── 6. Payment method radios — centered column ── */
+.payment__methods {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centered per Figma */
+  gap: 30px;
+  width: 100%;
+}
+
+/* Each radio option row */
+.payment__method-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+/* Hide native radio */
+.payment__radio-input {
+  display: none;
+}
+
+/* Custom circle — 32×32px (Figma Ellipse 1 asset = 32×32) */
+.payment__radio-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 243, 214, 0.4);
+  flex-shrink: 0;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+
+/* Selected = orange fill */
+.payment__radio-input:checked + .payment__radio-circle {
+  background: var(--orange);
+  border-color: var(--orange);
+}
+
+.payment__method-label {
+  font-size: var(--text-button); /* 20px */
+  color: var(--weak-yellow);
+}
+
+/* ── 7. Footer — dashed divider + total + button ── */
+.payment__footer {
+  width: 538px; /* same as sections above */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center the button horizontally */
+  gap: 30px;
+  padding-top: 80px;
+  border-top: 1px dashed rgba(255, 243, 214, 0.3);
+}
+
+/* Total line: "Total   285 SEK" — space-between */
+.payment__total-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-size: var(--text-label-desktop); /* 25px */
+  font-weight: 700;
+  color: var(--weak-yellow); /* Figma: WeakYellow + #FFB639 */
+}
+
+/* The SEK amount in orange */
+.payment__total-line span:last-child {
+  color: var(--orange);
+}
+
+/* Place Order button — now using reusable <Button> component (Button.jsx/css) */
+
+/* ── 9. Mobile (390px) ── */
+@media (max-width: 768px) {
+  /* Page wrapper — background image covers 390×938px */
+  .payment {
+    margin-top: -51px; /* mobile navbar height = 51px */
+    padding-top: 51px;
+    align-items: stretch; /* content fills full width */
+    background: url("/images/image-paymentPage.jpg") lightgray 50% / cover
+      no-repeat;
+  }
+
+  /* Inner dark panel — 301px wide, padding 0 54px, gap 15px between sections */
+  .payment__content {
+    max-width: 301px;
+    min-height: 938px;
+    margin: 0 auto; /* center the 301px panel in 390px page */
+    padding: 90px 54px; /* Figma: top/bottom 90px, left/right 54px (from inner padding) */
+    gap: 15px; /* Figma: gap between sections = 15px on mobile */
+  }
+
+  /* Section — narrower, less gap between fields */
+  .payment__section {
+    width: 100%; /* fills the 193px content area (301 - 54*2) */
+    gap: 10px; /* Figma: delivery fields gap = 10px */
+  }
+
+  .payment__section-title {
+    font-size: var(--text-topic-mobile); /* 16px */
+  }
+
+  /* Fields gap on mobile */
+  .payment__fields {
+    gap: 10px; /* Figma: 10px between inputs on mobile */
+  }
+
+  /* EXP + CVV stack vertically on mobile */
+  .payment__card-row {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    gap: 10px;
+  }
+
+  .payment__method-label {
+    font-size: var(--text-body-mobile); /* 10px */
+  }
+
+  /* Radio circle smaller on mobile */
+  .payment__radio-circle {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Footer — narrower, tighter spacing */
+  .payment__footer {
+    width: 100%;
+    padding-top: 15px; /* Figma: 15px gap before total */
+    gap: 15px;
+  }
+
+  .payment__total-line {
+    font-size: var(--text-label-mobile); /* 11px */
+  }
+
+  /* Button mobile styles handled by Button.css */
 }

@@ -2,18 +2,20 @@
 
 /* root: Define as CSS variables for easy use throughout the app */
 :root {
-  /* Colors from Figma */
-  --grey: #565756;
-  --dark-grey: #303030;
-  --orange: #ffb639;
-  --weak-yellow: #fff3d6;
-  --dark-green: #162516;
-  --medium-green: #008e02;
+  /* Colors from Figma — verified against Figma color styles */
+  --grey: #565756;          /* Figma: grey */
+  --light-grey: #d5d5d5;    /* Figma: lightGrey (NEW) — for input borders, muted elements */
+  --dark-grey: #2a2a2a;     /* Figma: DarkGrey ← was #303030, corrected to #2A2A2A */
+  --orange: #ffb639;        /* Figma: Orange */
+  --weak-orange: #ffcd60;   /* Figma: WeakOrange (NEW) — lighter orange tint */
+  --weak-yellow: #fff3d6;   /* Figma: WeakYellow */
+  --dark-green: #162516;    /* Figma: DarkGreen */
+  --medium-green: #008e02;  /* Figma: MediumGreen */
   --white: #ffffff;
-  --black: #1a1a1a;
+  --black: #191919;         /* Figma: Black base color ← was #1a1a1a, corrected to #191919 */
 
   /* Shortcuts for common use */
-  --bg-page: var(--dark-grey);        /* Global page background (#303030) */
+  --bg-page: var(--dark-grey);        /* Global page background (#2A2A2A) */
   --bg-navbar: rgba(25, 25, 25, 0.7); /* Navbar + Footer background */
   --bg-light: var(--weak-yellow);     /* Light background sections */
   --accent: var(--orange);            /* Primary color for buttons, highlights */

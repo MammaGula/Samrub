@@ -1,0 +1,102 @@
+/* InputField.css — Reusable input styles (used in Payment, Login, Register) */
+
+/* 1. Wrapper — Figma: 538×103, flex column, align-items flex-start, gap 21px */
+.input-field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 21px; /* Figma: gap 21px between label and input */
+  width: 100%;
+}
+
+/* 2. Label — Figma TextLabel-Desktop:
+   color: lightGrey #D5D5D5, Roboto Serif 25px, weight 600,
+   line-height 20px, letter-spacing 0.15px, align-self stretch */
+.input-field__label {
+  align-self: stretch;
+  color: var(--light-grey); /* #D5D5D5 */
+  font-family: var(--font-body); /* Roboto Serif */
+  font-size: 25px; /* Figma: 25px */
+  font-weight: 600; /* Figma: weight 600 */
+  line-height: 20px; /* Figma: 80% */
+  letter-spacing: 0.15px; /* Figma: 0.15px */
+}
+
+/* 3. Input box — Figma: height 62px, align-self stretch,
+   border 2px solid lightGrey, background DarkGrey #2A2A2A,
+   box-shadow 0 4px 4px 0 rgba(0,0,0,0.25) */
+.input-field__input {
+  align-self: stretch; /* fills wrapper width */
+  height: 62px; /* Figma: 62px */
+  padding: 0 16px;
+  background: var(--dark-grey); /* #2A2A2A */
+  border: 2px solid var(--light-grey); /* Figma: 2px solid #D5D5D5 */
+  border-radius: var(--radius); /* 8px */
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25); /* Figma: drop shadow */
+  color: var(--weak-yellow); /* text color */
+  font-size: var(--text-button); /* 20px */
+  font-family: var(--font-body);
+  outline: none;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+/* 4. Placeholder text */
+.input-field__input::placeholder {
+  color: rgba(213, 213, 213, 0.45); /* lightGrey at 45% */
+}
+
+/* 5. Focus state — orange border + subtle glow */
+.input-field__input:focus {
+  border-color: var(--orange);
+  box-shadow:
+    0 4px 4px 0 rgba(0, 0, 0, 0.25),
+    0 0 0 2px rgba(255, 182, 57, 0.25);
+}
+
+/* 6. Error state — red border when validation fails */
+.input-field__input--error {
+  border-color: #ff6b6b;
+}
+
+/* 7. Error message text */
+.input-field__error {
+  font-size: 12px;
+  color: #ff6b6b;
+  margin-top: -12px; /* pull closer to input since gap is 21px */
+}
+
+/* ── Mobile ────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Wrapper: 176×45 — label 19px + input 26px = 45px, so gap = 0 */
+  .input-field {
+    gap: 0;
+  }
+
+  /* Label: Figma TextLabel-Mobile — 8px, weight 800, height 19px */
+  .input-field__label {
+    height: 19px;
+    font-size: 8px; /* Figma mobile: 8px */
+    font-weight: 800; /* Figma mobile: 800 */
+    line-height: normal;
+    letter-spacing: normal;
+    display: flex;
+    align-items: center; /* vertically center text within 19px */
+  }
+
+  /* Input: height 26px, border 0.5px solid lightGrey */
+  .input-field__input {
+    height: 26px; /* Figma mobile: 26px */
+    font-size: 8px;
+    border: 0.5px solid var(--light-grey); /* Figma mobile: 0.5px */
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25); /* same as desktop */
+    padding: 0 8px;
+  }
+
+  .input-field__error {
+    font-size: 8px;
+    margin-top: 2px;
+  }
+}
