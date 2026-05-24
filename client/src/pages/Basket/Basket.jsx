@@ -3,27 +3,27 @@ import { Icon } from "@iconify/react";
 import { useStore } from "../../context/StoreContext";
 import "./Basket.css";
 
+// Get data from StoreContext:
 const Basket = () => {
-  const {
-    cartItems,
-    foodList,
-    addToCart,
-    removeFromCart,
-    deleteFromCart,
-  } = useStore();
+  const { cartItems, foodList, addToCart, removeFromCart, deleteFromCart } =
+    useStore();
 
   const navigate = useNavigate();
 
   // Only show items that are actually in the cart (quantity > 0)
+  // Card showing in Basket and foodList are the same, just filtered by cartItems
+  // (Array of objects: id, name, price, image, category)
   const cartFoodItems = foodList.filter((item) => cartItems[item.id] > 0);
 
   // Calculate total directly from cartFoodItems (same foodList + cartItems Basket already has)
+  // .reduce() to sum up = sum + (price × quantity) for each item in cart
   const subtotal = cartFoodItems.reduce(
     (sum, item) => sum + item.price * cartItems[item.id],
-    0
+    0,
   );
 
   // ── Empty basket state ──
+  // If cartFoodItems is empty → show empty state with icon, text, and button to go back to menu
   if (cartFoodItems.length === 0) {
     return (
       <div className="basket">
@@ -47,13 +47,11 @@ const Basket = () => {
       <h2 className="basket__title">Your Basket</h2>
 
       <div className="basket__container">
-
-        {/* ── Left Column: Cart Items ── */}
+        {/* ── 1. Left Column: Cart Items(Image + Text + Counter) ── */}
         <div className="basket__items">
           {cartFoodItems.map((item) => (
             <div key={item.id} className="basket__item">
-
-              {/* Delete (trash) button — left side */}
+              {/* 1.1 Delete (trash) button — left side */}
               <button
                 className="basket__delete-btn"
                 onClick={() => deleteFromCart(item.id)}
@@ -62,7 +60,7 @@ const Basket = () => {
                 <Icon icon="mdi:delete" />
               </button>
 
-              {/* Food image + [−] qty [+] counter overlay */}
+              {/* 1.2 Food image + [−] qty [+] counter overlay */}
               <div className="basket__item-img-wrap">
                 <img
                   src={`/images/foods/${item.image}`}
@@ -87,7 +85,7 @@ const Basket = () => {
                 </div>
               </div>
 
-              {/* Item info: "Name : price SEK x qty" */}
+              {/* 1.3 Item info: "Name : price SEK x qty" */}
               <p className="basket__item-info">
                 <span className="basket__item-name">{item.name}</span>
                 <span className="basket__item-sep"> : </span>
@@ -95,20 +93,20 @@ const Basket = () => {
                 <span className="basket__item-sep"> x </span>
                 <span className="basket__item-qty">{cartItems[item.id]}</span>
               </p>
-
             </div>
           ))}
         </div>
 
-        {/* ── Right Column: Order Summary ── */}
+        {/* ── 2. Right Column: Order Summary ── */}
         <div className="basket__summary">
           <h3 className="basket__summary-title">Order Summary</h3>
-
+          {/* 2.1 Subtotal */}
           <div className="basket__summary-row">
             <span>Subtotal:</span>
             <span>{subtotal} SEK</span>
           </div>
 
+          {/* 2.2 Delivery fee */}
           <div className="basket__summary-row">
             <span>Delivery fee:</span>
             <span>0 SEK</span>
@@ -117,6 +115,7 @@ const Basket = () => {
           {/* Dashed divider — matches Figma "- - - - - -" line */}
           <div className="basket__summary-divider" />
 
+          {/* 2.3 Total */}
           <div className="basket__summary-row basket__summary-row--total">
             <span>Total :</span>
             <span>{subtotal} SEK</span>
@@ -129,7 +128,6 @@ const Basket = () => {
             Check out
           </button>
         </div>
-
       </div>
     </div>
   );

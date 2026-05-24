@@ -6,7 +6,9 @@
 
 /* ── Page wrapper ── */
 .basket {
-  min-height: calc(100vh - 134px - 201px); /* full height minus navbar + footer */
+  min-height: calc(
+    100vh - 134px - 201px
+  ); /* full height minus navbar + footer */
   padding: 40px 24px 60px;
   max-width: 1200px;
   margin: 0 auto;
@@ -135,7 +137,7 @@
 
 .basket__item-name {
   font-weight: 600;
-  color: var(--weak-yellow);
+  /* color inherited from .basket__item-info */
 }
 
 .basket__item-sep {
@@ -194,7 +196,7 @@
 /* ── Dashed divider line — matches Figma "- - - - -" ── */
 .basket__summary-divider {
   border: none;
-  border-top: 2px dashed rgba(255, 179, 57, 0.4);
+  border-top: 2px dashed rgba(255, 182, 57, 0.4); /* var(--orange) at 40% opacity */
   margin: 4px 0;
 }
 
@@ -211,7 +213,9 @@
   border-radius: var(--radius);
   cursor: pointer;
   align-self: center;
-  transition: background 0.15s ease, transform 0.1s ease;
+  transition:
+    background 0.15s ease,
+    transform 0.1s ease;
 }
 
 .basket__checkout-btn:hover {
@@ -266,7 +270,6 @@
    RESPONSIVE — Mobile (max-width: 768px)
    ══════════════════════════════════════════════ */
 @media (max-width: 768px) {
-
   .basket {
     min-height: calc(100vh - 80px - 158px);
     padding: 20px 12px 40px;
@@ -312,7 +315,7 @@
   }
 
   .basket__item-counter p {
-    font-size: var(--text-button);
+    font-size: var(--text-body-mobile); /* 10px — smaller on mobile */
     min-width: 10px;
   }
 
@@ -344,7 +347,7 @@
     font-size: var(--text-body-mobile);
     padding: 8px 14px;
     margin-top: 8px;
-    border-radius: 6px;
+    border-radius: var(--radius); /* consistent with desktop */
   }
 
   /* Empty state on mobile */

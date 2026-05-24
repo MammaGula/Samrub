@@ -10,23 +10,23 @@ const StoreContextProvider = (props) => {
   // 2. States shared across the app
   const [foodList, setFoodList] = useState([]); // all food items from backend
 
-  // cartItems: lazy initializer — reads from localStorage immediately on first render
-  // This avoids race condition where save effect overwrites {} before load effect runs
+  // 3. cartItems: lazy initializer — reads from localStorage immediately on first render
+  // keep id and quantity of each item in cart (e.g. { 1: 2, 3: 1 }
   const [cartItems, setCartItems] = useState(() => {
     const saved = localStorage.getItem("cartItems");
-    return saved ? JSON.parse(saved) : {};
+    return saved ? JSON.parse(saved) : {}; // return object
   });
 
-  // favorites: lazy initializer — same pattern as cartItems
+  // 4. favorites: lazy initializer — same pattern as cartItems
   const [favorites, setFavorites] = useState(() => {
     const saved = localStorage.getItem("favorites");
-    return saved ? JSON.parse(saved) : [];
+    return saved ? JSON.parse(saved) : []; // return Array of itemIds (e.g. [1, 3, 5])
   });
 
   const [token, setToken] = useState(""); // JWT token of the logged-in user
   const [user, setUser] = useState(null); // { id, username, email } from login response
 
-  // 3. Add item to cart:
+  // 5. Add item to cart:
   // - If not in cartItems → set quantity = 1
   // - If already exists → increment quantity by 1
   const addToCart = (itemId) => {
@@ -36,7 +36,7 @@ const StoreContextProvider = (props) => {
     }));
   };
 
-  // 4. Decrease item quantity in cart
+  // 6. Decrease item quantity in cart
   // - If quantity is 1 → remove from cart entirely
   // - If greater than 1 → decrement quantity by 1
   const removeFromCart = (itemId) => {
@@ -50,7 +50,7 @@ const StoreContextProvider = (props) => {
     });
   };
 
-  // 5. Remove item from cart immediately (clicking X)
+  // 7. Remove item from cart immediately (clicking X)
   const deleteFromCart = (itemId) => {
     setCartItems((prev) => {
       const updated = { ...prev };
@@ -59,7 +59,7 @@ const StoreContextProvider = (props) => {
     });
   };
 
-  // 6. Calculate total price in cart:
+  // 8. Calculate total price in cart:
   // Loop through each itemId in cartItems → find item in foodList → multiply price × quantity
   const getTotalCartAmount = () => {
     // Total: sum of (price × quantity) for all items in cart
@@ -79,7 +79,7 @@ const StoreContextProvider = (props) => {
     return total;
   };
 
-  // 7. Count total items in cart (used to display badge on Navbar icon)
+  // 9. Count total items in cart (used to display badge on Navbar icon)
   const getTotalCartCount = () => {
     let count = 0;
     for (const itemId in cartItems) {
@@ -88,7 +88,7 @@ const StoreContextProvider = (props) => {
     return count;
   };
 
-  // 8. Toggle favorites
+  // 10. Toggle favorites
   // If itemId is already in favorites → remove it
   // If not → add it
   const toggleFavorite = (itemId) => {
@@ -101,10 +101,10 @@ const StoreContextProvider = (props) => {
     );
   };
 
-  // 9. Check if an itemId is in favorites (returns true/false)
+  // 11. Check if an itemId is in favorites (returns true/false)
   const isFavorite = (itemId) => favorites.includes(itemId);
 
-  // 10. Fetch food list from backend
+  // 12. Fetch food list from backend
   const fetchFoodList = async () => {
     try {
       const response = await axios.get(url + "/products");
@@ -114,12 +114,12 @@ const StoreContextProvider = (props) => {
     }
   };
 
-  // 11. Clear cart after a successful order
+  // 13. Clear cart after a successful order
   const clearCart = () => {
     setCartItems({});
   };
 
-  // 12. Load data on app startup
+  // 14. Load data on app startup
   // - fetch food list
   // - if token exists in localStorage → restore session (user stays logged in)
   // - if favorites exist in localStorage → restore favorites
