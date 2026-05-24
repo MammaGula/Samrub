@@ -6,9 +6,9 @@ import Menu from './pages/Menu/Menu'
 import Basket from './pages/Basket/Basket'
 import Payment from './pages/Payment/Payment'
 import Confirmation from './pages/Confirmation/Confirmation'
-import Favorites from './pages/Favorites/Favorites'
-import Login from './pages/Login/Login'
-import Register from './pages/Register/Register'
+// import Favorites from './pages/Favorites/Favorites'
+// import Login from './pages/Login/Login'
+// import Register from './pages/Register/Register'
 import './App.css'
 
 function App() {
@@ -22,9 +22,9 @@ function App() {
           <Route path="/basket" element={<Basket />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/confirmation" element={<Confirmation />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          {/* <Route path="/favorites" element={<Favorites />} /> */}
+          {/* <Route path="/login" element={<Login />} /> */}
+          {/* <Route path="/register" element={<Register />} /> */}
         </Routes>
       </main>
       <Footer />

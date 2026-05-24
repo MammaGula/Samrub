@@ -1,0 +1,158 @@
+/* =============================================
+   Confirmation Page
+   Figma: ConfirmationPage-Desktop / Mobile
+   ============================================= */
+
+/* ── Details-Section: full-width background image ── */
+/* Figma: 1440×867px, padding 103px 348px, gap 39px */
+.confirmation__details {
+  width: 100%;
+  min-height: 867px;
+  background: url("/images/image-confirmationPage.jpg") lightgray 50% / cover
+    no-repeat;
+  padding: 103px 348px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 39px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+/* ── Overall-frame: dark semi-transparent card ── */
+/* Figma: height 555px, padding 125px 40px, gap 41px */
+/* border: 1px solid #000, background: rgba(48,48,48,0.65) */
+.confirmation__card {
+  min-height: 555px;
+  padding: 125px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 41px;
+  flex-shrink: 0;
+  align-self: stretch;
+  border: 1px solid #000;
+  background: rgba(48, 48, 48, 0.65);
+  box-sizing: border-box;
+}
+
+/* ── OrderConfirm row: title + checkmark ── */
+/* Figma: display flex, justify center, align center, gap 33px */
+.confirmation__title-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 33px;
+}
+
+/* "Order Confirm!" — Topic-Desktop: Roboto Serif 40px, weight 800, WeakYellow */
+.confirmation__title {
+  font-family: var(--font-body);
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--weak-yellow);
+  text-align: center;
+  margin: 0;
+}
+
+/* ✅ icon-park-solid:correct — 60×60, MediumGreen */
+.confirmation__checkmark {
+  width: 60px;
+  height: 60px;
+  color: var(--medium-green);
+  flex-shrink: 0;
+}
+
+/* ── Thankyou text ── */
+/* Figma: BrödText-Desktop — Roboto Serif 24px, weight 500, line-height 30px, WeakYellow */
+.confirmation__thankyou {
+  width: 652px;
+  font-family: var(--font-body);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: 0.15px;
+  color: var(--weak-yellow);
+  text-align: center;
+  margin: 0;
+}
+
+/* ── OrderInfo: Order ID / Name / Total ── */
+/* Figma: BrödText-Desktop — 24px, weight 500, White */
+.confirmation__info {
+  font-family: var(--font-body);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: 0.15px;
+  color: var(--white);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.confirmation__info p {
+  margin: 0;
+}
+
+/* ── Buttons row: View Menu + Back to home ── */
+/* Figma: width 551px, justify center, align center, gap 59px */
+.confirmation__buttons {
+  display: flex;
+  width: 551px;
+  justify-content: center;
+  align-items: center;
+  gap: 59px;
+}
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE — Mobile
+   ══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Details-Section: remove heavy padding, stack vertically */
+  .confirmation__details {
+    min-height: unset;
+    padding: 60px 20px;
+    gap: 20px;
+  }
+
+  /* Card: reduce padding */
+  .confirmation__card {
+    min-height: unset;
+    padding: 40px 20px;
+    gap: 20px;
+  }
+
+  /* Title: smaller */
+  .confirmation__title {
+    font-size: var(--text-topic-mobile);
+  }
+
+  /* Checkmark: smaller */
+  .confirmation__checkmark {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* Thankyou: full width */
+  .confirmation__thankyou {
+    width: 100%;
+    font-size: var(--text-body-mobile);
+    line-height: 14px;
+  }
+
+  /* OrderInfo: smaller */
+  .confirmation__info {
+    font-size: var(--text-body-mobile);
+    line-height: 14px;
+  }
+
+  /* Buttons: full width, smaller gap */
+  .confirmation__buttons {
+    width: 100%;
+    gap: 20px;
+    justify-content: center;
+  }
+}
