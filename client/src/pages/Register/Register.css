@@ -1,11 +1,12 @@
 /* =============================================
-   Login Page Styles — follows Figma LoginPage-Desktop spec
+   Register Page Styles — follows Figma RegisterPage-Desktop spec
+   Same background image as Login page
    ============================================= */
 
 /* ── Content-section — full page with background image ── */
 /* Figma: content starts BELOW navbar (not behind it) — unlike Home which overlaps */
 /* main-content padding-top: 134px already pushes content below navbar */
-.login {
+.register {
   width: 100%;
   min-height: calc(100vh - 134px); /* fill viewport minus navbar height */
   background: url("/images/image-RegisterNLoginPage.jpg") lightgray 50% / cover no-repeat;
@@ -14,10 +15,9 @@
   justify-content: center;
 }
 
-/* ── LoginForm-frame — dark semi-transparent card ── */
-/* Figma: 550px wide, padding 20px, flex column, gap 45px */
-/* Style: var(--bg-card), border 1px solid var(--black) */
-.login__form {
+/* ── RegisterForm-frame — dark semi-transparent card ── */
+/* Same style as LoginForm but taller (4 fields instead of 2) */
+.register__form {
   width: 550px;
   padding: 20px;
   display: flex;
@@ -25,20 +25,20 @@
   justify-content: center;
   align-items: center;
   gap: 45px;
-  background: var(--bg-card);          /* rgba(48,48,48,0.65) — defined in index.css */
+  background: var(--bg-card);   /* rgba(48,48,48,0.65) — defined in index.css */
   border: 1px solid var(--black);
 }
 
 /* ── header — title row ── */
 /* Figma: display flex, justify-content center, align-items center */
-.login__header {
+.register__header {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* "Login / Register" — Topic-Desktop: Roboto Serif 40px weight 800 WeakYellow */
-.login__title {
+/* "Register" — Topic-Desktop: Roboto Serif 40px weight 800 WeakYellow */
+.register__title {
   font-family: var(--font-body);          /* Roboto Serif */
   font-size: var(--text-topic-desktop);   /* 40px */
   font-weight: 800;
@@ -46,9 +46,9 @@
   text-align: center;
 }
 
-/* ── inputForm — Username + Password fields ── */
-/* Figma: 510×222, padding 45px T/B 20px L/R, flex column, gap 16px, align-self stretch */
-.login__inputform {
+/* ── inputForm — 4 fields: Username + Email + Password + Confirm Password ── */
+/* Same padding/gap as Login but taller due to extra fields */
+.register__inputform {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -57,17 +57,25 @@
   padding: 45px 20px;
 }
 
-/* ── error message from backend ── */
-.login__error {
+/* ── error message — validation or backend error ── */
+.register__error {
   font-family: var(--font-body);
   font-size: 14px;
   color: #ff4d4d;
   margin: 0;
 }
 
-/* ── Buttons — Log in + Register row ── */
+/* ── success message — shown after successful registration ── */
+.register__success {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: #4caf50;
+  margin: 0;
+}
+
+/* ── Buttons — Register + Log in row ── */
 /* Figma: display flex, justify-content center, align-items center */
-.login__buttons {
+.register__buttons {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,33 +84,33 @@
 }
 
 /* ═══════════════════════════════════════════════
-   RESPONSIVE — Mobile (LoginPage-Mobile Figma spec)
+   RESPONSIVE — Mobile (same spec as LoginPage-Mobile)
    ═══════════════════════════════════════════════ */
 @media (max-width: 768px) {
   /* Content-Section Mobile: fill viewport minus mobile navbar height */
-  .login {
+  .register {
     min-height: calc(100vh - 51px); /* fill viewport minus mobile navbar (51px) */
     padding: 40px 20px;
     align-items: center;
   }
 
-  /* LoginForm-frame Mobile: 283px wide, padding 37px 43px, gap 15px, border 0.5px */
-  .login__form {
-    width: 283px;               /* Figma: 283px */
-    padding: 37px 43px;         /* Figma: 37px T/B 43px L/R */
-    gap: 15px;                  /* Figma: gap 15px */
-    border: 0.5px solid #000;   /* Figma: border 0.5px (thinner than desktop 1px) */
+  /* RegisterForm-frame Mobile: same card style as Login */
+  .register__form {
+    width: 283px;                 /* Figma: same card width as login */
+    padding: 37px 43px;           /* Figma: same padding as login card */
+    gap: 15px;                    /* Figma: gap 15px */
+    border: 0.5px solid #000;     /* Figma: 0.5px border on mobile */
   }
 
   /* Title Mobile: Topic-Mobile — 16px, weight 700 */
-  .login__title {
+  .register__title {
     font-size: var(--text-topic-mobile); /* 16px */
     font-weight: 700;                    /* Figma: 700 (desktop is 800) */
   }
 
-  /* inputFields Mobile: flex column, gap 5px */
-  .login__inputform {
-    padding: 0;    /* no extra padding — card padding handles spacing */
-    gap: 5px;      /* Figma: gap 5px between fields on mobile */
+  /* inputFields Mobile: no extra padding, gap 5px */
+  .register__inputform {
+    padding: 0;
+    gap: 5px;  /* Figma: gap 5px between fields on mobile */
   }
 }

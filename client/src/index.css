@@ -18,6 +18,7 @@
   /* Shortcuts for common use */
   --bg-page: var(--dark-grey);        /* Global page background (#2A2A2A) */
   --bg-navbar: rgba(25, 25, 25, 0.7); /* Navbar + Footer background */
+  --bg-card: rgba(48, 48, 48, 0.65);  /* Login/Register card background */
   --bg-light: var(--weak-yellow);     /* Light background sections */
   --accent: var(--orange);            /* Primary color for buttons, highlights */
   --accent-hover: #e69e20;            /* Darker accent for hover states */

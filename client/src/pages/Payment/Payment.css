@@ -17,12 +17,12 @@
   align-items: flex-start;
 }
 
-/* ── 2. Content panel — dark semi-transparent, full height ──
+/* ── 2. Content panel — dark semi-transparent, wraps content only ──
    Figma: background rgba(25,25,25,0.70), centered column, gap 80px between sections */
 .payment__content {
   width: 100%;
   max-width: 903px; /* Figma: Overall-frame width */
-  min-height: 100vh;
+  /* no min-height: 100vh — let content determine height naturally */
 
   background: rgba(25, 25, 25, 0.7); /* Figma: --Black at 70% */
 
@@ -154,7 +154,7 @@
   /* Inner dark panel — 301px wide, padding 0 54px, gap 15px between sections */
   .payment__content {
     max-width: 301px;
-    min-height: 938px;
+    /* no min-height — dark panel wraps content only, food image shows above/below */
     margin: 0 auto; /* center the 301px panel in 390px page */
     padding: 90px 54px; /* Figma: top/bottom 90px, left/right 54px (from inner padding) */
     gap: 15px; /* Figma: gap between sections = 15px on mobile */

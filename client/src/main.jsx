@@ -11,10 +11,13 @@ import App from "./App.jsx";
 // Use to find the root element in the HTML and render the React application inside it.
 // Provider order: AuthProvider wraps StoreContext so StoreContext can call getToken() if needed
 createRoot(document.getElementById("root")).render(
-  <StrictMode> /* Check error */
-    <BrowserRouter> /* Enable routing in the app */
-      <AuthProvider> /* Share auth state across the application */
-        <StoreContextProvider> /* Share global states across the application */
+  <StrictMode>
+    {/* BrowserRouter: enables React Router (URL navigation) across the app */}
+    <BrowserRouter>
+      {/* AuthProvider: shares auth state (authed, user, login, logout) across the app */}
+      <AuthProvider>
+        {/* StoreContextProvider: shares global states (cart, food, favorites) across the app */}
+        <StoreContextProvider>
           <App />
         </StoreContextProvider>
       </AuthProvider>
