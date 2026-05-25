@@ -1,0 +1,33 @@
+const mongoose = require("mongoose");
+
+const orderSchema = new mongoose.Schema(
+  {
+    userId: {
+      type: mongoose.Schema.Types.ObjectId, // Reference to User model
+      ref: "User",
+      required: true,
+    },
+    items: [
+      {
+        // Reference to Product model, but we also store name and price at time of order for history
+        productId: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
+        name: String,
+        price: Number,
+        quantity: Number,
+      },
+    ],
+    delivery: {
+      name: String,
+      email: String,
+      mobile: String,
+    },
+    payment: {
+      method: { type: String, enum: ["card", "swish"] },
+    },
+    totalAmount: Number,
+    status: { type: String, default: "confirmed" },
+  },
+  { timestamps: true }, // createdAt, updatedAt automatic
+);
+
+module.exports = mongoose.model("Order", orderSchema);
