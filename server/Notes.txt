@@ -24,4 +24,8 @@ JWT_SECRET=samrub_secret_key_2026
 6. Create all project's folder (Project's structure) >>> For PowerShell:
 - mkdir src\config, src\models, src\middleware, src\routes, src\controllers 
 
-7. 
+7.  MongoDB Atlas > Create Cluster > Create database > Create DatabaseName & CollectionName 
+    > Copy Connectionstring to put in .env
+
+8. 
+
