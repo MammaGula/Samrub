@@ -58,10 +58,11 @@
 }
 
 /* ── Counter [−] qty [+] — absolute bottom-right of image ── */
+/* Same position as Add button (counter replaces it) — Figma: bottom 26px, right 16px */
 .food-item__counter {
   position: absolute;
-  bottom: 14px;
-  right: 14px;
+  bottom: 26px;
+  right: 16px;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -121,11 +122,11 @@
 }
 
 .food-item__fav:hover {
-  color: pink;
+  color: var(--pink); /* #e91e8c — exact Figma Colors/Pink */
 }
 
 .food-item__fav--active {
-  color: pink;
+  color: var(--pink); /* #e91e8c — exact Figma Colors/Pink */
 }
 
 /* ── Name — Figma: 24px (not 25px) ── */

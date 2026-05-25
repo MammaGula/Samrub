@@ -25,10 +25,10 @@ const Footer = () => {
           <p className="footer-follow-label">Follow us:</p>
           <div className="social-icons">
             <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">
-              <Icon icon="mdi:instagram" className="social-icon" />
+              <Icon icon="mdi:instagram" className="social-icon instagram-icon" />
             </a>
             <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook">
-              <Icon icon="mdi:facebook" className="social-icon" />
+              <Icon icon="mdi:facebook" className="social-icon facebook-icon" />
             </a>
             <a href="https://tiktok.com" target="_blank" rel="noreferrer" aria-label="TikTok">
               <Icon icon="ic:baseline-tiktok" className="social-icon tiktok-icon" />
