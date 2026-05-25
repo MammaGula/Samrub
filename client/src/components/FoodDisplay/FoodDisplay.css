@@ -1,19 +1,19 @@
 /* =============================================
    FoodDisplay — responsive card grid
-   Desktop : 4 columns, gap 32px
+   Desktop : 4 columns, gap 28px  (Figma)
    Tablet  : 3 columns (≤ 1024px)
-   Mobile  : 2 columns (≤ 768px)
+   Mobile  : 2 columns (≤ 768px), gap 20px (Figma)
    ============================================= */
 
 .food-display {
   padding: 2rem 3rem 4rem;
 }
 
-/* ── Card Grid ── */
+/* ── Card Grid — Figma: gap 28px ── */
 .food-display__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
+  gap: 28px;
 }
 
 /* ── Loading / Empty message ── */
@@ -43,9 +43,10 @@
     padding: 1rem 1rem 2rem;
   }
 
+  /* Figma mobile gap: ~20px */
   .food-display__grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 20px;
   }
 
   .food-display__empty {

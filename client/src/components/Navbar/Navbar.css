@@ -66,6 +66,13 @@
   text-decoration: none;
 }
 
+/* Desktop icon size — Figma: 50×50px (heart / search / basket) */
+.navbar-icons a svg,
+.navbar-icons button svg {
+  width: 50px;
+  height: 50px;
+}
+
 .navbar-icons .btn-signin {
   color: var(--dark-grey);
 }

@@ -84,10 +84,24 @@
 }
 
 /* Instagram + Facebook + TikTok: orange icon, transparent background */
+/* Figma: IG 45×45px | FB 40×40px | TK 45×45px */
 .social-icon {
   color: var(--orange);
-  width: 37.5px;
-  height: 37.5px;
+}
+
+.instagram-icon {
+  width: 45px;
+  height: 45px;
+}
+
+.facebook-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.tiktok-icon {
+  width: 45px;
+  height: 45px;
 }
 
 /* ===== Responsive: Mobile ===== */
@@ -140,13 +154,10 @@
     height: 25px;
   }
 
-  .social-icon {
+  .instagram-icon,
+  .facebook-icon,
+  .tiktok-icon {
     width: 25px;
     height: 25px;
-  }
-
-  .tiktok-icon {
-    width: 26.7px !important;
-    height: 36.4px !important;
   }
 }
