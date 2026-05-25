@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 import Home from './pages/Home/Home'
@@ -7,9 +7,17 @@ import Basket from './pages/Basket/Basket'
 import Payment from './pages/Payment/Payment'
 import Confirmation from './pages/Confirmation/Confirmation'
 import Favorites from './pages/Favorites/Favorites'
-// import Login from './pages/Login/Login'
-// import Register from './pages/Register/Register'
+import Login from './pages/Login/Login'
+import Register from './pages/Register/Register'
+import { isAuthenticated } from './services/authApi'
 import './App.css'
+
+// Route guard — redirects to /login if user is not authenticated
+// replace: true → replaces history entry so user can't press Back to sneak in
+const ProtectedRoute = ({ children }) => {
+  if (!isAuthenticated()) return <Navigate to="/login" replace />;
+  return children;
+};
 
 function App() {
   return (
@@ -17,14 +25,21 @@ function App() {
       <Navbar />
       <main className="main-content">
         <Routes>
+          {/* Public routes — anyone can access */}
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/basket" element={<Basket />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/confirmation" element={<Confirmation />} />
-          <Route path="/favorites" element={<Favorites />} />
-          {/* <Route path="/login" element={<Login />} /> */}
-          {/* <Route path="/register" element={<Register />} /> */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+
+          {/* Protected route — must be logged in to view favorites and save favorites*/}
+          <Route path="/favorites" element={
+            <ProtectedRoute>
+              <Favorites />
+            </ProtectedRoute>
+          } />
         </Routes>
       </main>
       <Footer />

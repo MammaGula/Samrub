@@ -23,8 +23,8 @@ const StoreContextProvider = (props) => {
     return saved ? JSON.parse(saved) : []; // return Array of itemIds (e.g. [1, 3, 5])
   });
 
-  const [token, setToken] = useState(""); // JWT token of the logged-in user
-  const [user, setUser] = useState(null); // { id, username, email } from login response
+  // Note: token + user state moved to AuthContext.jsx
+  // StoreContext uses getToken() from authApi directly when calling protected API endpoints
 
   // 5. Add item to cart:
   // - If not in cartItems → set quantity = 1
@@ -135,12 +135,8 @@ const StoreContextProvider = (props) => {
     };
     loadData();
 
-    // Check if token exists in localStorage → if yes, set it to state (user stays logged in)
-    const savedToken = localStorage.getItem("token");
-    if (savedToken) {
-      setToken(savedToken);
-    }
-    // Note: cartItems and favorites are loaded via lazy useState initializer above
+    // Note: token is handled by AuthContext — no need to load it here
+    // cartItems and favorites are loaded via lazy useState initializer above
     // No need to read them here — avoids race condition with save effects
   }, []);
 
@@ -155,15 +151,12 @@ const StoreContextProvider = (props) => {
   }, [cartItems]);
 
   // 14. Collect all values and functions to share with every component
+  // Note: token + user removed — use useAuth() from AuthContext instead
   const contextValue = {
     url,
     foodList,
     cartItems,
     favorites,
-    token,
-    setToken,
-    user,
-    setUser,
     addToCart,
     removeFromCart,
     deleteFromCart,
@@ -178,6 +171,7 @@ const StoreContextProvider = (props) => {
     /* Returns : Values/ Methods shared across the app */
   }
   return (
+    // Value: all states + functions that we want to share across the app go here
     <StoreContext.Provider value={contextValue}>
       {props.children}
     </StoreContext.Provider>
