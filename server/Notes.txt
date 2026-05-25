@@ -1,0 +1,27 @@
+1. Setup
+- cd Samrub/server
+- npm init -y
+
+2. Install Dependencies
+- npm install express mongoose dotenv bcryptjs jsonwebtoken cors express-async-handler
+- npm install --save-dev nodemon
+
+3. Improve package.json >> Add Scripts
+
+"scripts": {
+  "dev": "nodemon index.js",
+  "start": "node index.js"
+}
+
+4. Create .env:
+
+PORT=4000
+MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/samrub
+JWT_SECRET=samrub_secret_key_2026
+
+5. Create Server.js
+
+6. Create all project's folder (Project's structure) >>> For PowerShell:
+- mkdir src\config, src\models, src\middleware, src\routes, src\controllers 
+
+7. 
