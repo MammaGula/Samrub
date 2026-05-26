@@ -75,9 +75,9 @@ const Login = () => {
         {/* inputForm — Username + Password + error message */}
         <div className="login__inputform">
           <InputField
-            label="Username:"
-            name="username"
-            value={formData.username}
+            label="E-mail:"
+            name="email"
+            value={formData.email}
             onChange={handleChange}
           />
           <InputField
@@ -95,7 +95,8 @@ const Login = () => {
         {/* Buttons — Log in submits form, Register navigates to /register */}
         <div className="login__buttons">
           <Button type="submit" disabled={loading}>
-            {loading ? "Logging in..." : "Log in"} {/* Show loading state on button */}
+            {loading ? "Logging in..." : "Log in"}{" "}
+            {/* Show loading state on button */}
           </Button>
           <Button type="button" onClick={() => navigate("/register")}>
             Register

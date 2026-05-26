@@ -9,7 +9,7 @@ const cors = require("cors"); // Middleware för att hantera CORS (Cross-Origin 
 
 const dotenv = require("dotenv");
 const connectDB = require("./src/config/dbConnection"); // Funktion för att ansluta till MongoDB
-// const errorHandler = require("./src/middleware/errorHandler"); // TODO: create this file
+const errorHandler = require("./src/middleware/errorHandler"); 
 
 dotenv.config(); // Load environment variables from .env file
 connectDB(); // Connect to MongoDB
@@ -19,13 +19,13 @@ app.use(cors()); // Enable CORS for all routes
 app.use(express.json()); // Middleware för att parsa JSON i request body
 
 // Routes
-// app.use("/api/users", require("./src/routes/userRoutes")); // TODO: create this file
-// app.use("/api/products", require("./src/routes/productRoutes")); // TODO: create this file
-// app.use("/api/orders", require("./src/routes/orderRoutes")); // TODO: create this file
-// app.use("/api/favorites", require("./src/routes/favoriteRoutes")); // TODO: create this file
+app.use("/api/users", require("./src/routes/userRoutes")); 
+// app.use("/api/products", require("./src/routes/productRoutes")); 
+// app.use("/api/orders", require("./src/routes/orderRoutes")); 
+// app.use("/api/favorites", require("./src/routes/favoriteRoutes")); 
 
 // Error handler (must be after routes to catch errors from them)
-// app.use(errorHandler); // TODO: create errorHandler first
+app.use(errorHandler); 
 
 // fall back till 4000 om PORT inte är satt i .env
 const PORT = process.env.PORT || 4000;
