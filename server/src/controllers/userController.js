@@ -60,7 +60,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
 
 
-// GET /api/users/current  (protected)
+// 3. GET /api/users/current  (protected)
 const currentUser = asyncHandler(async (req, res) => {
   res.json(req.user);
 });
