@@ -3,9 +3,10 @@ const mongoose = require("mongoose");
 const orderSchema = new mongoose.Schema(
   {
     userId: {
-      type: mongoose.Schema.Types.ObjectId, // Reference to User model
+      type: mongoose.Schema.Types.ObjectId, // Reference to User model (null if guest)
       ref: "User",
-      required: true,
+      required: false, // guest can order without login
+      default: null,
     },
     items: [
       {

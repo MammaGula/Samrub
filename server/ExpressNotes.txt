@@ -36,4 +36,14 @@ JWT_SECRET=samrub_secret_key_2026
   - Run seed only one time: node src/config/seed.js
   - Run server: npm run dev
 
+11. Create folders and files for Routes and Controllers
+    (based on the data and models we plan to store in the database)
+    - Controllers: 
+      - user -> userController (register + login)
+      - favorite -> favoriteController (save, delete favorites)
+      - oders -> orderController (Order the food, see history)
+      - product -> productController (see menu , filter categories)
 
+    - Routes: userRoutes, favoriteRoutes, orderRoutes and productRoutes
+
+12. Implement Controllers and Routes

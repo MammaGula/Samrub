@@ -3,11 +3,14 @@
 const asyncHandler = require("express-async-handler");
 const Product = require("../models/productModel");
 
+// ==================================================
+// 1. GET /api/products  (optional ?category=Starter)
+// ==================================================
+
 //@desc get all products
 //@route GET /api/products
 //@access public
 
-// 1. GET /api/products  (optional ?category=Starter)
 const getProducts = asyncHandler(async (req, res) => {
   const { category } = req.query; // Read query from URL
   const filter = category ? { category } : {}; // If category exists, filter by category, else no filter (all products)
@@ -27,11 +30,13 @@ const getProducts = asyncHandler(async (req, res) => {
 //       ↓
 // send products back to frontend
 
+// =========================
+// 2. GET /api/products/:id
+// =========================
 //@desc get a product by ID
 //@route GET /api/products/:id
 //@access public
 
-// 2. GET /api/products/:id
 const getProductById = asyncHandler(async (req, res) => {
   // Read id from request params >> and find product by id in MongoDB with Product.findById(id)
   const product = await Product.findById(req.params.id);
