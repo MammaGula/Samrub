@@ -31,6 +31,9 @@ JWT_SECRET=samrub_secret_key_2026
 
 9. Create middlewares
 
-10.
+10. Create seed.js
+  - create file server/.env , first :  MONGO_URI=mongodb+srv://...
+  - Run seed only one time: node src/config/seed.js
+  - Run server: npm run dev
 
 

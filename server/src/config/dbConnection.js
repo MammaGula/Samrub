@@ -1,3 +1,8 @@
+// dbConnection: Use when starting server to connect to MongoDB database using Mongoose(npm run dev)
+// use every time we start the server, to connect to MongoDB before handling any requests
+// Responsibility: Connect to MongoDB using MONGO_URI  >> Routers/Controllers can then use Mongoose models to interact with the database
+// dotenv: no need to load .env variables here because we already load them in server.js before calling connectDB() — MONGO_URI is available in process.env when connectDB runs
+
 const mongoose = require("mongoose");
 
 const connectDB = async () => {

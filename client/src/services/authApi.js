@@ -5,7 +5,9 @@
 
 // Express backend URL (auth endpoints live here)
 // json-server (port 3000) handles food data — Express (port 4000) handles auth + orders
+// const API_URL = "http://localhost:3000";
 const API_URL = "http://localhost:4000";
+
 
 // ======================
 // 1. Token helpers: getToken, saveToken, clearToken

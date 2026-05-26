@@ -5,7 +5,8 @@ export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
   // json-server URL (will change to Express backend port 4000 later)
-  const url = "http://localhost:3000";
+  // const url = "http://localhost:3000";
+  const url = "http://localhost:4000";
 
   // 2. States shared across the app
   const [foodList, setFoodList] = useState([]); // all food items from backend
