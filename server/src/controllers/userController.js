@@ -55,12 +55,15 @@ const loginUser = asyncHandler(async (req, res) => {
     res.status(401);
     throw new Error("Invalid credentials");
   }
-  const token = jwt.sign(
+  const accessToken = jwt.sign(
     { id: user._id, username: user.username },
     process.env.JWT_SECRET,
     { expiresIn: "7d" },
   );
-  res.json({ token, username: user.username });
+  res.json({
+    accessToken,
+    user: { id: user._id, username: user.username, email: user.email },
+  });
 });
 
 // ==================================================

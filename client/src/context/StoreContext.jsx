@@ -69,8 +69,11 @@ const StoreContextProvider = (props) => {
     // key:value = itemId:quantity
     // for-in loop: loop through keys (itemId) in cartItems
     for (const itemId in cartItems) {
-      // Number(itemId) because itemId is a string from cartItems but food.id is a number
-      const item = foodList.find((food) => food.id === Number(itemId));
+      // - For json-server: itemId is string, but food.id is number → convert food.id to string for comparison
+      // const item = foodList.find((food) => food.id === Number(itemId));
+
+      // - For MongoDB:itemId and food.id are both strings (MongoDB ObjectId) — compare directly
+      const item = foodList.find((food) => food.id === itemId);
 
       // If item exists in foodList and quantity > 0 → add to total
       if (item && cartItems[itemId] > 0) {
@@ -108,7 +111,7 @@ const StoreContextProvider = (props) => {
   // 12. Fetch food list from backend
   const fetchFoodList = async () => {
     try {
-      const response = await axios.get(url + "/products");
+      const response = await axios.get(url + "/api/products");
       setFoodList(response.data);
     } catch (error) {
       console.error("Failed to fetch food list:", error);
@@ -128,7 +131,7 @@ const StoreContextProvider = (props) => {
     // Fetch food list directly inside useEffect (avoids ESLint warning)
     const loadData = async () => {
       try {
-        const response = await axios.get(url + "/products");
+        const response = await axios.get(url + "/api/products");
         setFoodList(response.data);
       } catch (error) {
         console.error("Failed to fetch food list:", error);

@@ -20,9 +20,9 @@ app.use(express.json()); // Middleware för att parsa JSON i request body
 
 // Routes
 app.use("/api/users", require("./src/routes/userRoutes")); 
-// app.use("/api/products", require("./src/routes/productRoutes")); 
-// app.use("/api/orders", require("./src/routes/orderRoutes")); 
-// app.use("/api/favorites", require("./src/routes/favoriteRoutes")); 
+app.use("/api/products", require("./src/routes/productRoutes")); 
+app.use("/api/orders", require("./src/routes/orderRoutes")); 
+app.use("/api/favorites", require("./src/routes/favoriteRoutes")); 
 
 // Error handler (must be after routes to catch errors from them)
 app.use(errorHandler); 

@@ -23,7 +23,7 @@ const Login = () => {
   const { login } = useAuth();
 
   // 2. Form state — controlled inputs, keep track of username + password
-  const [formData, setFormData] = useState({ username: "", password: "" });
+  const [formData, setFormData] = useState({ email: "", password: "" });
 
   // 3. UI state:
   const [error, setError] = useState(""); // error message from backend

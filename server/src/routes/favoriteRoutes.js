@@ -7,7 +7,7 @@ const {
   addFavorite,
   removeFavorite,
 } = require("../controllers/favoriteController");
-const validateToken = require("../middleware/validateToken");
+const validateToken = require("../middleware/validationToken");
 
 router.use(validateToken);
 router.get("/", getFavorites);
