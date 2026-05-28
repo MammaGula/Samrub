@@ -2,10 +2,14 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { useStore } from "../../context/StoreContext";
+import { useAuth } from "../../context/AuthContext";
 import "./Navbar.css";
 
 const Navbar = () => {
-  const { getTotalCartCount, token, setToken } = useStore();
+  const { getTotalCartCount } = useStore();
+  // authed: true/false — used to show Sign In or Sign Out button
+  // logout: clears token + user from localStorage and React state
+  const { authed, logout } = useAuth();
 
   // Controls hamburger dropdown open/close
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,10 +19,9 @@ const Navbar = () => {
   const toggleMenu = () => setMenuOpen((prev) => !prev);
   const closeMenu = () => setMenuOpen(false);
 
-  // Clear token from state + localStorage, redirect to home
+  // Use AuthContext logout — handles clearing token + user in one call
   const handleSignOut = () => {
-    setToken("");
-    localStorage.removeItem("token");
+    logout();
     navigate("/");
     closeMenu();
   };
@@ -45,7 +48,7 @@ const Navbar = () => {
           <Link to="/basket" onClick={closeMenu}>
             Basket
           </Link>
-          {token ? (
+          {authed ? (
             <button onClick={handleSignOut}>Sign Out</button>
           ) : (
             <Link to="/login" onClick={closeMenu}>
@@ -82,7 +85,7 @@ const Navbar = () => {
         </Link>
 
         {/* 3.3 Sign in/out */}
-        {token ? (
+        {authed ? (
           <button className="btn-signin" onClick={handleSignOut}>
             Sign out
           </button>

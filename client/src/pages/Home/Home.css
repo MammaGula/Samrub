@@ -29,7 +29,7 @@
 .home__hero-card {
   position: relative;
   z-index: 1; /* Ensure card is above background image */
-  width: 420px;
+  width: clamp(280px, 30%, 420px); /* Responsive width: min 280px, max 420px, ideal 30% of container */
   min-height: auto;
   background: rgba(86, 87, 86, 0.15); /* semi-transparent dark grey */
   backdrop-filter: blur(10px); /* Frosted glass effect */
@@ -52,7 +52,7 @@
   color: var(--weak-yellow);
   line-height: 1.3;
   text-align: center;
-  white-space: nowrap; /* Prevent text from wrapping to multiple lines */
+  white-space: normal;
 }
 
 /* Figma: ViewMenu button 217×105, #FFB639, radius 20 */
@@ -149,6 +149,15 @@
   color: var(--weak-yellow); /* #fff3d6 */
   line-height: 1.75;
   margin-bottom: 1rem;
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE — Tablet
+   ═══════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .home__about {
+    padding: 49px 80px;
+  }
 }
 
 /* ═══════════════════════════════════════════════
