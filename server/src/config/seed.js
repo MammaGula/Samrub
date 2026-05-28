@@ -10,7 +10,9 @@
 
 const mongoose = require("mongoose"); // Connect to MongoDB and define schemas/models
 const dotenv = require("dotenv"); // to read .env variables (like MONGO_URI)
+const bcrypt = require("bcryptjs"); // to hash password before storing in DB
 const Product = require("../models/productModel"); // Mongoose model for products collection
+const User = require("../models/userModel"); // Mongoose model for users collection
 const products = require("../../db.json").products; // Sample product data from db.json (array of product objects)
 
 // - load .env variables (like MONGO_URI) from the server/.env file, to get MONGO_URI for connecting to MongoDB
@@ -23,9 +25,27 @@ dotenv.config({ path: path.resolve(__dirname, "../../.env") });
 mongoose
   .connect(process.env.MONGO_URI) // Connect to MongoDB using MONGO_URI from .env
   .then(async () => {
+    // ── Seed Products ──────────────────────────────────────────
     await Product.deleteMany(); // Clear old existing products (not duplicate on every seed)
     await Product.insertMany(products); // Insert sample products from db.json into MongoDB using the Product model
     console.log("✅ Products seeded!");
+
+    // ── Seed Default User ──────────────────────────────────────
+    // Only create if user doesn't already exist — avoid duplicate on re-seed
+    // Default login: email "user@samrub.com" / password "password"
+    const exists = await User.findOne({ email: "user@samrub.com" });
+    if (!exists) {
+      const hashed = await bcrypt.hash("password", 10); // hash password before storing
+      await User.create({
+        username: "user",
+        email: "user@samrub.com",
+        password: hashed,
+      });
+      console.log("✅ Default user seeded! email: user@samrub.com / password: password");
+    } else {
+      console.log("ℹ️  Default user already exists, skipping.");
+    }
+
     process.exit(); // Exit the script after seeding is done, because Mongoose connection is still open otherwise
   })
   .catch((err) => {

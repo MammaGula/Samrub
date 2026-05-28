@@ -95,6 +95,10 @@ const StoreContextProvider = (props) => {
   // 10. Toggle favorites
   // If itemId is already in favorites → remove it
   // If not → add it
+  // TODO (future): sync favorites with backend when user is logged in
+  //   - if authed → POST /api/favorites (add) or DELETE /api/favorites/:productId (remove)
+  //   - on login → fetch GET /api/favorites and replace localStorage favorites with DB data
+  //   - Backend API is ready: favoriteRoutes.js + favoriteController.js
   const toggleFavorite = (itemId) => {
     // Check if itemId is already in favorites: prev= array of favorite itemIds
     setFavorites((prev) =>
