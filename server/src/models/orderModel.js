@@ -20,7 +20,8 @@ const orderSchema = new mongoose.Schema(
     delivery: {
       name: String,
       email: String,
-      mobile: String,
+      phone: String,
+      address: String,
     },
     payment: {
       method: { type: String, enum: ["card", "swish"] },

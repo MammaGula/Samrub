@@ -122,6 +122,14 @@
   border-top: 1px dashed rgba(255, 243, 214, 0.3);
 }
 
+/* Error message shown when backend rejects the order */
+.payment__submit-error {
+  color: #ff6b6b;
+  font-size: 14px;
+  text-align: center;
+  margin: 0;
+}
+
 /* Total line: "Total   285 SEK" — space-between */
 .payment__total-line {
   display: flex;

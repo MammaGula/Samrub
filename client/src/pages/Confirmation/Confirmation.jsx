@@ -1,6 +1,6 @@
 // Confirmation.jsx — Order success page
 // Used in: App.jsx route /confirmation
-// Receives state from Payment.jsx: { customerName, total, paymentMethod }
+// Receives state from Payment.jsx: { customerName, total, paymentMethod, orderId }
 // Structure (from Figma):
 //   Details-Section (bg image)
 //     └── Overall-frame (dark card)
@@ -21,10 +21,11 @@ const Confirmation = () => {
   const location = useLocation();
 
   // Read order summary passed from Payment.jsx via navigate state
-  const { customerName, total } = location.state || {};
+  // orderId: real MongoDB _id from POST /api/orders response
+  const { customerName, total, orderId } = location.state || {};
 
   // Generate a random 5-digit order ID on mount (fake, since no real backend yet)
-  const [orderId] = useState(() => Math.floor(10000 + Math.random() * 90000));
+  // const [orderId] = useState(() => Math.floor(10000 + Math.random() * 90000));
 
   // Guard: if user lands here without going through Payment → redirect to home and return null
   useEffect(() => {
@@ -59,7 +60,8 @@ const Confirmation = () => {
 
         {/* OrderInfo — order details */}
         <div className="confirmation__info">
-          <p>Order ID: {orderId}</p>
+          {/* Show last 8 chars of MongoDB _id for readability e.g. #A3F2C1D8 */}
+          <p>Order ID: #{orderId ? orderId.slice(-8).toUpperCase() : "—"}</p>
           <p>Name: {customerName}</p>
           <p>Total: {total} SEK</p>
         </div>

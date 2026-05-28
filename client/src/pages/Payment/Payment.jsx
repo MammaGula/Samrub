@@ -3,6 +3,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import { useStore } from "../../context/StoreContext";
 import InputField from "../../components/InputField/InputField";
 import Button from "../../components/Button/Button";
@@ -12,7 +13,7 @@ const Payment = () => {
   const navigate = useNavigate();
 
   // Pull what we need from global store
-  const { cartItems, foodList, clearCart } = useStore();
+  const { cartItems, foodList, clearCart, url } = useStore();
 
   // ── 1. State ────────────────────────────────────────────────────────────────
 
@@ -141,47 +142,64 @@ const Payment = () => {
 
   // ── 5. Submit ────────────────────────────────────────────────────────────────
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); // prevent browser from refreshing the page because React wants to handle the submit with JavaScript, not the default HTML form behavior
+  // submitError: error message from backend if order fails
+  // submitting: disable button while waiting for backend response
+  const [submitError, setSubmitError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
-    // Run validation first — stop if any field is invalid(not create order, don't navigate to confirmation)
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // prevent browser from refreshing the page
+
+    // Run validation first — stop if any field is invalid
     if (!validate()) return;
 
-    // ─ Order payload — will POST to Express backend /api/orders when ready ─
+    setSubmitError("");
+    setSubmitting(true);
+
+    // ─ Order payload — POST to Express backend /api/orders ─
+    // TODO: POST to Express backend /api/orders when ready ✅ done
+    // const res = await axios.post("/api/orders", orderPayload)
+    // console.log("Order placed:", orderPayload);
     const orderPayload = {
-      delivery: formData,
-      paymentMethod,
-      cardData: paymentMethod === "card" ? cardData : null,
-      swishNumber: paymentMethod === "swish" ? swishNumber : null,
+      delivery: formData, // { name, email, phone, address } — matches orderModel delivery fields
+      payment: {
+        method: paymentMethod,
+        cardData: paymentMethod === "card" ? cardData : null,
+        swishNumber: paymentMethod === "swish" ? swishNumber : null,
+      },
       items: cartFoodItems.map((item) => ({
-        id: item.id,
+        productId: item.id, // map to productId — matches orderModel items[].productId
         name: item.name,
         price: item.price,
         quantity: cartItems[item.id],
       })),
-      total,
+      totalAmount: total,
     };
 
-    // TODO: POST to Express backend /api/orders when ready
-    // const res = await axios.post("/api/orders", orderPayload)
-    console.log("Order placed:", orderPayload);
+    try {
+      // POST to Express backend /api/orders — public route, no token needed
+      const res = await axios.post(`${url}/api/orders`, orderPayload);
 
-    // Set flag BEFORE clearCart — prevents guard useEffect from redirecting to /basket
-    isSubmitting.current = true;
+      // Set flag BEFORE clearCart — prevents guard useEffect from redirecting to /basket
+      isSubmitting.current = true;
 
-    // Clear cart from global state + localStorage
-    clearCart();
+      // Clear cart from global state + localStorage
+      clearCart();
 
-    // Navigate to confirmation page, pass order info via React Router state
-    // (Confirmation page reads this with useLocation)
-    // Send customerName, total, and paymentMethod to confirmation page to show in the summary
-    navigate("/confirmation", {
-      state: {
-        customerName: formData.name,
-        total,
-        paymentMethod,
-      },
-    });
+      // Navigate to confirmation — pass real orderId from MongoDB response
+      navigate("/confirmation", {
+        state: {
+          customerName: formData.name,
+          total,
+          paymentMethod,
+          orderId: res.data._id,
+        },
+      });
+    } catch (err) {
+      // Show error from backend (e.g. network error, validation error)
+      setSubmitError(err.response?.data?.message || "Failed to place order. Please try again.");
+      setSubmitting(false);
+    }
   };
 
   // ── 6. Render ────────────────────────────────────────────────────────────────
@@ -351,8 +369,12 @@ const Payment = () => {
               <span>Total</span>
               <span>{total} SEK</span>
             </div>
-            {/* Use reusable Button component — type="submit" triggers form's onSubmit */}
-            <Button type="submit">Place Order</Button>
+            {/* Show backend error if order failed */}
+            {submitError && <p className="payment__submit-error">{submitError}</p>}
+            {/* disabled while waiting for backend — prevent double submit */}
+            <Button type="submit" disabled={submitting}>
+              {submitting ? "Placing Order..." : "Place Order"}
+            </Button>
           </div>
         </form>
       </div>
