@@ -43,11 +43,11 @@
   flex-shrink: 0;
 }
 
-/* "My Favorites" — Topic-Desktop: Roboto Serif 40px, weight 800, WeakYellow */
+/* "My Favorites" — Topic-Desktop: 32px, weight 700, WeakYellow */
 .favorites__title {
   font-family: var(--font-body);
-  font-size: 40px;
-  font-weight: 800;
+  font-size: var(--text-topic-desktop); /* 32px */
+  font-weight: 700;
   color: var(--weak-yellow);
   margin: 0;
 }
@@ -152,6 +152,11 @@
   .favorites__grid {
     grid-template-columns: 1fr;
     row-gap: 20px;
+  }
+
+  /* FoodItem info section: stretch full card width on 1-column grid */
+  .favorites__grid .food-item__info {
+    width: 100%;
   }
 
   /* Empty state: smaller text */

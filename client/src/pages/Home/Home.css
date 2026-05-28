@@ -160,14 +160,14 @@
   }
 
   .home__hero {
-    height: 420px;
+    height: 269px;
   }
 
   .home__hero-card {
     width: 90%;
-    max-width: 340px;
+    max-width: 238px;
     min-height: auto;
-    gap: 24px;
+    gap: 30px;
     padding: 1.5rem 1rem;
   }
 
@@ -176,10 +176,10 @@
   }
 
   .home__hero-btn {
-    width: 160px;
-    height: 70px;
-    font-size: var(--text-slogan-mobile);
-    border-radius: 12px;
+    width: 118px;
+    height: 24px;
+    font-size: 16px;
+    border-radius: 20px;
   }
 
   .home__strip-wrapper {

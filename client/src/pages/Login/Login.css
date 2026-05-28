@@ -18,13 +18,13 @@
 /* Figma: 550px wide, padding 20px, flex column, gap 45px */
 /* Style: var(--bg-card), border 1px solid var(--black) */
 .login__form {
-  width: 550px;
+  width: 439px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 45px;
+  gap: 20px;
   background: var(--bg-card);          /* rgba(48,48,48,0.65) — defined in index.css */
   border: 1px solid var(--black);
 }
@@ -54,7 +54,7 @@
   align-items: flex-start;
   gap: 16px;
   align-self: stretch;
-  padding: 45px 20px;
+  padding: 0;
 }
 
 /* ── error message from backend ── */
@@ -71,7 +71,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 58px;
   padding: 0 20px;
 }
 
@@ -86,12 +86,16 @@
     align-items: center;
   }
 
-  /* LoginForm-frame Mobile: 283px wide, padding 37px 43px, gap 15px, border 0.5px */
+  /* LoginForm-frame Mobile: ~283px wide, padding 37px 43px, gap 15px, border 0.5px */
   .login__form {
-    width: 283px;               /* Figma: 283px */
-    padding: 37px 43px;         /* Figma: 37px T/B 43px L/R */
-    gap: 15px;                  /* Figma: gap 15px */
-    border: 0.5px solid #000;   /* Figma: border 0.5px (thinner than desktop 1px) */
+    width: 283px;
+    padding: 37px 43px;
+    gap: 15px;
+    border: 0.5px solid #000;
+  }
+
+  .login__buttons {
+    gap: 21px;
   }
 
   /* Title Mobile: Topic-Mobile — 16px, weight 700 */

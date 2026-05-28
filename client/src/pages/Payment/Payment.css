@@ -44,7 +44,7 @@
 
 /* Section title — centered, weak-yellow */
 .payment__section-title {
-  font-size: var(--text-label-desktop); /* 25px */
+  font-size: var(--text-topic-desktop); /* 32px */
   font-weight: 700;
   color: var(--weak-yellow);
   text-align: center; /* Figma: titles are centered */
@@ -167,7 +167,7 @@
   }
 
   .payment__section-title {
-    font-size: var(--text-topic-mobile); /* 16px */
+    font-size: var(--text-slogan-mobile); /* 14px */
   }
 
   /* Fields gap on mobile */

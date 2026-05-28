@@ -6,8 +6,8 @@
 
 /* ── Wrapper ── */
 .food-category {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
   justify-content: center;
   gap: 37px;
   padding: 3rem 2rem;
@@ -19,7 +19,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 37px; /* Figma desktop: 37px between image and label */
+  gap: 10px; /* Figma desktop: 10px between image and label */
   background: none;
   border: none;
   cursor: pointer;
@@ -31,10 +31,10 @@
   transform: translateY(-4px);
 }
 
-/* ── Oval image — Desktop: 340×316px, border-radius 180px ── */
+/* ── Oval image — Desktop: 248×244px, border-radius 180px ── */
 .food-category__img {
-  width: 340px;
-  height: 316px;
+  width: 248px;
+  height: 244px;
   border-radius: 180px; /* oval / pill shape */
   background-size: cover;
   background-position: center;
@@ -62,7 +62,7 @@
   letter-spacing: 0.15px;
   color: var(--weak-yellow);
   text-align: center;
-  width: 340px; /* Fill: matches image width */
+  width: 248px; /* Fill: matches image width */
 }
 
 /* Active label turns orange */
@@ -78,7 +78,10 @@
    ══════════════════════════════════════════════ */
 @media (max-width: 768px) {
   .food-category {
-    gap: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 17px;
     padding: 1.25rem 1rem;
   }
 

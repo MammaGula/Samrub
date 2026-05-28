@@ -10,7 +10,7 @@
   min-height: 867px;
   background: url("/images/image-confirmationPage.jpg") lightgray 50% / cover
     no-repeat;
-  padding: 103px 348px;
+  padding: 103px 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,18 +20,18 @@
 }
 
 /* ── Overall-frame: dark semi-transparent card ── */
-/* Figma: height 555px, padding 125px 40px, gap 41px */
-/* border: 1px solid #000, background: rgba(48,48,48,0.65) */
+/* Figma: padding 50px 40px, gap 20px, max-width matches 1440-348*2=744px */
 .confirmation__card {
-  min-height: 555px;
-  padding: 125px 40px;
+  min-height: unset;
+  width: 100%;
+  max-width: 744px;
+  padding: 50px 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 41px;
+  gap: 20px;
   flex-shrink: 0;
-  align-self: stretch;
   border: 1px solid #000;
   background: rgba(48, 48, 48, 0.65);
   box-sizing: border-box;
@@ -46,11 +46,11 @@
   gap: 33px;
 }
 
-/* "Order Confirm!" — Topic-Desktop: Roboto Serif 40px, weight 800, WeakYellow */
+/* "Order Confirm!" — Topic-Desktop: Roboto Serif 32px, weight 700, WeakYellow */
 .confirmation__title {
   font-family: var(--font-body);
-  font-size: 40px;
-  font-weight: 800;
+  font-size: var(--text-topic-desktop); /* 32px */
+  font-weight: 700;
   color: var(--weak-yellow);
   text-align: center;
   margin: 0;
@@ -65,11 +65,12 @@
 }
 
 /* ── Thankyou text ── */
-/* Figma: BrödText-Desktop — Roboto Serif 24px, weight 500, line-height 30px, WeakYellow */
+/* Figma: BrödText-Desktop — Roboto Serif 20px, weight 500, line-height 30px, WeakYellow */
 .confirmation__thankyou {
-  width: 652px;
+  max-width: 652px;
+  width: 100%;
   font-family: var(--font-body);
-  font-size: 24px;
+  font-size: var(--text-body-desktop); /* 20px */
   font-weight: 500;
   line-height: 30px;
   letter-spacing: 0.15px;
@@ -79,10 +80,10 @@
 }
 
 /* ── OrderInfo: Order ID / Name / Total ── */
-/* Figma: BrödText-Desktop — 24px, weight 500, White */
+/* Figma: BrödText-Desktop — 20px, weight 500, White */
 .confirmation__info {
   font-family: var(--font-body);
-  font-size: 24px;
+  font-size: var(--text-body-desktop); /* 20px */
   font-weight: 500;
   line-height: 30px;
   letter-spacing: 0.15px;
@@ -101,7 +102,8 @@
 /* Figma: width 551px, justify center, align center, gap 59px */
 .confirmation__buttons {
   display: flex;
-  width: 551px;
+  max-width: 551px;
+  width: 100%;
   justify-content: center;
   align-items: center;
   gap: 59px;
@@ -121,7 +123,7 @@
   /* Card: reduce padding */
   .confirmation__card {
     min-height: unset;
-    padding: 40px 20px;
+    padding: 10px 40px;
     gap: 20px;
   }
 

@@ -35,10 +35,10 @@
 
   /* Text sizes from Figma - Desktop */
   --text-logo-desktop: 70px;
-  --text-topic-desktop: 40px;
+  --text-topic-desktop: 32px;
   --text-slogan-desktop: 32px;
   --text-label-desktop: 25px;
-  --text-body-desktop: 24px;
+  --text-body-desktop: 20px;
   --text-button: 20px;
 
   /* Text sizes from Figma - Mobile */
