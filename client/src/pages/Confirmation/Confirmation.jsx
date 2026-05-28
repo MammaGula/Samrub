@@ -10,7 +10,7 @@
 //     └── Buttons             → View Menu + Back to home
 
 // useLocation: To fetch data from current route/ To read state passed from Payment.jsx (customerName, total, paymentMethod) via navigate
-import { useEffect, useState } from "react";
+import { useEffect /*, useState */ } from "react"; // useState used in commented-out orderId below
 import { useNavigate, useLocation } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import Button from "../../components/Button/Button";

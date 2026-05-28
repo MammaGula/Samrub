@@ -2,6 +2,7 @@ const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
+const { constants } = require("../../constants");
 
 // ==================================================
 // 1. POST /api/users/register
@@ -16,12 +17,12 @@ const User = require("../models/userModel");
 const registerUser = asyncHandler(async (req, res) => {
   const { username, email, password } = req.body;
   if (!username || !email || !password) {
-    res.status(400);
+    res.status(constants.VALIDATION_ERROR);
     throw new Error("All fields are required");
   }
   const exists = await User.findOne({ email });
   if (exists) {
-    res.status(400);
+    res.status(constants.VALIDATION_ERROR);
     throw new Error("Email already in use");
   }
 
@@ -46,13 +47,13 @@ const registerUser = asyncHandler(async (req, res) => {
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
-    res.status(400);
+    res.status(constants.VALIDATION_ERROR);
     throw new Error("All fields are required");
   }
 
   const user = await User.findOne({ email });
   if (!user || !(await bcrypt.compare(password, user.password))) {
-    res.status(401);
+    res.status(constants.UNAUTHORIZED);
     throw new Error("Invalid credentials");
   }
   const accessToken = jwt.sign(

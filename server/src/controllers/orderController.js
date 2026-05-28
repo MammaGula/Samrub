@@ -2,6 +2,7 @@
 
 const asyncHandler = require("express-async-handler");
 const Order = require("../models/orderModel"); // Mongoose model for orders (userId, items, delivery, payment, totalAmount, createdAt) - defined in orderModel.js
+const { constants } = require("../../constants");
 
 // ==================================================
 // 1. POST /api/orders: Place a new order
@@ -15,7 +16,7 @@ const placeOrder = asyncHandler(async (req, res) => {
   // → validate (all fields exist?) → create new order in MongoDB  → return created order as JSON response to frontend
   const { items, delivery, payment, totalAmount } = req.body;
   if (!items || !delivery || !payment) {
-    res.status(400);
+    res.status(constants.VALIDATION_ERROR);
     throw new Error("Missing order data");
   }
   const order = await Order.create({

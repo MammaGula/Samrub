@@ -7,6 +7,7 @@
 // - Automatic error handling for async functions in Express routes
 // - Dont need try-catch in every route, just throw error and it will be caught by errorHandler middleware
 const asyncHandler = require("express-async-handler");
+const { constants } = require("../../constants");
 
 // Middleware function to validate JWT token
 const jwt = require("jsonwebtoken");
@@ -16,7 +17,7 @@ const jwt = require("jsonwebtoken");
 const validateToken = asyncHandler(async (req, res, next) => {
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    res.status(401);
+    res.status(constants.UNAUTHORIZED);
     throw new Error("No token provided");
   }
   // Get token from header and verify it [Bearer[0], "TOKEN"[1]]
@@ -27,7 +28,7 @@ const validateToken = asyncHandler(async (req, res, next) => {
     req.user = jwt.verify(token, process.env.JWT_SECRET);
     next();
   } catch {
-    res.status(401);
+    res.status(constants.UNAUTHORIZED);
     throw new Error("Token invalid or expired");
   }
 });

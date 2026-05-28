@@ -2,6 +2,7 @@
 
 const asyncHandler = require("express-async-handler");
 const Product = require("../models/productModel");
+const { constants } = require("../../constants");
 
 // ==================================================
 // 1. GET /api/products  (optional ?category=Starter)
@@ -41,7 +42,7 @@ const getProductById = asyncHandler(async (req, res) => {
   // Read id from request params >> and find product by id in MongoDB with Product.findById(id)
   const product = await Product.findById(req.params.id);
   if (!product) {
-    res.status(404);
+    res.status(constants.NOT_FOUND);
     throw new Error("Product not found");
   }
   res.json(product); // Send product as JSON response to frontend
