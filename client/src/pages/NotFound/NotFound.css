@@ -1,0 +1,99 @@
+/* =============================================
+   NotFound (404) Page Styles 
+   ============================================= */
+
+/* ── Wrapper — full page, centered card ── */
+.notfound {
+  width: 100%;
+  min-height: calc(100vh - 134px); /* fill viewport minus navbar height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem; 
+}
+
+/* ── Card — dark semi-transparent, same pattern as Login/Register ── */
+.notfound__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 48px 40px;
+  background: var(--bg-card);        /* rgba(48,48,48,0.65) */
+  border: 1px solid var(--black);
+  border-radius: var(--radius, 10px);
+  text-align: center;
+  max-width: 480px;
+  width: 100%;
+}
+
+/* ── Icon ── */
+.notfound__icon {
+  font-size: 64px;
+  color: var(--orange);              /* accent color matching project theme */
+}
+
+/* ── 404 number — big headline ── */
+.notfound__code {
+  font-family: var(--font-body);
+  font-size: var(--text-topic-desktop); /* 40px */
+  font-weight: 800;
+  color: var(--weak-yellow);
+  margin: 0;
+  line-height: 1;
+}
+
+/* ── "Oops! Page not found." ── */
+.notfound__message {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--weak-yellow);
+  margin: 0;
+}
+
+/* ── Sub-text ── */
+.notfound__sub {
+  font-family: var(--font-body);
+  font-size: var(--text-body-desktop, 16px);
+  color: var(--weak-yellow);
+  opacity: 0.7;
+  margin: 0;
+}
+
+/* ── Buttons row ── */
+.notfound__buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE — Mobile
+   ═══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .notfound__card {
+    padding: 32px 24px; /* top and bottom padding reduced for smaller screens */
+  }
+
+  .notfound__icon {
+    font-size: 48px;
+  }
+
+  .notfound__code {
+    font-size: 32px;
+  }
+
+  .notfound__message {
+    font-size: 18px;
+  }
+
+  .notfound__buttons {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+}

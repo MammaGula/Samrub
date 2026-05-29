@@ -9,6 +9,7 @@ import Confirmation from './pages/Confirmation/Confirmation'
 import Favorites from './pages/Favorites/Favorites'
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
+import NotFound from './pages/NotFound/NotFound'
 import { isAuthenticated } from './services/authApi'
 import './App.css'
 
@@ -40,6 +41,9 @@ function App() {
               <Favorites />
             </ProtectedRoute>
           } />
+
+          {/* Catch-all — shows 404 page for any unknown URL */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
