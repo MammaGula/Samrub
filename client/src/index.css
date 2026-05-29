@@ -68,7 +68,7 @@ body {
   font-size: 16px;
   line-height: 1.6; /* Comfortable line spacing for readability */
   color: var(--text-main);
-  background-color: var(--bg-page); /* #303030 — matches Figma on every page */
+  background-color: var(--bg-page); /* #2A2A2A — matches Figma on every page */
   -webkit-font-smoothing: antialiased; /* Improve font rendering on WebKit browsers Mac/Chrome */
 }
 
@@ -105,35 +105,8 @@ select {
   font-size: 16px;
 }
 
-/* ===== Utility Classes: Central classes for layout and spacing ===== */
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-.btn-primary {
-  background-color: var(--orange);
-  color: var(--dark-grey); /* ตาม Figma: dark text on orange button */
-  font-weight: 600;
-  font-size: 15px;
-  padding: 10px 24px; /* Vertical 10px, Horizontal 24px */
-  border-radius: var(--radius);
-  border: none;
-  cursor: pointer;
-  transition:
-    opacity 0.2s,
-    transform 0.1s; /* Smooth transition for hover effects */
-}
-
-/* Hover effect for primary buttons: Slightly darker and lift up */
-.btn-primary:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
-/* ===== Section spacing ===== */
+/* ===== Section spacing: home__hero, home__about etc. ===== */
 section {
-  padding: 60px 0; /* Vertical padding for sections, horizontal handled by .container */
+  padding: 60px 0; /* Vertical padding for sections */
 }

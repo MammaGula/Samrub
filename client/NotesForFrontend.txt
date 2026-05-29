@@ -1,0 +1,156 @@
+1. Setup
+- cd Desktop
+- mkdir Samrub
+- cd Samrub
+- npm create vite@latest  >> template react
+
+>> Enter
+
+
+2. Install Dependencies
+
+- cd client
+- npm install
+
+- cd client/src
+- npm install react-router-dom axios @iconify/react
+- cd client/src
+- mkdir components
+- mkdir pages
+- mkdir context
+- mkdir components\Navbar
+- mkdir components\Footer
+- mkdir components\FoodItem
+- mkdir components\FoodCategory
+- mkdir components\FoodDisplay
+- mkdir pages\Home
+- mkdir pages\Menu
+- mkdir pages\Basket
+- mkdir pages\Payment
+- mkdir pages\Confirmation
+- mkdir pages\Confirmation
+- mkdir pages\Favorites
+- mkdir pages\Login
+- mkdir pages\Register
+
+
+
+3. Check vite.config.js and package.json
+
+4. Project Structure
+   src/
+   ├── assets/           (images, fonts, etc.)
+   ├── components/       (reusable UI: Navbar, Footer, Button, etc.)
+   ├── context/          (StoreContext.jsx, AuthContext.jsx)
+   ├── pages/            (one folder per page: Home, Menu, Basket, Payment, etc.)
+   ├── services/         (authApi.js — token helpers + fetch wrapper)
+   ├── App.jsx           (routes live here)
+   ├── App.css
+   ├── index.css         (CSS variables / design system)
+   └── main.jsx          (entry point — wraps app in BrowserRouter + Providers)
+
+5. Create folder structure >> For PowerShell:
+   - mkdir src\components, src\context, src\pages, src\services, src\assets
+
+6. Setup main.jsx
+   - Wrap <App /> in <BrowserRouter> (from react-router-dom)
+   - Wrap in <StoreContextProvider> (food data, cart, favorites)
+   - Wrap in <AuthProvider> (login state, token)
+   - Order matters: BrowserRouter > AuthProvider > StoreContextProvider > App
+
+7. Setup index.css — Design System (CSS Variables)
+   - Define all CSS variables here so every component can use them
+        >> root, Reset Browser Styles, Global Styles
+   - e.g. --weak-yellow, --orange, --bg-card, --font-body, --text-topic-desktop, etc.
+   - This is like a Figma token sheet but in CSS
+
+8. Setup App.jsx
+   - Import Routes, Route, Navigate from react-router-dom
+   - Import all page components
+   - Define ProtectedRoute (checks isAuthenticated() → redirect to /login if not)
+   - All public routes: /, /menu, /basket, /payment, /confirmation, /login, /register
+   - Protected routes: /favorites (must be logged in)
+   - Catch-all: path="*" → <NotFound /> (must be last route)
+
+9. Create Context
+   9.1 StoreContext.jsx
+       - Handles: food list, cart (add/remove/quantity), favorites, axios URL
+       - Persists cart + favorites in localStorage
+       - Fetches products from backend: GET /api/products
+
+   9.2 AuthContext.jsx: React state to share data for the entire app
+       - Handles(keep state): login, logout, authed state (true/false), current user
+       - Uses authApi.js helper functions (loginRequest, saveToken, clearToken, etc.)
+       - authed = true if token exists in localStorage on page load
+       - When state changes >> re-render directly
+
+10. Create services/authApi.js: Helper functions to talk to LocalStorage and Backend
+    - Token helpers: getToken, saveToken, clearToken (localStorage)
+    - User helpers: getUser, saveUser, clearUser (localStorage)
+    - isAuthenticated() → !!getToken()
+    - authRequest() → fetch wrapper that auto-attaches Bearer token to headers
+    - loginRequest(), registerRequest(), getCurrentUser() ->> Send httpRequests to backend 
+
+AuthContext.jsx
+    └── calls  authApi.js
+            ├── saveToken() → localStorage
+            ├── loginRequest() → POST /api/users/login
+            └── isAuthenticated() → !!getToken()
+
+11. Create Components (reusable UI)
+    - Navbar: links + cart count + auth state (login/logout)
+    - Footer
+    - Button: reusable button with variants
+    - FoodItem: single product card (used in Menu)
+    - ExploreMenu: category filter (used in Menu)
+
+12. Create Pages
+    - Home: hero section + explore section
+    - Menu: product list + category filter + favorites toggle
+    - Basket: cart items, quantity controls, total, checkout button
+    - Payment: delivery form + payment method (card/Swish) + POST to backend
+    - Confirmation: order summary after successful payment
+    - Login: email + password form
+    - Register: username + email + password form
+    - Favorites: list of favorited items (protected)
+    - NotFound: 404 catch-all page
+
+13. Backend URLs
+    - Backend (Express): http://localhost:4000
+    - Frontend (Vite):   http://localhost:5173
+    - Set URL in StoreContext.jsx: const url = "http://localhost:4000"
+    - Set API_URL in authApi.js:   const API_URL = "http://localhost:4000"
+
+------------------------------------------------------------------
+
+   Run app
+     Terminal 1: Backend
+       - cd Samrub/server
+       - npm run dev
+       - OR db.json: npx json-server --watch db.json --port 3000
+
+     Terminal 2: Frontend
+       - cd Samrub/client
+       - npm run dev
+
+   Open browser: http://localhost:5173 if frontend runs at port 5173(somtimes 5173 is not available >> check first)
+
+------------------------------------------------------------------
+
+14. *** Note about IDs (MongoDB vs json-server) ***
+    - MongoDB returns _id by default
+    - If frontend needs item.id → add toJSON: { virtuals: true } in Mongoose model
+    - json-server already uses id (no extra config needed)
+    - Check: StoreContext.jsx (uses food.id for cart/favorites keys)
+
+15. *** Note about Auth flow ***
+    - Login → backend returns { accessToken, user }
+    - saveToken(accessToken) + saveUser(user) → stored in localStorage
+    - On every page load → AuthContext reads localStorage → sets authed = true/false
+    - Logout → clearToken() + clearUser() → authed = false → redirect to /
+
+16. *** Note about Protected Routes ***
+    - ProtectedRoute in App.jsx checks isAuthenticated() (= !!getToken())
+    - If no token → redirect to /login
+    - After login → redirect back to protected page
+
