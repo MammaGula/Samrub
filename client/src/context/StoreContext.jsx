@@ -4,40 +4,37 @@ import axios from "axios";
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
-  // json-server URL (will change to Express backend port 4000 later)
-  // const url = "http://localhost:3000";
+  // 1. Backend URL
   const url = "http://localhost:4000";
 
   // 2. States shared across the app
-  const [foodList, setFoodList] = useState([]); // all food items from backend
+  const [foodList, setFoodList] = useState([]); // all food items from backend (RAM only)
 
   // 3. cartItems: lazy initializer — reads from localStorage immediately on first render
-  // keep id and quantity of each item in cart (e.g. { 1: 2, 3: 1 }
+  // keeps id and quantity of each item in cart (e.g. { "abc123": 2, "def456": 1 })
   const [cartItems, setCartItems] = useState(() => {
     const saved = localStorage.getItem("cartItems");
     return saved ? JSON.parse(saved) : {}; // return object
   });
 
   // 4. favorites: lazy initializer — same pattern as cartItems
+  // keeps array of product IDs (e.g. ["abc123", "def456"])
   const [favorites, setFavorites] = useState(() => {
     const saved = localStorage.getItem("favorites");
-    return saved ? JSON.parse(saved) : []; // return Array of itemIds (e.g. [1, 3, 5])
+    return saved ? JSON.parse(saved) : []; // return array
   });
 
-  // Note: token + user state moved to AuthContext.jsx
-  // StoreContext uses getToken() from authApi directly when calling protected API endpoints
-
   // 5. Add item to cart:
-  // - If not in cartItems → set quantity = 1
+  // - If not in cart → set quantity = 1
   // - If already exists → increment quantity by 1
   const addToCart = (itemId) => {
     setCartItems((prev) => ({
       ...prev,
       [itemId]: prev[itemId] ? prev[itemId] + 1 : 1,
-    }));
+    }));  
   };
 
-  // 6. Decrease item quantity in cart
+  // 6. Decrease item quantity in cart:
   // - If quantity is 1 → remove from cart entirely
   // - If greater than 1 → decrement quantity by 1
   const removeFromCart = (itemId) => {
@@ -63,21 +60,12 @@ const StoreContextProvider = (props) => {
   // 8. Calculate total price in cart:
   // Loop through each itemId in cartItems → find item in foodList → multiply price × quantity
   const getTotalCartAmount = () => {
-    // Total: sum of (price × quantity) for all items in cart
     let total = 0;
-
-    // key:value = itemId:quantity
-    // for-in loop: loop through keys (itemId) in cartItems
     for (const itemId in cartItems) {
-      // - For json-server: itemId is string, but food.id is number → convert food.id to string for comparison
-      // const item = foodList.find((food) => food.id === Number(itemId));
-
-      // - For MongoDB:itemId and food.id are both strings (MongoDB ObjectId) — compare directly
+      // itemId and food.id are both strings (MongoDB ObjectId) — compare directly
       const item = foodList.find((food) => food.id === itemId);
-
-      // If item exists in foodList and quantity > 0 → add to total
       if (item && cartItems[itemId] > 0) {
-        total += item.price * cartItems[itemId]; // key[] = value
+        total += item.price * cartItems[itemId];
       }
     }
     return total;
@@ -92,48 +80,26 @@ const StoreContextProvider = (props) => {
     return count;
   };
 
-  // 10. Toggle favorites
-  // If itemId is already in favorites → remove it
-  // If not → add it
-  // TODO (future): sync favorites with backend when user is logged in
-  //   - if authed → POST /api/favorites (add) or DELETE /api/favorites/:productId (remove)
-  //   - on login → fetch GET /api/favorites and replace localStorage favorites with DB data
-  //   - Backend API is ready: favoriteRoutes.js + favoriteController.js
+  // 10. Clear cart after a successful order
+  const clearCart = () => setCartItems({});
+
+  // 11. Check if a product is in favorites (returns true/false)
+  const isFavorite = (itemId) => favorites.includes(itemId);
+
+  // 12. Toggle favorite:
+  // - If already in favorites → remove it (filter out the itemId)
+  // - If not → add it
   const toggleFavorite = (itemId) => {
-    // Check if itemId is already in favorites: prev= array of favorite itemIds
     setFavorites((prev) =>
       prev.includes(itemId)
-        ? //If already in favorites → remove it by filtering out the itemId(create a new array without that itemId)
-          prev.filter((id) => id !== itemId)
+        ? prev.filter((id) => id !== itemId)
         : [...prev, itemId],
     );
   };
 
-  // 11. Check if an itemId is in favorites (returns true/false)
-  const isFavorite = (itemId) => favorites.includes(itemId);
-
-  // 12. Fetch food list from backend
-  const fetchFoodList = async () => {
-    try {
-      const response = await axios.get(url + "/api/products");
-      setFoodList(response.data);
-    } catch (error) {
-      console.error("Failed to fetch food list:", error);
-    }
-  };
-
-  // 13. Clear cart after a successful order
-  const clearCart = () => {
-    setCartItems({});
-  };
-
-  // 14. Load data on app startup
-  // - fetch food list
-  // - if token exists in localStorage → restore session (user stays logged in)
-  // - if favorites exist in localStorage → restore favorites
+  // 13. Fetch food list from backend on app startup
   useEffect(() => {
-    // Fetch food list directly inside useEffect (avoids ESLint warning)
-    const loadData = async () => {
+    const loadFoodList = async () => {
       try {
         const response = await axios.get(url + "/api/products");
         setFoodList(response.data);
@@ -141,25 +107,20 @@ const StoreContextProvider = (props) => {
         console.error("Failed to fetch food list:", error);
       }
     };
-    loadData();
-
-    // Note: token is handled by AuthContext — no need to load it here
-    // cartItems and favorites are loaded via lazy useState initializer above
-    // No need to read them here — avoids race condition with save effects
+    loadFoodList();
   }, []);
 
-  // 13. Persist favorites to localStorage whenever it changes
-  useEffect(() => {
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-  }, [favorites]);
-
-  // 13b. Persist cartItems to localStorage whenever it changes
+  // 14. Persist cartItems to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
-  // 14. Collect all values and functions to share with every component
-  // Note: token + user removed — use useAuth() from AuthContext instead
+  // 15. Persist favorites to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
+
+  // 16. Collect all values and functions to share with every component
   const contextValue = {
     url,
     foodList,
@@ -170,16 +131,12 @@ const StoreContextProvider = (props) => {
     deleteFromCart,
     getTotalCartAmount,
     getTotalCartCount,
-    toggleFavorite,
-    isFavorite,
     clearCart,
+    isFavorite,
+    toggleFavorite,
   };
 
-  {
-    /* Returns : Values/ Methods shared across the app */
-  }
   return (
-    // Value: all states + functions that we want to share across the app go here
     <StoreContext.Provider value={contextValue}>
       {props.children}
     </StoreContext.Provider>

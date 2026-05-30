@@ -5,31 +5,28 @@ const Product = require("../models/productModel");
 const { constants } = require("../../constants");
 
 // ==================================================
-// 1. GET /api/products  (optional ?category=Starter)
+// 1. GET /api/products
 // ==================================================
 
 //@desc get all products
 //@route GET /api/products
 //@access public
 
-const getProducts = asyncHandler(async (req, res) => {
-  const { category } = req.query; // Read query from URL
-  const filter = category ? { category } : {}; // If category exists, filter by category, else no filter (all products)
-  // Find products with filter from MongoDB
-  // (if category specified, only return products in that category, otherwise return all)
-  const products = await Product.find(filter);
-  res.json(products); // Send products as JSON response to frontend
-});
 
-// User clicks "Starter"
-//       ↓
-// React sends axios.get("/api/products?category=Starter")
-//       ↓
-// Express receives req.query = { category: "Starter" }
-//       ↓
-// MongoDB find({ category: "Starter" })
-//       ↓
-// send products back to frontend
+const getProducts = asyncHandler(async (req, res) => {
+  // Currently filtering by category is done in the frontend (FoodDisplay.jsx).
+  // This is fine for a small dataset — all products are fetched once and filtered in the browser.
+
+  // --- Backend filter (available if dataset grows large) ---
+  // Uncomment below and remove Product.find({}) to switch to backend filtering:
+  // const { category } = req.query;
+  // const filter = category ? { category } : {};
+  // const products = await Product.find(filter);
+  // ---------------------------------------------------------
+
+  const products = await Product.find({}); // Fetch all products from MongoDB without filtering (filtering is done in frontend)
+  res.json(products);
+});
 
 // =========================
 // 2. GET /api/products/:id
