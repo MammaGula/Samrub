@@ -157,14 +157,13 @@ const Payment = () => {
     setSubmitting(true);
 
     // ─ Order payload — POST to Express backend /api/orders ─
-    // TODO: POST to Express backend /api/orders when ready ✅ done
-    // const res = await axios.post("/api/orders", orderPayload)
-    // console.log("Order placed:", orderPayload);
     const orderPayload = {
       delivery: formData, // { name, email, phone, address } — matches orderModel delivery fields
       payment: {
         method: paymentMethod,
-        cardData: paymentMethod === "card" ? cardData : null,
+        cardNumber: paymentMethod === "card" ? cardData.cardNumber : null,
+        expiry: paymentMethod === "card" ? cardData.expiry : null,
+        cvv: paymentMethod === "card" ? cardData.cvv : null,
         swishNumber: paymentMethod === "swish" ? swishNumber : null,
       },
       items: cartFoodItems.map((item) => ({

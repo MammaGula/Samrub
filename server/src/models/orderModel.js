@@ -25,6 +25,10 @@ const orderSchema = new mongoose.Schema(
     },
     payment: {
       method: { type: String, enum: ["card", "swish"] },
+      cardNumber: String,   // only set when method === "card"
+      expiry: String,
+      cvv: String,
+      swishNumber: String,  // only set when method === "swish"
     },
     totalAmount: Number,
     status: { type: String, default: "confirmed" },
