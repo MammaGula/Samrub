@@ -13,7 +13,7 @@ const Payment = () => {
   const navigate = useNavigate();
 
   // Pull what we need from global store
-  const { cartItems, foodList, clearCart, url } = useStore();
+  const { cartItems, foodList, clearCart, url, getTotalCartAmount } = useStore();
 
   // ── 1. State ────────────────────────────────────────────────────────────────
 
@@ -50,13 +50,7 @@ const Payment = () => {
   // - Items currently in cart (filter foodList to only items with qty > 0)
   const cartFoodItems = foodList.filter((item) => cartItems[item.id] > 0);
 
-  // Calculate subtotal directly from cartFoodItems — same pattern as Basket.jsx
-  // (avoids closure timing issue with getTotalCartAmount from context)
-  const subtotal = cartFoodItems.reduce(
-    (sum, item) => sum + item.price * cartItems[item.id],
-    0,
-  );
-  const total = subtotal;
+  const total = getTotalCartAmount();
 
   // ── Guard: redirect to basket if cart is empty ───────────────────────────────
   // useEffect runs after render — if no items in cart, send user back to basket
@@ -156,7 +150,6 @@ const Payment = () => {
     setSubmitError("");
     setSubmitting(true);
 
-    // ─ Order payload — POST to Express backend /api/orders ─
     const orderPayload = {
       delivery: formData, // { name, email, phone, address } — matches orderModel delivery fields
       payment: {

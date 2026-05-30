@@ -6,22 +6,15 @@ import "./Basket.css";
 
 // Get data from StoreContext:
 const Basket = () => {
-  const { cartItems, foodList, addToCart, removeFromCart, deleteFromCart } =
+  const { cartItems, foodList, addToCart, removeFromCart, deleteFromCart, getTotalCartAmount } =
     useStore();
 
   const navigate = useNavigate();
 
   // Only show items that are actually in the cart (quantity > 0)
-  // Card showing in Basket and foodList are the same, just filtered by cartItems
-  // (Array of objects: id, name, price, image, category)
   const cartFoodItems = foodList.filter((item) => cartItems[item.id] > 0);
 
-  // Calculate total directly from cartFoodItems (same foodList + cartItems Basket already has)
-  // .reduce() to sum up = sum + (price × quantity) for each item in cart
-  const subtotal = cartFoodItems.reduce(
-    (sum, item) => sum + item.price * cartItems[item.id],
-    0,
-  );
+  const subtotal = getTotalCartAmount();
 
   // ── Empty basket state ──
   // If cartFoodItems is empty → show empty state with icon, text, and button to go back to menu

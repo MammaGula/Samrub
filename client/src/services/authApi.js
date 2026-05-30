@@ -117,8 +117,3 @@ export const registerRequest = (userData) =>
     method: "POST",
     body: JSON.stringify(userData),
   });
-
-// 5.3 Get current user: GET /api/users/current
-// Requires: Bearer token in Authorization header
-// Returns: { id, username, email }
-export const currentUserRequest = () => authRequest("/api/users/current");
