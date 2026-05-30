@@ -148,6 +148,17 @@
 
 /* Place Order button — now using reusable <Button> component (Button.jsx/css) */
 
+/* ── Tablet ── */
+@media (max-width: 1024px) {
+  .payment__section {
+    width: 90%;
+  }
+
+  .payment__footer {
+    width: 90%;
+  }
+}
+
 /* ── 9. Mobile (390px) ── */
 @media (max-width: 768px) {
   /* Page wrapper — background image covers 390×938px */
