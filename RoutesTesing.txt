@@ -1,0 +1,70 @@
+***********<Thunder Client>***************
+
+1. User
+    1.1 Register User: POST http://localhost:4000/api/users/register
+    
+    {
+  "username": "testuser",
+  "email": "test@test.com",
+  "password": "password123"
+   }
+
+    1.2 Login User: POST http://localhost:4000/api/users/login
+
+    {
+  "email": "test@test.com",
+  "password": "password123"
+    }
+
+    1.3 Get currentUser: GET http://localhost:4000/api/users/current
+
+    Authorization: Bearer <token>
+---------------------------------------------------------------------
+
+2. Products
+
+  2.1 Get allProducts: GET http://localhost:4000/api/products
+  
+  2.2 Get Product by ID: GET http://localhost:4000/api/products/:_id (6a17a513cc88b3ba636633ee >> from MongoDB)
+
+---------------------------------------------------------------------
+
+3. Orders¨
+
+  3.1 Place Order: POST http://localhost:4000/api/orders
+
+  {
+  "items": [{ "productId": "<idFromMongoDb>", "quantity": 2 }],
+  "totalAmount": 240,
+  "deliveryInfo": {
+    "name": "Test User",
+    "email": "test@test.com",
+    "phone": "0812345678"
+  },
+  "paymentMethod": "card"
+}
+
+  3.2 Get My Ordesr: GET http://localhost:4000/api/orders/my
+
+    Authorization: Bearer <token>
+
+--------------------------------------------------------------------
+
+4. Favorites (Require Token)
+
+  4.1 Get My Favorites: GET http://localhost:4000/api/favorites
+    
+    Authorization: Bearer <token>
+
+  4.2 Add Favorite: POST http://localhost:4000/api/favorites
+    
+    Authorization: Bearer <token>
+    {
+      "productId": "6a17a513cc88b3ba636633ec"
+    }
+
+  4.3 Remove Favorite: DELETE http://localhost:4000/api/favorites/:productId
+    
+    http://localhost:4000/api/favorites/6a17a513cc88b3ba636633ec
+
+     Authorization: Bearer <token>
