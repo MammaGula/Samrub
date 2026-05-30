@@ -83,6 +83,12 @@ const StoreContextProvider = (props) => {
   // 10. Clear cart after a successful order
   const clearCart = () => setCartItems({});
 
+  // 10b. Clear favorites from state + localStorage (called on logout)
+  const clearFavorites = () => {
+    setFavorites([]);
+    localStorage.removeItem("favorites");
+  };
+
   // 11. Check if a product is in favorites (returns true/false)
   const isFavorite = (itemId) => favorites.includes(itemId);
 
@@ -132,6 +138,7 @@ const StoreContextProvider = (props) => {
     getTotalCartAmount,
     getTotalCartCount,
     clearCart,
+    clearFavorites,
     isFavorite,
     toggleFavorite,
   };
