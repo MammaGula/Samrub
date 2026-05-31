@@ -23,6 +23,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 90px;  /* Figma: gap between hero and strips */
 }
 
 /* Frosted glass card — Figma: 501×216, --bg-grey-tint, radius 10 */
@@ -170,6 +171,7 @@
 
   .home__hero {
     height: 269px;
+    margin-bottom: 36px; /* Figma mobile: gap between hero and strips */
   }
 
   .home__hero-card {
