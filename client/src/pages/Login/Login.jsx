@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // Get login function from AuthContext to update auth state on successful login
 import { useAuth } from "../../context/AuthContext";
+import { useStore } from "../../context/StoreContext";
 // API call to backend(POST) → returns token + user data if successful, or throws error
 import { loginRequest } from "../../services/authApi";
 
@@ -18,9 +19,9 @@ import "./Login.css";
 const Login = () => {
   const navigate = useNavigate();
 
-  // 1. Get login function from AuthContext
-  // login(token, user) → saves to localStorage + updates React state
+  // 1. Get login function from AuthContext + loadFavorites from StoreContext
   const { login } = useAuth();
+  const { loadFavorites } = useStore();
 
   // 2. Form state — controlled inputs, keep track of username + password
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -48,6 +49,9 @@ const Login = () => {
 
       // If Login successful, save token + user → AuthContext updates authed state + navbar re-renders
       login(data.accessToken, data.user);
+
+      // Fetch favorites from backend now that token is saved
+      await loadFavorites();
 
       // Redirect to home after successful login
       navigate("/");

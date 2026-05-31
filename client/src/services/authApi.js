@@ -117,3 +117,27 @@ export const registerRequest = (userData) =>
     method: "POST",
     body: JSON.stringify(userData),
   });
+
+// ======================
+// 6. FAVORITE REQUESTS (all require token)
+// ======================
+
+// 6.1 Get all favorites for logged in user
+// Returns: [{ _id, userId, productId: { ...productData } }]
+export const getFavoritesRequest = () =>
+  authRequest("/api/favorites");
+
+// 6.2 Add a favorite
+// body: { productId }
+export const addFavoriteRequest = (productId) =>
+  authRequest("/api/favorites", {
+    method: "POST",
+    body: JSON.stringify({ productId }),
+  });
+
+// 6.3 Remove a favorite
+// DELETE /api/favorites/:productId
+export const removeFavoriteRequest = (productId) =>
+  authRequest(`/api/favorites/${productId}`, {
+    method: "DELETE",
+  });

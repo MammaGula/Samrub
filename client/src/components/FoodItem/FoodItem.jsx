@@ -1,10 +1,23 @@
 import { Icon } from "@iconify/react";
+import { useNavigate } from "react-router-dom";
 import { useStore } from "../../context/StoreContext";
+import { useAuth } from "../../context/AuthContext";
 import "./FoodItem.css";
 
 const FoodItem = ({ item }) => {
   const { cartItems, addToCart, removeFromCart, toggleFavorite, isFavorite } =
     useStore();
+  const { authed } = useAuth();
+  const navigate = useNavigate();
+
+  // If guest clicks heart → redirect to login instead of toggling
+  const handleFavoriteClick = () => {
+    if (!authed) {
+      navigate("/login");
+      return;
+    }
+    toggleFavorite(item.id);
+  };
 
   return (
     <div className="food-item">
@@ -41,7 +54,7 @@ const FoodItem = ({ item }) => {
       <div className="food-item__info">
         <button
           className={`food-item__fav ${isFavorite(item.id) ? "food-item__fav--active" : ""}`}
-          onClick={() => toggleFavorite(item.id)}
+          onClick={handleFavoriteClick}
         >
           {/* If active, show filled heart icon */}
           <Icon

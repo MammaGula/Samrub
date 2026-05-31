@@ -36,9 +36,10 @@ const Favorites = () => {
         <div className="favorites__frame">
           {favoriteItems.length === 0 ? (
             // Empty state — when no items are favorited
-            <p className="favorites__empty">
-              No favorites yet. Go explore the menu!
-            </p>
+            <div className="favorites__empty">
+              <p>No favorites yet. Go explore the menu!</p>
+              <Button onClick={() => navigate("/menu")}>Go to Menu</Button>
+            </div>
           ) : (
             // Grid — 3 columns, row-gap/column-gap 30px (from Figma)
             <div className="favorites__grid">

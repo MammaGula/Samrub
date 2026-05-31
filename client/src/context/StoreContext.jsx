@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { isAuthenticated, getFavoritesRequest, addFavoriteRequest, removeFavoriteRequest } from "../services/authApi";
 
 export const StoreContext = createContext(null);
 
@@ -17,12 +18,9 @@ const StoreContextProvider = (props) => {
     return saved ? JSON.parse(saved) : {}; // return object
   });
 
-  // 4. favorites: lazy initializer — same pattern as cartItems
-  // keeps array of product IDs (e.g. ["abc123", "def456"])
-  const [favorites, setFavorites] = useState(() => {
-    const saved = localStorage.getItem("favorites");
-    return saved ? JSON.parse(saved) : []; // return array
-  });
+  // 4. favorites: array of product IDs (e.g. ["abc123", "def456"])
+  // Loaded from backend on login — not localStorage (favorites are per-user in MongoDB)
+  const [favorites, setFavorites] = useState([]);
 
   // 5. Add item to cart:
   // - If not in cart → set quantity = 1
@@ -83,27 +81,30 @@ const StoreContextProvider = (props) => {
   // 10. Clear cart after a successful order
   const clearCart = () => setCartItems({});
 
-  // 10b. Clear favorites from state + localStorage (called on logout)
-  const clearFavorites = () => {
-    setFavorites([]);
-    localStorage.removeItem("favorites");
-  };
+  // 10b. Clear favorites from state (called on logout)
+  const clearFavorites = () => setFavorites([]);
 
   // 11. Check if a product is in favorites (returns true/false)
   const isFavorite = (itemId) => favorites.includes(itemId);
 
-  // 12. Toggle favorite:
-  // - If already in favorites → remove it (filter out the itemId)
-  // - If not → add it
-  const toggleFavorite = (itemId) => {
-    setFavorites((prev) =>
-      prev.includes(itemId)
-        ? prev.filter((id) => id !== itemId)
-        : [...prev, itemId],
-    );
+  // 12. Toggle favorite — syncs with backend (requires login)
+  // - If already in favorites → DELETE from backend + remove from state
+  // - If not → POST to backend + add to state
+  const toggleFavorite = async (itemId) => {
+    try {
+      if (favorites.includes(itemId)) {
+        await removeFavoriteRequest(itemId);
+        setFavorites((prev) => prev.filter((id) => id !== itemId));
+      } else {
+        await addFavoriteRequest(itemId);
+        setFavorites((prev) => [...prev, itemId]);
+      }
+    } catch (error) {
+      console.error("Failed to toggle favorite:", error);
+    }
   };
 
-  // 13. Fetch food list from backend on app startup
+  // 13. Fetch food list from backend on app startup (once)
   useEffect(() => {
     const loadFoodList = async () => {
       try {
@@ -121,12 +122,36 @@ const StoreContextProvider = (props) => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
-  // 15. Persist favorites to localStorage whenever it changes
+  // 15. Fetch favorites from backend on app load if user is already logged in
+  // (handles page refresh while still logged in — token is in localStorage)
   useEffect(() => {
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-  }, [favorites]);
+    const loadFavorites = async () => {
+      if (!isAuthenticated()) return;
+      try {
+        const data = await getFavoritesRequest();
+        // Backend returns [{ _id, userId, productId: { ...product } }]
+        // Extract productId._id (string) to match food.id in foodList
+        const ids = data.map((fav) => fav.productId._id || fav.productId);
+        setFavorites(ids);
+      } catch (error) {
+        console.error("Failed to load favorites:", error);
+      }
+    };
+    loadFavorites();
+  }, []);
 
-  // 16. Collect all values and functions to share with every component
+  // 16. Fetch favorites from backend — called from Login.jsx after successful login
+  const loadFavorites = async () => {
+    try {
+      const data = await getFavoritesRequest();
+      const ids = data.map((fav) => fav.productId._id || fav.productId);
+      setFavorites(ids);
+    } catch (error) {
+      console.error("Failed to load favorites:", error);
+    }
+  };
+
+  // 17. Collect all values and functions to share with every component
   const contextValue = {
     url,
     foodList,
@@ -141,6 +166,7 @@ const StoreContextProvider = (props) => {
     clearFavorites,
     isFavorite,
     toggleFavorite,
+    loadFavorites,
   };
 
   return (
