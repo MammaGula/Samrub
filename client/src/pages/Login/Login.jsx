@@ -41,6 +41,13 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault(); // prevent page refresh on submit
     setError("");
+
+    // Client-side validation — check fields are not empty before calling backend
+    if (!formData.email.trim() || !formData.password.trim()) {
+      setError("Please fill in all fields");
+      return;
+    }
+
     setLoading(true);
 
     try {

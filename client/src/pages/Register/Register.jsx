@@ -38,7 +38,23 @@ const Register = () => {
     e.preventDefault(); // prevent page refresh on submit
     setError("");
 
-    // 4.1 Client-side validation — check passwords match before calling API
+    // 4.1 Client-side validation
+    if (!formData.username.trim() || !formData.email.trim() || !formData.password.trim()) {
+      setError("Please fill in all fields");
+      return;
+    }
+
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
+    if (!emailOk) {
+      setError("Invalid email format");
+      return;
+    }
+
+    if (formData.password.length < 6) {
+      setError("Password must be at least 6 characters");
+      return;
+    }
+
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match");
       return;
