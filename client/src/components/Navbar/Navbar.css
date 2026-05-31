@@ -16,7 +16,7 @@
   justify-content: space-between;
   height: 134px;
   padding: 0 24px 0 25px;
-  background-color: rgba(25, 25, 25, 0.7);
+  background-color: var(--bg-navbar);
   backdrop-filter: blur(6px);
 }
 
@@ -137,7 +137,7 @@
   position: absolute;
   top: 134px;
   left: 0;
-  background-color: rgba(25, 25, 25, 0.95);
+  background-color: rgba(25, 25, 25, 0.95); /* slightly darker than --bg-navbar for scroll state */
   width: 220px;
   display: flex;
   flex-direction: column;

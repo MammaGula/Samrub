@@ -18,13 +18,13 @@
 }
 
 /* ── 2. Content panel — dark semi-transparent, wraps content only ──
-   Figma: background rgba(25,25,25,0.70), centered column, gap 80px between sections */
+   Figma: background var(--bg-navbar), centered column, gap 80px between sections */
 .payment__content {
   width: 100%;
   max-width: 903px; /* Figma: Overall-frame width */
   /* no min-height: 100vh — let content determine height naturally */
 
-  background: rgba(25, 25, 25, 0.7); /* Figma: --Black at 70% */
+  background: var(--bg-navbar);
 
   padding: 71px 0; /* Figma: 71px top and bottom */
   display: flex;

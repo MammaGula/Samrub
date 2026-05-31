@@ -33,7 +33,7 @@
 }
 
 /* ── + Add button — absolute bottom-right of image ── */
-/* Figma: 50×50px, border 2px solid #FFF3D6, "+" color #ffffff, bottom:26px right:16px */
+/* Figma: 50×50px, border 2px solid --weak-yellow, "+" color --white, bottom:26px right:16px */
 .food-item__add-btn {
   position: absolute;
   bottom: 26px;
@@ -47,7 +47,7 @@
   align-items: center;
   justify-content: center;
   font-size: 24px;
-  color: #ffffff;
+  color: var(--white);
   cursor: pointer;
   transition: background 0.15s ease;
 }

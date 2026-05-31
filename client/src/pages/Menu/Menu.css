@@ -107,7 +107,7 @@
    RESPONSIVE — Mobile (Figma: 390px wide)
    Hero: flex-direction column, justify-content center,
          align-items flex-end, gap 150px
-   Slogan: background rgba(25,25,25,0.70) — darker than desktop
+   Slogan: background var(--bg-navbar)
    ══════════════════════════════════════════════ */
 @media (max-width: 768px) {
   .menu {
@@ -128,7 +128,7 @@
   .menu__hero-slogan {
     width: 100%;
     height: 48px;
-    background: rgba(25, 25, 25, 0.7); /* darker on mobile — from Figma */
+    background: var(--bg-navbar);
   }
 
   .menu__hero-slogan p {
