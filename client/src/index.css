@@ -3,27 +3,34 @@
 /* root: Define as CSS variables for easy use throughout the app */
 :root {
   /* Colors from Figma — verified against Figma color styles */
-  --grey: #565756;          /* Figma: grey */
-  --light-grey: #d5d5d5;    /* Figma: lightGrey (NEW) — for input borders, muted elements */
-  --dark-grey: #2a2a2a;     /* Figma: DarkGrey ← was #303030, corrected to #2A2A2A */
-  --orange: #ffb639;        /* Figma: Orange */
-  --weak-orange: #ffcd60;   /* Figma: WeakOrange (NEW) — lighter orange tint */
-  --weak-yellow: #fff3d6;   /* Figma: WeakYellow */
-  --dark-green: #162516;    /* Figma: DarkGreen */
-  --medium-green: #008e02;  /* Figma: MediumGreen */
-  --pink: #e91e8c;           /* Figma: Colors/Pink — heart icon, favorites */
+  --grey: #565756;          /*  grey */
+  --light-grey: #d5d5d5;    /*  lightGrey (NEW) — for input borders, muted elements */
+  --dark-grey: #2a2a2a;     /*  DarkGrey ← was #303030, corrected to #2A2A2A */
+  --orange: #ffb639;        /*  Orange */
+  --weak-orange: #ffcd60;   /*  WeakOrange (NEW) — lighter orange tint */
+  --weak-yellow: #fff3d6;   /*  WeakYellow */
+  --dark-green: #162516;    /*  DarkGreen */
+  --medium-green: #008e02;  /*  MediumGreen */
+  --pink: #e91e8c;           /*  Colors/Pink — heart icon, favorites */
   --white: #ffffff;
-  --black: #191919;         /* Figma: Black base color ← was #1a1a1a, corrected to #191919 */
+  --black: #191919;         /*  Black base color ← was #1a1a1a, corrected to #191919 */
 
   /* Shortcuts for common use */
-  --bg-page: var(--dark-grey);        /* Global page background (#2A2A2A) */
-  --bg-navbar: rgba(25, 25, 25, 0.7); /* Navbar + Footer background */
-  --bg-card: rgba(48, 48, 48, 0.65);  /* Login/Register card background */
-  --bg-light: var(--weak-yellow);     /* Light background sections */
-  --accent: var(--orange);            /* Primary color for buttons, highlights */
-  --accent-hover: #e69e20;            /* Darker accent for hover states */
-  --text-main: var(--weak-yellow);    /* Text on dark background */
-  --text-dark: var(--grey);           /* Secondary text */
+  --bg-page: var(--dark-grey);           /* all pages background */
+  --bg-navbar: rgba(25, 25, 25, 0.7);   /* Navbar.css, Footer.css */
+  --bg-dropdown: rgba(25, 25, 25, 0.95); /* Navbar.css — hamburger dropdown */
+  --bg-card: rgba(48, 48, 48, 0.65);    /* Login.css, Register.css, Confirmation.css */
+  --bg-light: var(--weak-yellow);        /* light section backgrounds */
+  --bg-orange-tint: rgba(255, 182, 57, 0.15); /* Basket.css — items panel */
+  --bg-pink-tint: rgba(255, 45, 85, 0.15);    /* Favorites.css — header strip */
+  --bg-grey-tint: rgba(86, 87, 86, 0.15);     /* Home.css — hero card */
+  --accent: var(--orange);               /* buttons, highlights */
+  --accent-hover: #e69e20;               /* button hover */
+  --text-main: var(--weak-yellow);       /* text on dark background */
+  --text-dark: var(--grey);              /* secondary text */
+  --text-muted: rgba(255, 243, 214, 0.45); /* Menu.css search placeholder, Payment.css radio border */
+  --error: #ff6b6b;                      /* InputField.css, Login.css, Register.css, Payment.css */
+  --success: #4caf50;                    /* Register.css — success message */
 
   /* Utility */
   --shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* offset-x = 0, offset-y = 2px, blur = 8px */

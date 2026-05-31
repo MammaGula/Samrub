@@ -26,7 +26,7 @@
 .menu__hero-slogan {
   width: 587px;
   height: 56px;
-  background: rgba(86, 87, 86, 0.3); /* #565756 at 30% — from Figma */
+  background: rgba(86, 87, 86, 0.3); /* --bg-grey-tint doubled — Figma slogan bar 30% */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,7 +84,7 @@
 }
 
 .menu__search-input::placeholder {
-  color: rgba(255, 243, 214, 0.45);
+  color: var(--text-muted);
 }
 
 .menu__search-clear {

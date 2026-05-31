@@ -61,7 +61,7 @@
 .login__error {
   font-family: var(--font-body);
   font-size: 14px;
-  color: #ff4d4d;
+  color: var(--error);
   margin: 0;
 }
 

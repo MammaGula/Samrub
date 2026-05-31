@@ -25,13 +25,13 @@
   justify-content: center;
 }
 
-/* Frosted glass card — Figma: 501×216, rgba(86,87,86,0.15), radius 10 */
+/* Frosted glass card — Figma: 501×216, --bg-grey-tint, radius 10 */
 .home__hero-card {
   position: relative;
   z-index: 1; /* Ensure card is above background image */
   width: clamp(280px, 30%, 420px); /* Responsive width: min 280px, max 420px, ideal 30% of container */
   min-height: auto;
-  background: rgba(86, 87, 86, 0.15); /* semi-transparent dark grey */
+  background: var(--bg-grey-tint);
   backdrop-filter: blur(10px); /* Frosted glass effect */
   -webkit-backdrop-filter: blur(10px); /* Safari support */
   border: 1px solid rgba(255, 255, 255, 0.15); /* subtle white border for definition */

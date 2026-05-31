@@ -93,7 +93,7 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 243, 214, 0.4);
+  border: 2px solid var(--text-muted);
   flex-shrink: 0;
   transition:
     background 0.2s,
@@ -119,12 +119,12 @@
   align-items: center; /* center the button horizontally */
   gap: 30px;
   padding-top: 80px;
-  border-top: 1px dashed rgba(255, 243, 214, 0.3);
+  border-top: 1px dashed var(--text-muted);
 }
 
 /* Error message shown when backend rejects the order */
 .payment__submit-error {
-  color: #ff6b6b;
+  color: var(--error);
   font-size: 14px;
   text-align: center;
   margin: 0;

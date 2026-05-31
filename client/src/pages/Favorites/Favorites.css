@@ -21,7 +21,7 @@
 /* Figma: width 1440px, padding 24px 1003px 24px 70px, rgba(255,45,85,0.15) */
 .favorites__header {
   width: 100%;
-  background: rgba(255, 45, 85, 0.15);
+  background: var(--bg-pink-tint);
   padding: 24px 70px;
   flex-shrink: 0;
 }
@@ -72,7 +72,7 @@
   justify-content: flex-start;
   align-items: center;
   gap: 62px;
-  background: rgba(48, 48, 48, 0.5);
+  background: rgba(48, 48, 48, 0.5); /* slightly lighter than --bg-card (0.65) */
   border-radius: 12px;
   box-sizing: border-box;
 }
@@ -121,7 +121,7 @@
   .favorites__header {
     height: 46px;
     padding: 10px 16px;
-    background: rgba(255, 45, 85, 0.15);
+    background: var(--bg-pink-tint);
     display: flex;
     align-items: center;
   }

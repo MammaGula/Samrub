@@ -137,7 +137,7 @@
   position: absolute;
   top: 134px;
   left: 0;
-  background-color: rgba(25, 25, 25, 0.95); /* slightly darker than --bg-navbar for scroll state */
+  background-color: var(--bg-dropdown);
   width: 220px;
   display: flex;
   flex-direction: column;

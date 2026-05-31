@@ -45,7 +45,7 @@
 
 /* 4. Placeholder text */
 .input-field__input::placeholder {
-  color: rgba(213, 213, 213, 0.45); /* lightGrey at 45% */
+  color: var(--text-muted);
 }
 
 /* 5. Focus state — orange border + subtle glow */
@@ -58,13 +58,13 @@
 
 /* 6. Error state — red border when validation fails */
 .input-field__input--error {
-  border-color: #ff6b6b;
+  border-color: var(--error);
 }
 
 /* 7. Error message text */
 .input-field__error {
   font-size: 12px;
-  color: #ff6b6b;
+  color: var(--error);
   margin-top: -12px; /* pull closer to input since gap is 21px */
 }
 
