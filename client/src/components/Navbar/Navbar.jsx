@@ -6,7 +6,7 @@ import { useAuth } from "../../context/AuthContext";
 import "./Navbar.css";
 
 const Navbar = () => {
-  const { getTotalCartCount, clearFavorites } = useStore();
+  const { getTotalCartCount, clearFavorites, clearCart } = useStore();
   // authed: true/false — used to show Sign In or Sign Out button
   // logout: clears token + user from localStorage and React state
   const { authed, logout } = useAuth();
@@ -24,6 +24,7 @@ const Navbar = () => {
   const handleSignOut = () => {
     logout();
     clearFavorites();
+    clearCart();
     navigate("/");
     closeMenu();
   };
