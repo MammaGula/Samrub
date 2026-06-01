@@ -1,36 +1,45 @@
-/* ===== CSS Variables - Samrub Color Theme (following Figma) ===== */
+/* ===== Global Style : CSS variables, reset, base styles - Samrub Color Theme (following Figma) ===== */
 
 /* root: Define as CSS variables for easy use throughout the app */
 :root {
-  /* Colors from Figma — verified against Figma color styles */
-  --grey: #565756;          /*  grey */
-  --light-grey: #d5d5d5;    /*  lightGrey (NEW) — for input borders, muted elements */
-  --dark-grey: #2a2a2a;     /*  DarkGrey ← was #303030, corrected to #2A2A2A */
-  --orange: #ffb639;        /*  Orange */
-  --weak-orange: #ffcd60;   /*  WeakOrange (NEW) — lighter orange tint */
-  --weak-yellow: #fff3d6;   /*  WeakYellow */
-  --dark-green: #162516;    /*  DarkGreen */
-  --medium-green: #008e02;  /*  MediumGreen */
-  --pink: #e91e8c;           /*  Colors/Pink — heart icon, favorites */
+  --grey: #565756;
+  --light-grey: #d5d5d5; /*  for input borders, muted elements */
+  --dark-grey: #2a2a2a;
+  --orange: #ffb639;
+  --weak-orange: #ffcd60;
+  --weak-yellow: #fff3d6;
+  --dark-green: #162516;
+  --medium-green: #008e02;
+  --pink: #e91e8c; /* heart icon, favorites */
   --white: #ffffff;
-  --black: #191919;         /*  Black base color ← was #1a1a1a, corrected to #191919 */
+  --black: #191919; /*  Black base color */
 
   /* Shortcuts for common use */
-  --bg-page: var(--dark-grey);           /* all pages background */
-  --bg-navbar: rgba(25, 25, 25, 0.7);   /* Navbar.css, Footer.css */
+  --bg-page: var(--dark-grey); /* all pages background */
+  --bg-navbar: rgba(25, 25, 25, 0.7); /* Navbar.css, Footer.css */
   --bg-dropdown: rgba(25, 25, 25, 0.95); /* Navbar.css — hamburger dropdown */
-  --bg-card: rgba(48, 48, 48, 0.65);    /* Login.css, Register.css, Confirmation.css */
-  --bg-light: var(--weak-yellow);        /* light section backgrounds */
+  --bg-card: rgba(
+    48,
+    48,
+    48,
+    0.65
+  ); /* Login.css, Register.css, Confirmation.css */
+  --bg-light: var(--weak-yellow); /* light section backgrounds */
   --bg-orange-tint: rgba(255, 182, 57, 0.15); /* Basket.css — items panel */
-  --bg-pink-tint: rgba(255, 45, 85, 0.15);    /* Favorites.css — header strip */
-  --bg-grey-tint: rgba(86, 87, 86, 0.15);     /* Home.css — hero card */
-  --accent: var(--orange);               /* buttons, highlights */
-  --accent-hover: #e69e20;               /* button hover */
-  --text-main: var(--weak-yellow);       /* text on dark background */
-  --text-dark: var(--grey);              /* secondary text */
-  --text-muted: rgba(255, 243, 214, 0.45); /* Menu.css search placeholder, Payment.css radio border */
-  --error: #ff6b6b;                      /* InputField.css, Login.css, Register.css, Payment.css */
-  --success: #4caf50;                    /* Register.css — success message */
+  --bg-pink-tint: rgba(255, 45, 85, 0.15); /* Favorites.css — header strip */
+  --bg-grey-tint: rgba(86, 87, 86, 0.15); /* Home.css — hero card */
+  --accent: var(--orange); /* buttons, highlights */
+  --accent-hover: #e69e20; /* button hover */
+  --text-main: var(--weak-yellow); /* main text color on dark background */
+  --text-dark: var(--grey); /* secondary text */
+  --text-muted: rgba(
+    255,
+    243,
+    214,
+    0.45
+  ); /* Menu.css searchBar-color, Payment.css-radio border */
+  --error: #ff6b6b; /* InputField.css, Login.css, Register.css, Payment.css */
+  --success: #4caf50; /* Register.css — success message */
 
   /* Utility */
   --shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* offset-x = 0, offset-y = 2px, blur = 8px */
@@ -66,10 +75,10 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth; /* Smooth scrolling for anchor links and programmatic scrolls */
 }
 
-/* ===== Global Styles ===== */
+/* ===== Global Styles (Default Styles) of Samrub ===== */
 body {
   font-family: var(--font-body);
   font-size: 16px;
@@ -80,26 +89,26 @@ body {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none; /* Remove default underline from links */
   color: inherit; /* Inherit color from parent for links */
 }
 
 /* Remove default list styles for ul and ol */
 ul,
 ol {
-  list-style: none;
+  list-style: none; /* Remove bullets and numbers from lists */
 }
 
 /* Ensure images are responsive and don't overflow their containers */
 img {
-  max-width: 100%;
-  display: block;
+  max-width: 100%; /* Scale images down to fit their containers, don't overflow */
+  display: block; /* Remove gap below images */
 }
 
 /* Style buttons with primary color and hover effect */
 button {
-  cursor: pointer;
-  border: none;
+  cursor: pointer; /* Show pointer cursor on hover */
+  border: none; /* Remove default button border */
   background: none; /* Remove default button background */
   font-family: var(--font-body);
 }
@@ -109,5 +118,5 @@ input,
 textarea,
 select {
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 16px; /* Ensure consistent font size for form elements */
 }

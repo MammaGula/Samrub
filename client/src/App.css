@@ -1,8 +1,8 @@
-/* Global styles - Main layout */
+/* ==== Central layout of Application- Default Set up for all pages - can be overridden by specific page styles ===*/
 
 /* App layout wrapper
-- .app: Whole page
-- Full height to allow footer to stick to bottom */
+- .app: Whole page, column layout to stack Navbar, main content, and Footer
+- at least Full height to allow footer to stick to bottom */
 .app {
   display: flex;
   flex-direction: column;
@@ -11,8 +11,8 @@
 
 /* Main content area: area between Navbar and Footer */
 .main-content {
-  flex: 1;            /* Take up remaining space to push footer down */
-  padding-top: 134px; /* Start content below fixed Navbar (height 134px) */
+  flex: 1; /* Content area grows to fill available space between Navbar and Footer, Footer sticks to bottom always */
+  padding-top: 134px; /* Start content below, fixed Navbar at (height 134px) */
 }
 
 /* Responsive --> Navbar mobile: Height 51px */

@@ -20,22 +20,24 @@
 - mkdir context
 - mkdir components\Navbar
 - mkdir components\Footer
+- mkdir components\InputField
 - mkdir components\FoodItem
 - mkdir components\FoodCategory
 - mkdir components\FoodDisplay
+- mkdir components\Button
 - mkdir pages\Home
 - mkdir pages\Menu
 - mkdir pages\Basket
 - mkdir pages\Payment
 - mkdir pages\Confirmation
-- mkdir pages\Confirmation
 - mkdir pages\Favorites
 - mkdir pages\Login
 - mkdir pages\Register
+- mkdir pages\NotFound
 
 
 
-3. Check vite.config.js and package.json
+3. Check: vite.config.js &  package.json
 
 4. Project Structure
    src/
