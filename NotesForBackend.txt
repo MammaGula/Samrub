@@ -1,0 +1,98 @@
+
+
+1. Setup
+- cd Samrub/server
+- npm init -y
+
+2. Install Dependencies
+- npm install express mongoose dotenv bcryptjs jsonwebtoken cors express-async-handler
+- npm install --save-dev nodemon
+
+3. Improve package.json >> Add Scripts
+
+"scripts": {
+  "dev": "nodemon index.js",
+  "start": "node index.js"
+}
+
+4. Create .env:
+
+PORT=4000
+MONGO_URI=your_mongodb_atlas_connection_string
+JWT_SECRET=your_own_secret_key
+
+
+5. Create Server.js
+
+6. Create all project's folder (Project's structure) >>> For PowerShell:
+- mkdir src\config, src\models, src\middleware, src\routes, src\controllers 
+
+7.  MongoDB Atlas > Create Cluster > Create database > Create DatabaseName & CollectionName 
+    > Copy Connectionstring to put in .env
+
+8. Create models
+
+9. Create middlewares
+
+10. Create seed.js
+  - create file server/.env , first :  MONGO_URI=mongodb+srv://...
+  - Run seed only one time: node src/config/seed.js
+  - Run server: npm run dev
+
+11. Create folders and files for Routes and Controllers
+    (based on the data and models we plan to store in the database)
+    - Controllers: 
+      - user -> userController (register + login)
+      - favorite -> favoriteController (save, delete favorites)
+      - oders -> orderController (Order the food, see history)
+      - product -> productController (see menu , filter categories)
+
+    - Routes: userRoutes, favoriteRoutes, orderRoutes and productRoutes
+
+12. Implement Controllers and Routes
+
+13. Don't forget to improve Server.js
+    - import cors and app.use(cors());
+
+14. Change to run server in port 4000 , 
+    - improve URL in Frontend (StoreContext.jsx and authApi.js)
+------------------------------------------------------------------
+
+    1. Seed data from db.json to MongoDB:
+      - cd server
+      - node src/config/seed.js >>> " npm run seed "
+
+    2. Run app
+      2.1 Port 4000: Express Server
+        - Terminal 1: Server
+          - cd Samrub/server
+          - npm run dev
+        - Terminal 2: Frontend
+          - cd Samrub/client
+          - npm run dev
+
+    2.2 Port 3000: db.json (Under Development)
+      - Terminal 1: Server
+        - cd Samrub/server
+        - npx json-server --watch db.json --port 3000
+      - Terminal 2: Frontend
+        - cd Samrub/client
+        - npm run dev
+
+backend = http://localhost:4000
+frontend = http://localhost:5173
+------------------------------------------------------------------
+
+15. *** Note about MongoDB vs db.json IDs ***
+    - MongoDB/Mongoose returns `_id` by default.
+    - If frontend uses `item.id`, add `toJSON: { virtuals: true }` in the model so JSON response also includes `id`.
+    - json-server already provides normal `id`, so `virtuals: true` is not needed there.
+    - Frontend ID comparison must match the ID type:
+      - json-server: `food.id === Number(itemId)`
+      - MongoDB with virtual `id`: `food.id === itemId`
+
+    Files check:
+    - StoreContext.jsx
+    - productModel.js
+    - If another model later goes to frontend and also uses id, 
+    then that model may need the same virtuals: true setup too
