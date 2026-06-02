@@ -89,7 +89,8 @@
   color: var(--orange);
 }
 
-.instagram-icon {
+.instagram-icon,
+.tiktok-icon {
   width: 45px;
   height: 45px;
 }
@@ -97,11 +98,6 @@
 .facebook-icon {
   width: 40px;
   height: 40px;
-}
-
-.tiktok-icon {
-  width: 45px;
-  height: 45px;
 }
 
 /* ===== Responsive: Tablet ===== */

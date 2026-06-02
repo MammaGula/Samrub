@@ -203,3 +203,5 @@ const StoreContextProvider = (props) => {
 export const useStore = () => useContext(StoreContext);
 
 export default StoreContextProvider;
+
+// Hooks can be used only in React components or custom hooks, not in regular functions or outside of components. If you try to use a hook in a non-component function, React will throw an error because hooks rely on the React component lifecycle and context to work properly.

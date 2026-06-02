@@ -15,7 +15,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import { isAuthenticated } from "./services/authApi";
 import "./App.css";
 
-// Route guard — redirects to /login if user is not authenticated
+// Route guard(wrapper component) — redirects to /login if user is not authenticated
 // replace: true → replaces history entry so user can't press Back to sneak in
 const ProtectedRoute = ({ children }) => {
   if (!isAuthenticated()) return <Navigate to="/login" replace />;

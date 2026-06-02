@@ -1,7 +1,7 @@
 /* =============================================
    Navbar
    Desktop: height 134px, fixed top, full width
-   Mobile : height 51px
+   Mobile : height 51px, fixed top, full width
    ============================================= */
 
 /* 1. Navbar wrapper — fixed, floats above all pages */
@@ -10,14 +10,14 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 100; /* floats above all content */
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 134px;
-  padding: 0 24px 0 25px;
+  padding: 0 24px 0 25px; /* 25px left, 24px right */
   background-color: var(--bg-navbar);
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px); /* subtle blur for frosted glass effect */
 }
 
 /* 2. Hamburger button */
@@ -29,7 +29,7 @@
   display: flex;
   align-items: center;
   padding: 4px;
-  flex-shrink: 0;
+  flex-shrink: 0; /* prevents shrinking on mobile when space is tight 1= can minimize, 0= cannot minimize */
 }
 
 .hamburger:hover {
@@ -38,16 +38,18 @@
 
 /* 3. Logo — absolute center */
 .navbar-logo {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  position: absolute; /* absolute positioning allows it to be centered regardless of left/right content */
+  left: 50%; /* put the left edge at 50% of the navbar's width */
+  transform: translateX(
+    -50%
+  ); /* shift left by 50% of its own width to truly center */
   font-family: var(--font-logo);
   font-size: var(--text-logo-desktop);
   font-weight: 400;
   color: var(--weak-yellow);
-  text-decoration: none;
+  text-decoration: none; /* removes underline*/
   line-height: 1;
-  white-space: nowrap;
+  white-space: nowrap; /* prevents text from wrapping: keep text in the same line */
 }
 
 /* 4. Right icon group */
@@ -58,6 +60,7 @@
   flex-shrink: 0;
 }
 
+/* Icon links and buttons (Favorites / Basket / Sign In) */
 .navbar-icons a,
 .navbar-icons button {
   color: var(--orange);
@@ -66,7 +69,7 @@
   text-decoration: none;
 }
 
-/* Desktop icon size — Figma: 50×50px (heart / search / basket) */
+/* Desktop icon size — 50×50px (Favorites / Basket / Sign In) */
 .navbar-icons a svg,
 .navbar-icons button svg {
   width: 50px;
@@ -74,7 +77,7 @@
 }
 
 .navbar-icons .btn-signin {
-  color: var(--dark-grey);
+  color: var(--dark-grey); /*text color for Sign In button*/
 }
 
 .navbar-icons a:hover,
@@ -89,13 +92,13 @@
 
 /* 5. Basket icon + cart badge */
 .basket-icon {
-  position: relative;
+  position: relative; /* allows cart badge to be positioned relative to basket icon */
 }
 
 .cart-badge {
   position: absolute;
-  top: -8px;
-  right: -8px;
+  top: -8px; /* position badge above the top edge of the basket icon, - is push badge away from basket */
+  right: -8px; /* position badge to the right of the basket icon */
   background-color: var(--orange);
   color: var(--black);
   font-size: 11px;
@@ -134,7 +137,7 @@
 
 /* 7. Hamburger dropdown */
 .dropdown-menu {
-  position: absolute;
+  position: absolute; /* absolute positioning allows it to float above content and be positioned relative to the nearest positioned ancestor (the navbar) */
   top: 134px;
   left: 0;
   background-color: var(--bg-dropdown);
@@ -142,7 +145,7 @@
   display: flex;
   flex-direction: column;
   padding: 12px 0;
-  z-index: 99;
+  z-index: 99; /* below navbar but above page content */
   border-radius: 0 0 var(--radius) 0;
 }
 
