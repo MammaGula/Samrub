@@ -1,3 +1,6 @@
+// When user places an order, we save the order details in the database. 
+
+// productId: type: mongoose.Schema.Types.ObjectId >> objectId from MongoDb
 const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema(
@@ -6,8 +9,9 @@ const orderSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId, // Reference to User model (null if guest)
       ref: "User",
       required: false, // guest can order without login
-      default: null,
+      default: null, // LoginUser: userId, guest order: userId = null
     },
+
     items: [
       {
         // Reference to Product model, but we also store name and price at time of order for history
@@ -17,22 +21,27 @@ const orderSchema = new mongoose.Schema(
         quantity: Number,
       },
     ],
+
     delivery: {
       name: String,
       email: String,
       phone: String,
       address: String,
     },
+
     payment: {
       method: { type: String, enum: ["card", "swish"] },
-      cardNumber: String,   // only set when method === "card"
+      cardNumber: String, // only set when method === "card", should not keep for real system*
       expiry: String,
-      cvv: String,
-      swishNumber: String,  // only set when method === "swish"
+      cvv: String, // should not keep for real system*
+      swishNumber: String, // only set when method === "swish"
     },
+
     totalAmount: Number,
     status: { type: String, default: "confirmed" },
   },
+  
+  // ----Config options for the schema:-----
   { timestamps: true }, // createdAt, updatedAt automatic
 );
 

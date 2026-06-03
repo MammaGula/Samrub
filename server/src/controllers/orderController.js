@@ -31,17 +31,18 @@ const placeOrder = asyncHandler(async (req, res) => {
 
 // ==================================================
 // 2. GET /api/orders/my: See my order history (protected route - only logged in users can access their own orders)
+// Future plan: Add route for canceling orders, etc.
 // ==================================================
 //@desc get current user's orders
 //@route GET /api/orders/my
 //@access private
 
-const getMyOrders = asyncHandler(async (req, res) => {
-  // Find  orders in MongoDb for the logged in user (userId from req.user.id) → sort by createdAt descending (newest first) → return orders as JSON response to frontend
-  const orders = await Order.find({ userId: req.user.id }).sort({
-    createdAt: -1, // Sort by createdAt descending (newest first)
-  });
-  res.json(orders);
-});
+// const getMyOrders = asyncHandler(async (req, res) => {
+//   // Find  orders in MongoDb for the logged in user (userId from req.user.id) → sort by createdAt descending (newest first) → return orders as JSON response to frontend
+//   const orders = await Order.find({ userId: req.user.id }).sort({
+//     createdAt: -1, // Sort by createdAt descending (newest first)
+//   });
+//   res.json(orders);
+// });
 
-module.exports = { placeOrder, getMyOrders };
+// module.exports = { placeOrder, getMyOrders };

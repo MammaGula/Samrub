@@ -18,7 +18,7 @@ const getFavorites = asyncHandler(async (req, res) => {
   const favs = await Favorite.find({ userId: req.user.id }).populate(
     "productId",
   );
-  res.json(favs);
+  res.json(favs); // return to frontend
 });
 
 // ==================================================
@@ -46,6 +46,7 @@ const addFavorite = asyncHandler(async (req, res) => {
 //@access private
 
 const removeFavorite = asyncHandler(async (req, res) => {
+  
   // Read productId from req.params
   // → find and delete favorite in MongoDB with (userId from req.user.id) and (productId from req.params)
   await Favorite.findOneAndDelete({

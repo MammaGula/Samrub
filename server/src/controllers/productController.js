@@ -11,19 +11,7 @@ const { constants } = require("../../constants");
 //@desc get all products
 //@route GET /api/products
 //@access public
-
-
 const getProducts = asyncHandler(async (req, res) => {
-  // Currently filtering by category is done in the frontend (FoodDisplay.jsx).
-  // This is fine for a small dataset — all products are fetched once and filtered in the browser.
-
-  // --- Backend filter (available if dataset grows large) ---
-  // Uncomment below and remove Product.find({}) to switch to backend filtering:
-  // const { category } = req.query;
-  // const filter = category ? { category } : {};
-  // const products = await Product.find(filter);
-  // ---------------------------------------------------------
-
   const products = await Product.find({}); // Fetch all products from MongoDB without filtering (filtering is done in frontend)
   res.json(products);
 });

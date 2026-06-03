@@ -1,3 +1,4 @@
+// Save userInfo in the database when user registers(username, email, password). We also need to check if email is unique (no duplicate users with same email) and hash the password before saving for security.
 // required: [true, "message"] = validering
 // timestamps: true = auto-created och updated fields
 

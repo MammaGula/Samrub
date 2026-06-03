@@ -1,6 +1,6 @@
 // validationToken.js: Middleware for validating JWT tokens in Express routes
-// - If exists Token in request header
-// - If token is valid
+// - If exists Token in Request header
+// - If token is correct
 // - If token is expired or invalid
 // If valid → pass to next route, if not valid → send 401 Unauthorized
 
@@ -12,7 +12,7 @@ const { constants } = require("../../constants");
 // Middleware function to validate JWT token
 const jwt = require("jsonwebtoken");
 
-// Check Authorization header
+// 1. Check Authorization header
 // If no header("authorization") or not Bearer token → 401
 const validateToken = asyncHandler(async (req, res, next) => {
   const authHeader = req.headers.authorization;
@@ -23,7 +23,7 @@ const validateToken = asyncHandler(async (req, res, next) => {
   // Get token from header and verify it [Bearer[0], "TOKEN"[1]]
   const token = authHeader.split(" ")[1];
   try {
-    // Check token validity and expiration, if valid
+    // 2. Check token validity and expiration, if valid
     // → decode token and attach user info to req.user, then call next() to pass to next middleware/route
     req.user = jwt.verify(token, process.env.JWT_SECRET);
     next();

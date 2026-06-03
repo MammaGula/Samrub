@@ -51,16 +51,22 @@ const loginUser = asyncHandler(async (req, res) => {
     throw new Error("All fields are required");
   }
 
+  //- if no user with that email or password is incorrect → 401 error
+  // - or if password is incorrect → 401 error
   const user = await User.findOne({ email });
   if (!user || !(await bcrypt.compare(password, user.password))) {
     res.status(constants.UNAUTHORIZED);
     throw new Error("Invalid credentials");
   }
+
+  // If exists mail and password is correct >> Sign In and token is valid 7 days
   const accessToken = jwt.sign(
     { id: user._id, username: user.username },
     process.env.JWT_SECRET,
     { expiresIn: "7d" },
   );
+
+  // - send back JSON to frontend >> accessToken and user info (id, username, email) (not password!)
   res.json({
     accessToken,
     user: { id: user._id, username: user.username, email: user.email },
@@ -69,14 +75,15 @@ const loginUser = asyncHandler(async (req, res) => {
 
 // ==================================================
 // 3. GET /api/users/current  (protected)
+// Future plan: Add route for updating user profile, changing password, etc.
 // ==================================================
 //@desc get current user
 //@route GET /api/users/current
 //@access private
 
 // Verify JWT token from Authorization header → if valid, return user info (id, username, email) to frontend
-const currentUser = asyncHandler(async (req, res) => {
-  res.json(req.user);
-});
+// const currentUser = asyncHandler(async (req, res) => {
+//   res.json(req.user);
+// });
 
 module.exports = { registerUser, loginUser, currentUser };

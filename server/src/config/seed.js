@@ -1,15 +1,11 @@
-// Seed.js = Script to seed initial product data into MongoDB using Mongoose,
-// use with start running a new project / reset database during development
-// when: Running for the first time, or if you want to reset the database to initial state during development (e.g. after making changes to product schema, or just to clear out test orders/favorites)
-// Reponsibility: Connect to MongoDB  / Insert data / close connection
-// - dotenv: No server.js doesn't call this file, so we need to load .env variables here to get MONGO_URI for connecting to MongoDB
-
+// Seed.js = Use to seed initial data into MongoDB at the start of project / reset database
+// Responsibility: connect DB, insert data, then exit (close connection)
 
 // - Run with: cd server (terminal) >> node src/config/seed.js
 // - Make sure MongoDB is running and MONGO_URI in .env is correct
 
 const mongoose = require("mongoose"); // Connect to MongoDB and define schemas/models
-const dotenv = require("dotenv"); // to read .env variables (like MONGO_URI)
+const dotenv = require("dotenv"); // to read .env variables (MONGO_URI)
 const bcrypt = require("bcryptjs"); // to hash password before storing in DB
 const Product = require("../models/productModel"); // Mongoose model for products collection
 const User = require("../models/userModel"); // Mongoose model for users collection
@@ -20,28 +16,29 @@ const products = require("../../db.json").products; // Sample product data from 
 
 const path = require("path");
 dotenv.config({ path: path.resolve(__dirname, "../../.env") });
-// __dirname = server/src/config → ../../.env = server/.env ✅
 
 mongoose
   .connect(process.env.MONGO_URI) // Connect to MongoDB using MONGO_URI from .env
   .then(async () => {
     // ── Seed Products ──────────────────────────────────────────
-    await Product.deleteMany(); // Clear old existing products (not duplicate on every seed)
+    await Product.deleteMany(); // Clear old existing products
     await Product.insertMany(products); // Insert sample products from db.json into MongoDB using the Product model
     console.log("✅ Products seeded!");
 
     // ── Seed Default User ──────────────────────────────────────
-    // Only create if user doesn't already exist — avoid duplicate on re-seed
+    // - Find User (email: "user@samrub.com") in MongoBB >> if not exists → create with hashed password "password" >> log success message
     // Default login: email "user@samrub.com" / password "password"
     const exists = await User.findOne({ email: "user@samrub.com" });
     if (!exists) {
-      const hashed = await bcrypt.hash("password", 10); // hash password before storing
+      const hashed = await bcrypt.hash("password", 10); // hash password before storing, 10 = salt rounds (complexity)
       await User.create({
         username: "user",
         email: "user@samrub.com",
-        password: hashed,
+        password: hashed, // password from hashed + salt, not plain text
       });
-      console.log("✅ Default user seeded! email: user@samrub.com / password: password");
+      console.log(
+        "✅ Default user seeded! email: user@samrub.com / password: password",
+      );
     } else {
       console.log("ℹ️  Default user already exists, skipping.");
     }

@@ -9,7 +9,7 @@ const {
 } = require("../controllers/favoriteController");
 const validateToken = require("../middleware/validationToken");
 
-router.use(validateToken);
+router.use(validateToken); // Apply token validation middleware to all routes in this router, so only authenticated users can access these routes
 router.get("/", getFavorites);
 router.post("/", addFavorite);
 router.delete("/:productId", removeFavorite);

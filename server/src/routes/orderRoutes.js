@@ -8,7 +8,7 @@ const validateToken = require("../middleware/validationToken");
 router.post("/", placeOrder);           // public — guest can order without login
 
 // Future plan: Add route for canceling orders, etc.
-router.get("/my", validateToken, getMyOrders); 
+// router.get("/my", validateToken, getMyOrders); 
 
 
 module.exports = router;

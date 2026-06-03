@@ -16,6 +16,6 @@ router.post("/register", registerUser);
 router.post("/login", loginUser);
 
 // Future plan: Add route for updating user profile, changing password, etc.
-router.get("/current", validateToken, currentUser);
+// router.get("/current", validateToken, currentUser);
 
 module.exports = router;

@@ -1,17 +1,18 @@
-// errorHandler.js: Middleware for handling errors in Express routes
-// Uses constants.js for status codes instead of hardcoded numbers
-// Switch/case gives each error type its own descriptive title
+// - errorHandler.js: Middleware for handling errors in Express routes, Controllers
+// - Uses constants.js for status codes instead of hardcoded numbers
 
-// stackTrace: Tells the path and structure of all the functions that were called leading up to the error.
-// > Useful for debugging, but should be hidden in production for security reasons.
+// - what should be response with this error? status code, message, stack trace (only in development)
+// - Send response with correct status code(400, 401, 403, 404, 500)+ json error objectback to frontend.
 
 const { constants } = require("../../constants");
 
 const errorHandler = (err, req, res, next) => {
-  // If status code is already set (e.g. 400, 404, 401) use that, otherwise default to 500 (Internal Server Error)
+  // If status code is already set (e.g. 400, 404, 401) use that, otherwise default to 500 (server error)
   const statusCode = res.statusCode ? res.statusCode : 500;
 
   switch (statusCode) {
+    // If error is a validation error (e.g. missing required field, invalid data type)
+    // → 400 Bad Request >> Send response with title "Validation Failed" and error message from err.message
     case constants.VALIDATION_ERROR:
       res.status(statusCode).json({
         title: "Validation Failed",
@@ -20,6 +21,7 @@ const errorHandler = (err, req, res, next) => {
       });
       break;
 
+    // 404
     case constants.NOT_FOUND:
       res.status(statusCode).json({
         title: "Not Found",
@@ -28,6 +30,7 @@ const errorHandler = (err, req, res, next) => {
       });
       break;
 
+    // 401
     case constants.UNAUTHORIZED:
       res.status(statusCode).json({
         title: "Unauthorized",
@@ -36,6 +39,7 @@ const errorHandler = (err, req, res, next) => {
       });
       break;
 
+    // 403
     case constants.FORBIDDEN:
       res.status(statusCode).json({
         title: "Forbidden",
@@ -44,6 +48,7 @@ const errorHandler = (err, req, res, next) => {
       });
       break;
 
+    // 500
     case constants.SERVER_ERROR:
       res.status(statusCode).json({
         title: "Server Error",
@@ -52,6 +57,7 @@ const errorHandler = (err, req, res, next) => {
       });
       break;
 
+    // If error is not one of the above, default to 500 Server Error
     default:
       res.status(statusCode).json({
         title: "Error",
@@ -63,8 +69,6 @@ const errorHandler = (err, req, res, next) => {
 };
 
 module.exports = errorHandler;
-
-
 
 // Controller sets res.status(404)
 //       ↓
