@@ -82,8 +82,8 @@ const loginUser = asyncHandler(async (req, res) => {
 //@access private
 
 // Verify JWT token from Authorization header → if valid, return user info (id, username, email) to frontend
-// const currentUser = asyncHandler(async (req, res) => {
-//   res.json(req.user);
-// });
+const currentUser = asyncHandler(async (req, res) => {
+  res.json(req.user);
+});
 
 module.exports = { registerUser, loginUser, currentUser };

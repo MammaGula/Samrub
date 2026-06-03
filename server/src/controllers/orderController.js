@@ -37,12 +37,12 @@ const placeOrder = asyncHandler(async (req, res) => {
 //@route GET /api/orders/my
 //@access private
 
-// const getMyOrders = asyncHandler(async (req, res) => {
-//   // Find  orders in MongoDb for the logged in user (userId from req.user.id) → sort by createdAt descending (newest first) → return orders as JSON response to frontend
-//   const orders = await Order.find({ userId: req.user.id }).sort({
-//     createdAt: -1, // Sort by createdAt descending (newest first)
-//   });
-//   res.json(orders);
-// });
+const getMyOrders = asyncHandler(async (req, res) => {
+  // Find  orders in MongoDb for the logged in user (userId from req.user.id) → sort by createdAt descending (newest first) → return orders as JSON response to frontend
+  const orders = await Order.find({ userId: req.user.id }).sort({
+    createdAt: -1, // Sort by createdAt descending (newest first)
+  });
+  res.json(orders);
+});
 
-// module.exports = { placeOrder, getMyOrders };
+ module.exports = { placeOrder, getMyOrders };

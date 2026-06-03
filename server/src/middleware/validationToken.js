@@ -13,7 +13,7 @@ const { constants } = require("../../constants");
 const jwt = require("jsonwebtoken");
 
 // 1. Check Authorization header
-// If no header("authorization") or not Bearer token → 401
+// - If no header("authorization") or not Bearer token → 401
 const validateToken = asyncHandler(async (req, res, next) => {
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
