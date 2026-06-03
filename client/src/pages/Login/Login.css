@@ -1,22 +1,24 @@
 /* =============================================
-   Login Page Styles — follows Figma LoginPage-Desktop spec
+   Login Page Styles 
    ============================================= */
 
 /* ── Content-section — full page with background image ── */
-/* Figma: content starts BELOW navbar (not behind it) — unlike Home which overlaps */
+/*  content starts BELOW navbar (not behind it) — unlike Home which overlaps */
 /* main-content padding-top: 134px already pushes content below navbar */
+
 .login {
   width: 100%;
   min-height: calc(100vh - 134px); /* fill viewport minus navbar height */
-  background: url("/images/image-RegisterNLoginPage.jpg") lightgray 50% / cover no-repeat;
+  background: url("/images/image-RegisterNLoginPage.jpg") lightgray 50% / cover
+    no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 /* ── LoginForm-frame — dark semi-transparent card ── */
-/* Figma: 550px wide, padding 20px, flex column, gap 45px */
-/* Style: var(--bg-card), border 1px solid var(--black) */
+/* - 550px wide, padding 20px, flex column, gap 45px */
+/* - Style: var(--bg-card), border 1px solid var(--black) */
 .login__form {
   width: 439px;
   padding: 20px;
@@ -25,12 +27,12 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
-  background: var(--bg-card);          /* rgba(48,48,48,0.65) — defined in index.css */
+  background: var(--bg-card); /* rgba(48,48,48,0.65) — defined in index.css */
   border: 1px solid var(--black);
 }
 
 /* ── header — title row ── */
-/* Figma: display flex, justify-content center, align-items center */
+/* - display flex, justify-content center, align-items center */
 .login__header {
   display: flex;
   justify-content: center;
@@ -39,10 +41,10 @@
 
 /* "Login / Register" — Topic-Desktop: Roboto Serif 40px weight 800 WeakYellow */
 .login__title {
-  font-family: var(--font-body);          /* Roboto Serif */
-  font-size: var(--text-topic-desktop);   /* 40px */
+  font-family: var(--font-body); /* Roboto Serif */
+  font-size: var(--text-topic-desktop); /* 40px */
   font-weight: 800;
-  color: var(--weak-yellow);              /* #FFF3D6 */
+  color: var(--weak-yellow); /* #FFF3D6 */
   text-align: center;
 }
 
@@ -66,7 +68,7 @@
 }
 
 /* ── Buttons — Log in + Register row ── */
-/* Figma: display flex, justify-content center, align-items center */
+/*  display flex, justify-content center, align-items center */
 .login__buttons {
   display: flex;
   justify-content: center;
@@ -81,7 +83,9 @@
 @media (max-width: 768px) {
   /* Content-Section Mobile: fill viewport minus mobile navbar height */
   .login {
-    min-height: calc(100vh - 51px); /* fill viewport minus mobile navbar (51px) */
+    min-height: calc(
+      100vh - 51px
+    ); /* fill viewport minus mobile navbar (51px) */
     padding: 40px 20px;
     align-items: center;
   }
@@ -101,12 +105,12 @@
   /* Title Mobile: Topic-Mobile — 16px, weight 700 */
   .login__title {
     font-size: var(--text-topic-mobile); /* 16px */
-    font-weight: 700;                    /* Figma: 700 (desktop is 800) */
+    font-weight: 700; /*  700 (desktop is 800) */
   }
 
   /* inputFields Mobile: flex column, gap 5px */
   .login__inputform {
-    padding: 0;    /* no extra padding — card padding handles spacing */
-    gap: 5px;      /* Figma: gap 5px between fields on mobile */
+    padding: 0; /* no extra padding — card padding handles spacing */
+    gap: 5px; /*  gap 5px between fields on mobile */
   }
 }

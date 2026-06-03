@@ -45,7 +45,7 @@
   padding: 2rem 1.5rem;
 }
 
-/* Figma: slogan text area 469×50px */
+/*  slogan text area 469×50px */
 .home__hero-title {
   font-family: var(--font-body);
   font-size: 22px;
@@ -56,7 +56,7 @@
   white-space: normal;
 }
 
-/* Figma: ViewMenu button 217×105, #FFB639, radius 20 */
+/*  ViewMenu button 217×105, #FFB639, radius 20 */
 .home__hero-btn {
   width: 170px;
   height: 52px;
@@ -80,7 +80,7 @@
 
 /* ═══════════════════════════════════════════════
    2 & 3. SCROLLING STRIPS
-   Figma: 1540×416px, 5 images × 308px
+    1540×416px, 5 images × 308px
    ═══════════════════════════════════════════════ */
 .home__strip-wrapper {
   width: 100%;
@@ -115,7 +115,7 @@
   animation: home-scrollRight 35s linear infinite;
 }
 
-/* Each image: Figma 308×416px */
+/* Each image:  308×416px */
 .home__strip-img {
   width: 308px;
   height: 416px;
@@ -126,7 +126,7 @@
 
 /* ═══════════════════════════════════════════════
    4. ABOUT / CONTENT
-   Figma: 1441×412px, padding L/R 293px, T/B 49px
+    1441×412px, padding L/R 293px, T/B 49px
    ═══════════════════════════════════════════════ */
 .home__about {
   width: 100%;

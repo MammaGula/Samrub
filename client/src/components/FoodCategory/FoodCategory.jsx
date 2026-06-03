@@ -1,7 +1,7 @@
 import "./FoodCategory.css";
 
-// Each category object: id matches db.json value, label is display text, image is the oval photo
-// id = send to parent, label: show on the button, image: oval photo
+// Each category object: label is display text, image is the oval photo
+
 const CATEGORIES = [
   { id: "All", label: "All", image: null },
   {
@@ -28,15 +28,17 @@ const CATEGORIES = [
 ];
 
 // Props : get from Menu.jsx when we render <FoodCategory selected={selectedCategory} onSelect={setSelectedCategory} />
-// selected — currently active category "id" (e.g. "All", "Starter")
-// onSelect — Function Callback sending id to parent component to update selectedCategory state in Menu.jsx´
+// selected — string of currently selected category (e.g. "All", "Starter", etc.) to apply active styling
+// onSelect — Function to change selected category in parent component (Menu.jsx) when user clicks a category button. Called with the category id (e.g. "Starter") as argument.
 const FoodCategory = ({ selected, onSelect }) => {
+  
   return (
     /*nav = part of navigation*/
     <nav className="food-category">
       {CATEGORIES.map((cat) => (
         <button
           key={cat.id}
+          /* If category is the selected one, add class-active */
           className={`food-category__item ${selected === cat.id ? "food-category__item--active" : ""}`}
           onClick={() => onSelect(cat.id)}
         >
@@ -53,3 +55,7 @@ const FoodCategory = ({ selected, onSelect }) => {
 };
 
 export default FoodCategory;
+
+// User clicks a category button → onClick calls onSelect with the category id
+// → Menu.jsx updates selectedCategory state → FoodCategory re-renders with new selected prop
+// → active styling updates to show which category is selected.

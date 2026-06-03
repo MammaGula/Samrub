@@ -1,3 +1,7 @@
+// FoodDisplay.jsx — Displays a grid of food items based on selected category and search query
+// - Show a list of food items 
+
+
 import { useStore } from "../../context/StoreContext";
 import FoodItem from "../FoodItem/FoodItem";
 import "./FoodDisplay.css";
@@ -9,19 +13,30 @@ import "./FoodDisplay.css";
 const FoodDisplay = ({ selectedCategory = "All", searchQuery = "" }) => {
   const { foodList } = useStore();
 
-  // Loading state — foodList not fetched yet
+  // Loading state — foodList not fetched yet > If foodList is empty, show loading message
   if (foodList.length === 0) {
     return <p className="food-display__message">Loading...</p>;
   }
 
-  // Build filtered list to check empty state before rendering grid
+  // If foodList is not empty, filter it based on selectedCategory and searchQuery
   const filtered = foodList.filter((item) => {
-    if (selectedCategory !== "All" && selectedCategory !== item.category) return false;
-    if (searchQuery && !item.name.toLowerCase().includes(searchQuery.toLowerCase())) return false;
+    
+    // If user hasn't selected All and Category doesn't match, exclude item.
+    if (selectedCategory !== "All" && selectedCategory !== item.category)
+      return false;
+
+    // If searchQuery exists and item name doesn't include searchQuery, exclude item. Case-insensitive search.
+    if (
+      searchQuery &&
+      !item.name.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+      return false;
+
+    // Otherwise include item.
     return true;
   });
 
-  // Empty state — filter/search returned no results
+  // If no items match the filters, show "No dishes found" message
   if (filtered.length === 0) {
     return <p className="food-display__message">No dishes found.</p>;
   }
@@ -30,6 +45,7 @@ const FoodDisplay = ({ selectedCategory = "All", searchQuery = "" }) => {
     <section className="food-display">
       <div className="food-display__grid">
         {filtered.map((item) => (
+          // Render a FoodItem card for each item in the filtered list.
           <FoodItem key={item.id} item={item} />
         ))}
       </div>
@@ -38,3 +54,6 @@ const FoodDisplay = ({ selectedCategory = "All", searchQuery = "" }) => {
 };
 
 export default FoodDisplay;
+
+// Create as a component because it has its own logic for filtering and displaying food items, and is used in the Menu page.
+// It also keeps the Menu component cleaner by abstracting away the food display logic.

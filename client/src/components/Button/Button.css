@@ -1,35 +1,36 @@
 /* Button.css — Global reusable button styles
-   Matches Figma Button-Desktop + Button-Mobile components */
 
 /* ── Desktop ── */
 .btn {
   /* Layout — Hug content width */
-  display: inline-flex;
+  display: inline-flex; /*  Desktop: inline-flex to hug content width */
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 10px; /*  Desktop: gap between icon and text */
 
-  height: 60px; /*  Desktop: H 60 */
-  padding: 11px 23px; /*  Desktop: padding 11px top/bottom, 23px left/right */
+  height: 60px;
+  padding: 11px 23px; /*  padding 11px top/bottom, 23px left/right */
 
   /* Appearance */
   background: var(--orange); /* #FFB639 */
   color: var(--dark-grey); /* #303030 */
-  border: none; /*  Desktop: no border */
+  border: none;
   border-radius: 10px; /*  Desktop: corner radius 10 */
-  box-shadow: inset 0 -3px 6px rgba(0, 0, 0, 0.2); /*  Desktop: Inner shadow effect */
+  box-shadow: inset 0 -3px 6px rgba(0, 0, 0, 0.2); /*  Inner shadow effect */
 
   /* Typography */
-  font-family: "Roboto Serif", serif; /*  Desktop: Roboto Serif */
-  font-size: 24px; /*  Desktop: 24px */
-  font-weight: 700; /*  Desktop: Bold */
-  line-height: 24px; /*  Desktop: line height 24 */
-  letter-spacing: 0.15px; /*  Desktop: letter spacing 0.15px */
+  font-family: "Roboto Serif", serif;
+  font-size: 24px;
+  font-weight: 700; /* Bold */
+  line-height: 24px;
+  letter-spacing: 0.15px;
 
   cursor: pointer;
+
+  /* Transitions for hover and disabled states */
   transition:
     background 0.2s,
-    opacity 0.2s;
+    /* Smooth transition for background color on hover */ opacity 0.2s; /* Smooth transition for opacity on disabled state */
 }
 
 /* Hover state: the color changes to a slightly darker orange with a subtle glow when hovered */
@@ -46,12 +47,12 @@
 /* ── Mobile ── */
 @media (max-width: 768px) {
   .btn {
-    width: 80px; /* Mobile: W 80 */
-    height: 25px; /* Mobile: H 25 */
-    padding: 0; /* Mobile: padding 0 */
-    border-radius: 5px; /* Mobile: corner radius 5 */
+    width: 80px;
+    height: 25px;
+    padding: 0;
+    border-radius: 5px;
 
-    font-size: 8px; /*  Mobile: 8px */
-    line-height: 10px; /*  Mobile: line height 10 */
+    font-size: 8px;
+    line-height: 10px;
   }
 }

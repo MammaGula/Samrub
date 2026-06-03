@@ -1,3 +1,5 @@
+// FoodItem — FoodCard >> image + name + price + heart icon + add-to-cart button
+// Show Food-Information
 import { Icon } from "@iconify/react";
 import { useNavigate } from "react-router-dom";
 import { useStore } from "../../context/StoreContext";
@@ -7,7 +9,9 @@ import "./FoodItem.css";
 const FoodItem = ({ item }) => {
   const { cartItems, addToCart, removeFromCart, toggleFavorite, isFavorite } =
     useStore();
+
   const { authed } = useAuth();
+
   const navigate = useNavigate();
 
   // If guest clicks heart → redirect to login instead of toggling
@@ -26,7 +30,7 @@ const FoodItem = ({ item }) => {
         className="food-item__img-wrap"
         style={{ backgroundImage: `url(/images/foods/${item.image})` }}
       >
-        {/* Not in cart yet → show + button / Already in cart → show [−] qty [+] counter */}
+        {/* Not in cart yet → show + button  */}
         {!cartItems[item.id] ? (
           <button
             className="food-item__add-btn"
@@ -35,6 +39,7 @@ const FoodItem = ({ item }) => {
             <Icon icon="mdi:plus" />
           </button>
         ) : (
+          // If item is in cart, show counter with - qty + buttons and amount in cart
           <div className="food-item__counter">
             <button onClick={() => removeFromCart(item.id)}>
               <Icon icon="mdi:minus" />
@@ -46,14 +51,21 @@ const FoodItem = ({ item }) => {
           </div>
         )}
       </div>
+
+
       {/* ── 2. Info section — heart (right) / name / price ── */}
       {/* - MainClass: food-item__fav 
-      - Check if this itemIt is in array of isFavorite? (T/F) 
+      - Check if this item is in array of isFavorite? (T/F) 
       - If True, add class food-item__fav--active, False--tomt
       */}
       <div className="food-item__info">
         <button
+        
+        /* If item is in favorites-array, add active class to change color */
           className={`food-item__fav ${isFavorite(item.id) ? "food-item__fav--active" : ""}`}
+
+          /* If user clicks heart, call handleFavoriteClick which checks if user is authed
+           → if not redirect to login, if yes toggle favorite in StoreContext */
           onClick={handleFavoriteClick}
         >
           {/* If active, show filled heart icon */}

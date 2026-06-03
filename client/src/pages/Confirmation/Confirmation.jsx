@@ -38,14 +38,15 @@ const Confirmation = () => {
   if (!location.state) return null;
 
   return (
-    // Details-Section — full-width background image
+    
     <div className="confirmation__details">
-      {/* Overall-frame — dark semi-transparent card */}
+     
       <div className="confirmation__card">
-        {/* OrderConfirm — title + checkmark icon */}
+       
         <div className="confirmation__title-row">
+
           <h1 className="confirmation__title">Order Confirmed!</h1>
-          {/* icon-park-solid:correct — 60×60, MediumGreen */}
+
           <Icon
             icon="icon-park-solid:correct"
             className="confirmation__checkmark"
@@ -58,8 +59,10 @@ const Confirmation = () => {
           delivered soon.
         </p>
 
+
         {/* OrderInfo — order details */}
         <div className="confirmation__info">
+
           {/* Show last 8 chars of MongoDB _id for readability e.g. #A3F2C1D8 */}
           <p>Order ID: #{orderId ? orderId.slice(-8).toUpperCase() : "—"}</p>
           <p>Name: {customerName}</p>
@@ -67,7 +70,7 @@ const Confirmation = () => {
         </div>
       </div>
 
-      {/* Buttons — View Menu + Back to home */}
+   
       <div className="confirmation__buttons">
         <Button onClick={() => navigate("/menu")}>View Menu</Button>
         <Button onClick={() => navigate("/")}>Back to home</Button>

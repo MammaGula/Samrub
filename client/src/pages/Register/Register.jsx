@@ -1,4 +1,4 @@
-// Register.jsx — Register page
+// Register.jsx — Register page >>> Send props to InputField-component + Button component
 // Used in: App.jsx route /register
 
 // RegisterPage: Recieve inputData from Form > send to check with backend(registerRequest)
@@ -44,6 +44,7 @@ const Register = () => {
       return;
     }
 
+    // Simple email format check with regex (not perfect but catches basic mistakes)
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
     if (!emailOk) {
       setError("Invalid email format");

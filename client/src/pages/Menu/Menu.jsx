@@ -1,3 +1,7 @@
+// Menu page >> Send props. to FoodCategory-Component + FoodDisplay-Component
+
+
+
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 import FoodCategory from "../../components/FoodCategory/FoodCategory";
@@ -42,14 +46,14 @@ const Menu = () => {
       </div>
 
       {/* 3. Category Filter
-      - Send state(selectedCategory, setSelectedCategory) to FoodCategory */}
+      - Send state(selectedCategory, setSelectedCategory) to FoodCategory-Component */}
       <FoodCategory
         selected={selectedCategory}
         onSelect={setSelectedCategory}
       />
 
       {/* 4. Food Grid 
-      - Send state(selectedCategory, searchQuery) to FoodDisplay */}
+      - Send state(selectedCategory, searchQuery) to FoodDisplay-Component */}
       <FoodDisplay
         selectedCategory={selectedCategory}
         searchQuery={searchQuery}

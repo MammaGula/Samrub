@@ -1,8 +1,8 @@
-// Login.jsx — Login page
-// Used in: App.jsx route /login
-
-// LoginPage: Recieve inputData from Form > send to check with backend(loginRequest)
-// > If success, save token + user to AuthContext > Redirect to home page
+// Used in: App.jsx route /login >>> Send props to InputField-component + Button component
+// 1. import tools and components
+// 2. Manage form state + UI state (error, loading)
+// 3. Send Request to backend with form data
+// 4. render form with InputField + Button components, show error if backend returns error message
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -51,10 +51,11 @@ const Login = () => {
     setLoading(true);
 
     try {
-      // Call POST /api/users/login → returns { accessToken, user: { id, username, email } }
+      // Send data to Backend: POST /api/users/login → returns { accessToken, user: { id, username, email } }
       const data = await loginRequest(formData);
 
-      // If Login successful, save token + user → AuthContext updates authed state + navbar re-renders
+      // If Login successful, save token + user to Local Storage
+      // → AuthContext updates authed state + navbar re-renders
       login(data.accessToken, data.user);
 
       // Fetch favorites from backend now that token is saved
@@ -85,6 +86,7 @@ const Login = () => {
 
         {/* inputForm — Username + Password + error message */}
         <div className="login__inputform">
+          {/* Reusable InputField component for consistent styling and built-in label + error handling */}
           <InputField
             label="E-mail:"
             name="email"
@@ -105,10 +107,13 @@ const Login = () => {
 
         {/* Buttons — Log in submits form, Register navigates to /register */}
         <div className="login__buttons">
+          {/* 1. Log in button */}
           <Button type="submit" disabled={loading}>
+            {/* If loading is true, show "Logging in..." to indicate progress, otherwise show "Log in" */}
             {loading ? "Logging in..." : "Log in"}{" "}
-            {/* Show loading state on button */}
           </Button>
+
+          {/* 2. Register button */}
           <Button type="button" onClick={() => navigate("/register")}>
             Register
           </Button>

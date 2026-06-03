@@ -31,7 +31,7 @@
 /* ── Icon ── */
 .notfound__icon {
   font-size: 64px;
-  color: var(--orange);              /* accent color matching project theme */
+  color: var(--orange);             
 }
 
 /* ── 404 number — big headline ── */

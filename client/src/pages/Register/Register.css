@@ -1,15 +1,16 @@
 /* =============================================
-   Register Page Styles — follows Figma RegisterPage-Desktop spec
+   Register Page Styles 
    Same background image as Login page
    ============================================= */
 
 /* ── Content-section — full page with background image ── */
-/* Figma: content starts BELOW navbar (not behind it) — unlike Home which overlaps */
+/*  content starts BELOW navbar (not behind it) — unlike Home which overlaps */
 /* main-content padding-top: 134px already pushes content below navbar */
 .register {
   width: 100%;
   min-height: calc(100vh - 134px); /* fill viewport minus navbar height */
-  background: url("/images/image-RegisterNLoginPage.jpg") lightgray 50% / cover no-repeat;
+  background: url("/images/image-RegisterNLoginPage.jpg") lightgray 50% / cover
+    no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,12 +26,12 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
-  background: var(--bg-card);   /* rgba(48,48,48,0.65) — defined in index.css */
+  background: var(--bg-card); /* rgba(48,48,48,0.65) — defined in index.css */
   border: 1px solid var(--black);
 }
 
 /* ── header — title row ── */
-/* Figma: display flex, justify-content center, align-items center */
+/*  display flex, justify-content center, align-items center */
 .register__header {
   display: flex;
   justify-content: center;
@@ -39,10 +40,10 @@
 
 /* "Register" — Topic-Desktop: Roboto Serif 40px weight 800 WeakYellow */
 .register__title {
-  font-family: var(--font-body);          /* Roboto Serif */
-  font-size: var(--text-topic-desktop);   /* 40px */
+  font-family: var(--font-body); /* Roboto Serif */
+  font-size: var(--text-topic-desktop); /* 40px */
   font-weight: 800;
-  color: var(--weak-yellow);              /* #FFF3D6 */
+  color: var(--weak-yellow); /* #FFF3D6 */
   text-align: center;
 }
 
@@ -89,12 +90,14 @@
 @media (max-width: 768px) {
   /* Content-Section Mobile: fill viewport minus mobile navbar height */
   .register {
-    min-height: calc(100vh - 51px); /* fill viewport minus mobile navbar (51px) */
+    min-height: calc(
+      100vh - 51px
+    ); /* fill viewport minus mobile navbar (51px) */
     padding: 40px 20px;
     align-items: center;
   }
 
-  /* RegisterForm-frame Mobile: Figma 219px wide, gap 10px, padding 10px 43px */
+  /* RegisterForm-frame Mobile: 219px wide, gap 10px, padding 10px 43px */
   .register__form {
     width: 219px;
     padding: 10px 43px;
@@ -105,12 +108,12 @@
   /* Title Mobile: Topic-Mobile — 16px, weight 700 */
   .register__title {
     font-size: var(--text-topic-mobile); /* 16px */
-    font-weight: 700;                    /* Figma: 700 (desktop is 800) */
+    font-weight: 700; /* 700 (desktop is 800) */
   }
 
   /* inputFields Mobile: no extra padding, gap 5px */
   .register__inputform {
     padding: 0;
-    gap: 5px;  /* Figma: gap 5px between fields on mobile */
+    gap: 5px; /* gap 5px between fields on mobile */
   }
 }

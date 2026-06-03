@@ -1,5 +1,5 @@
 /* =============================================
-   Menu Page — Figma: MenuPage-Desktop
+    MenuPage-Desktop
    ============================================= */
 
 .menu {
@@ -19,14 +19,14 @@
   display: flex;
   align-items: flex-end; /* slogan bar sticks to bottom */
   justify-content: flex-end; /* slogan bar sticks to right */
-  padding-bottom: 28px; /* Figma: 28px from bottom */
+  padding-bottom: 28px; /* 28px from bottom */
 }
 
 /* ── Slogan bar — 587 × 56px, rgba grey 30%, right-aligned ── */
 .menu__hero-slogan {
   width: 587px;
   height: 56px;
-  background: rgba(86, 87, 86, 0.3); /* --bg-grey-tint doubled — Figma slogan bar 30% */
+  background: rgba(86, 87, 86, 0.3); /* --bg-grey-tint doubled  */
   display: flex;
   justify-content: center;
   align-items: center;

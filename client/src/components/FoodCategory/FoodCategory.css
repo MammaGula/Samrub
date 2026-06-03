@@ -1,16 +1,16 @@
 /* =============================================
    FoodCategory — oval image cards + label
-   Figma Desktop: item 340×403px (image 340×316px, gap 37px, label 50px)
-   Figma Mobile : item 120×144px (image 120×120px, gap 2px, label 20px)
+   Desktop: item 340×403px(image+text): (image 340×316px, gap 37px, label 50px)
+   Mobile : item 120×144px(image+text): (image 120×120px, gap 2px, label 20px)
    ============================================= */
 
 /* ── Wrapper ── */
 .food-category {
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: repeat(3, auto); /* 3 columns that fit content width */
   justify-content: center;
-  gap: 37px;
-  padding: 3rem 2rem;
+  gap: 37px; /* 37px between items */
+  padding: 3rem 2rem; /* top/bottom 3rem, horizontal 2rem */
   background: var(--bg-page);
 }
 
@@ -19,16 +19,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px; /* Figma desktop: 10px between image and label */
+  gap: 10px; /*  10px between image and label */
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
+  /* slightly transform on hover */
   transition: transform 0.2s ease;
 }
 
 .food-category__item:hover {
-  transform: translateY(-4px);
+  transform: translateY(-4px); /* Slight lift on hover for feedback */
 }
 
 /* ── Oval image — Desktop: 248×244px, border-radius 180px ── */
@@ -72,9 +73,8 @@
 
 /* ══════════════════════════════════════════════
    RESPONSIVE — Mobile
-   Figma: item 120×144px, image 120×120px circle,
-          gap 2px, padding-bottom 2px,
-          text 11px weight 600 line-height 20px
+   - item 120×144px(image+text): 
+   - (image 120×120px, gap 2px, label 20px)
    ══════════════════════════════════════════════ */
 @media (max-width: 768px) {
   .food-category {
@@ -88,9 +88,9 @@
   .food-category__item {
     width: 120px;
     height: 144px;
-    gap: 2px; /* Figma mobile: 2px */
+    gap: 2px; /* mobile: 2px */
     justify-content: center;
-    padding-bottom: 2px; /* Figma mobile: padding-bottom 2px */
+    padding-bottom: 2px; /*  mobile: padding-bottom 2px */
   }
 
   /* Mobile image: 120×120px, border-radius 180px → perfect circle */

@@ -1,23 +1,34 @@
+// Basket page — shows items in cart with image, name, price, quantity, and order summary with subtotal and checkout button
+// Used in: Basket page ("/basket") >> Send props to button components for +, -, delete, and checkout
+
 import { useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { useStore } from "../../context/StoreContext";
 import Button from "../../components/Button/Button";
 import "./Basket.css";
 
-// Get data from StoreContext:
+// - Get state and functions from StoreContext:
 const Basket = () => {
-  const { cartItems, foodList, addToCart, removeFromCart, deleteFromCart, getTotalCartAmount } =
-    useStore();
+  const {
+    cartItems,
+    foodList,
+    addToCart,
+    removeFromCart,
+    deleteFromCart,
+    getTotalCartAmount,
+  } = useStore();
 
   const navigate = useNavigate();
 
-  // Only show items that are actually in the cart (quantity > 0)
+  // - Only show items that are actually in the cart (quantity > 0)
   const cartFoodItems = foodList.filter((item) => cartItems[item.id] > 0);
 
+  // - Set subtotal by calling getTotalCartAmount from StoreContext, which calculates total based on cartItems and foodList prices.
   const subtotal = getTotalCartAmount();
 
+  // ===============Render Condition 1 ====================
   // ── Empty basket state ──
-  // If cartFoodItems is empty → show empty state with icon, text, and button to go back to menu
+  // - If cartFoodItems is empty → show empty state with icon, text, and button to go back to menu
   if (cartFoodItems.length === 0) {
     return (
       <div className="basket">
@@ -36,6 +47,8 @@ const Basket = () => {
     );
   }
 
+  // ===============Render Condition 2 ====================
+  // - Show basket with items and order summary
   return (
     <div className="basket">
       <h2 className="basket__title">Your Basket</h2>

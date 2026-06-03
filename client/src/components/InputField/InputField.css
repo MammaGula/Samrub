@@ -1,38 +1,36 @@
 /* InputField.css — Reusable input styles (used in Payment, Login, Register) */
 
-/* 1. Wrapper — Figma: 538×103, flex column, align-items flex-start, gap 21px */
+/* 1. Wrapper —  538×103 */
 .input-field {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 21px; /* Figma: gap 21px between label and input */
+  gap: 21px; /* gap 21px between label and input */
   width: 100%;
 }
 
-/* 2. Label — Figma TextLabel-Desktop:
+/* 2. Label — TextLabel-Desktop:
    color: lightGrey #D5D5D5, Roboto Serif 25px, weight 600,
    line-height 20px, letter-spacing 0.15px, align-self stretch */
 .input-field__label {
   align-self: stretch;
   color: var(--light-grey); /* #D5D5D5 */
   font-family: var(--font-body); /* Roboto Serif */
-  font-size: 25px; /* Figma: 25px */
-  font-weight: 600; /* Figma: weight 600 */
-  line-height: 20px; /* Figma: 80% */
-  letter-spacing: 0.15px; /* Figma: 0.15px */
+  font-size: 25px; 
+  font-weight: 600; 
+  line-height: 20px; /* 80% */
+  letter-spacing: 0.15px; 
 }
 
-/* 3. Input box — Figma: height 62px, align-self stretch,
-   border 2px solid lightGrey, background DarkGrey #2A2A2A,
-   box-shadow 0 4px 4px 0 rgba(0,0,0,0.25) */
+/* 3. Input box — height 62px, align-self stretch, */
 .input-field__input {
   align-self: stretch; /* fills wrapper width */
-  height: 62px; /* Figma: 62px */
+  height: 62px; 
   padding: 0 16px;
   background: var(--dark-grey); /* #2A2A2A */
-  border: 2px solid var(--light-grey); /* Figma: 2px solid #D5D5D5 */
+  border: 2px solid var(--light-grey); /* 2px solid #D5D5D5 */
   border-radius: 0;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25); /* Figma: drop shadow */
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25); /* drop shadow */
   color: var(--weak-yellow); /* text color */
   font-size: var(--text-button); /* 20px */
   font-family: var(--font-body);
@@ -75,23 +73,23 @@
     gap: 0;
   }
 
-  /* Label: Figma TextLabel-Mobile — 8px, weight 800, height 19px */
+  /* Label: TextLabel-Mobile — 8px, weight 800, height 19px */
   .input-field__label {
     height: 19px;
-    font-size: 8px; /* Figma mobile: 8px */
-    font-weight: 800; /* Figma mobile: 800 */
+    font-size: 8px; 
+    font-weight: 800; 
     line-height: normal;
     letter-spacing: normal;
     display: flex;
-    align-items: center; /* vertically center text within 19px */
+    align-items: center; /
   }
 
   /* Input: height 26px, border 0.5px solid lightGrey */
   .input-field__input {
-    height: 26px; /* Figma mobile: 26px */
+    height: 26px; 
     font-size: 8px;
-    border: 0.5px solid var(--light-grey); /* Figma mobile: 0.5px */
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25); /* same as desktop */
+    border: 0.5px solid var(--light-grey); 
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25); 
     padding: 0 8px;
   }
 
