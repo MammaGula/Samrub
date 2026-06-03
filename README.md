@@ -4,7 +4,15 @@
 > *Crafted With Wisdom, Served as Art*
 
 
-A full-stack Thai food ordering web application built as a solo school project for the course **Gränssnittsutveckling (SYSM9, VT26)** at Newton, Malmö.
+**Samrub** is a full-stack online Thai food restaurant application where users can browse the menu, add dishes to their cart, and place orders — no account needed. Registered users can also save their favorite dishes.
+
+The goal of this project was to build a complete full-stack web application from scratch, starting with a design in **Figma** — laying out the UI, planning the layout for both desktop and mobile — and then gradually bringing it to life with real code.
+
+I chose to build a Thai food restaurant because of my personal passion for food and my love for Thai cuisine. There's nothing better than combining two things you love — food and coding. So why not start my first full-stack project with my favorite food? 🍛
+
+*Let's enjoy eating and coding!*
+
+Built as a solo school project for the course **Gränssnittsutveckling (SYSM9, VT26)** at Newton, Malmö.
 
 
 ---
@@ -47,7 +55,7 @@ A full-stack Thai food ordering web application built as a solo school project f
 | Auth | JWT (jsonwebtoken) + bcryptjs |
 | Styling | Plain CSS + CSS Variables |
 | Icons | @iconify/react |
-| HTTP | Axios (frontend) + Fetch (authApi) |
+| HTTP | Axios |
 | Dev tools | Vite, Nodemon |
 
 
@@ -209,7 +217,7 @@ cd Samrub
 
 ### 2. Setup Backend
 ```bash
-cd server
+cd server        # make sure you are in the Samrub/ root first
 npm install
 ```
 
@@ -372,9 +380,6 @@ If you see `✅ Server running on port 4000` and `✅ MongoDB connected` — bac
 - 👨‍🍳 **Admin panel** — manage products (add/edit/delete) from the UI
 - 💳 **Real payment integration** — Stripe or Klarna instead of fake card/Swish
 - 🌐 **Deployment**
-  - Frontend → **Netlify**
-  - Backend (Express) → **Render** (free tier)
-  - Database → **MongoDB Atlas** (already in use)
 
 
 ---
