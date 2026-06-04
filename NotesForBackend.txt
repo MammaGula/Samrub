@@ -11,8 +11,8 @@
 3. Improve package.json >> Add Scripts
 
 "scripts": {
-  "dev": "nodemon index.js",
-  "start": "node index.js"
+  "dev": "nodemon server.js",
+  "start": "node server.js"
 }
 
 4. Create .env:

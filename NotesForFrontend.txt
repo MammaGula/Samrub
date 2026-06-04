@@ -90,7 +90,7 @@
     - Token helpers: getToken, saveToken, clearToken (localStorage)
     - User helpers: getUser, saveUser, clearUser (localStorage)
     - isAuthenticated() → !!getToken()
-    - authRequest() → fetch wrapper that auto-attaches Bearer token to headers
+    - authRequest() → axios wrapper that auto-attaches Bearer token to headers
     - loginRequest(), registerRequest(), getCurrentUser() ->> Send httpRequests to backend 
 
 AuthContext.jsx

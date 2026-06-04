@@ -154,6 +154,7 @@ const Payment = () => {
       delivery: formData, // { name, email, phone, address } — matches orderModel delivery fields
       payment: {
         method: paymentMethod,
+        // If user selected card, include card details, otherwise set to null. (In a real system, we wouldn't send/store sensitive card info like this)
         cardNumber: paymentMethod === "card" ? cardData.cardNumber : null,
         expiry: paymentMethod === "card" ? cardData.expiry : null,
         cvv: paymentMethod === "card" ? cardData.cvv : null,
