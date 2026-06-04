@@ -122,7 +122,7 @@ Samrub/
 
 ## 🎨 Figma Design
 
-> **[View Figma Design →](https://www.figma.com/design/JobNEImbBdPiuFXbQtgFNf/Samrub?node-id=0-1&p=f&t=gxjenGkA1DHZ6PCw-0)**
+> **[View Figma Design →](https://www.figma.com/design/JobNEImbBdPiuFXbQtgFNf/Samrub?node-id=0-1&t=EyRUuKZh0byaY8Ro-1)**
 
 Includes:
 
