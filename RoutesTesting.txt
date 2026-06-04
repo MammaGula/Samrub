@@ -15,38 +15,44 @@
   "email": "test@test.com",
   "password": "password123"
     }
-
-    1.3 Get currentUser: GET http://localhost:4000/api/users/current
-
-    Authorization: Bearer <token>
 ---------------------------------------------------------------------
 
 2. Products
 
   2.1 Get allProducts: GET http://localhost:4000/api/products
   
-  2.2 Get Product by ID: GET http://localhost:4000/api/products/:_id (6a17a513cc88b3ba636633ee >> from MongoDB)
+  2.2 Get Product by ID: GET http://localhost:4000/api/products/:id (6a17a513cc88b3ba636633ee >> from MongoDB)
 
 ---------------------------------------------------------------------
 
-3. Orders¨
+3. Orders
 
   3.1 Place Order: POST http://localhost:4000/api/orders
 
   {
-  "items": [{ "productId": "<idFromMongoDb>", "quantity": 2 }],
+  "items": [
+    {
+      "productId": "<idFromMongoDb>",
+      "name": "Pad Thai",
+      "price": 120,
+      "quantity": 2
+    }
+  ],
   "totalAmount": 240,
-  "deliveryInfo": {
+  "delivery": {
     "name": "Test User",
     "email": "test@test.com",
-    "phone": "0812345678"
+    "phone": "0812345678",
+    "address": "Test Street 1, Stockholm"
   },
-  "paymentMethod": "card"
+  "payment": {
+    "method": "card",
+    "cardNumber": "4111111111111111",
+    "expiry": "12/27",
+    "cvv": "123",
+    "swishNumber": null
+  }
 }
-
-  3.2 Get My Ordesr: GET http://localhost:4000/api/orders/my
-
-    Authorization: Bearer <token>
 
 --------------------------------------------------------------------
 
@@ -68,3 +74,10 @@
     http://localhost:4000/api/favorites/6a17a513cc88b3ba636633ec
 
      Authorization: Bearer <token>
+
+--------------------------------------------------------------------
+
+Note:
+- `GET /api/users/current` is currently disabled in the backend.
+- `GET /api/orders/my` is currently disabled in the backend.
+- Favorites routes require a valid Bearer token.
